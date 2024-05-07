@@ -1,0 +1,549 @@
+.project__main {
+  position: relative;
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.project__main__bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/ProjectBG.png");
+  background-position: top;
+  background-size: cover; /* Mantiene el tamaño del fondo ajustado */
+  background-repeat: no-repeat;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: -1;
+}
+
+.project__section {
+  position: relative;
+  width: 90vw;
+  height: fit-content;
+  margin: auto;
+  margin-top: 80px;
+  margin-bottom: 150px;
+}
+
+.project__main__text__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  gap: 20px;
+  margin-top: -10px;
+}
+
+.header__section__project {
+  width: 100vw;
+  height: fit-content;
+  margin-top: 30px;
+}
+
+.header__main__div__project {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.Skaili__logo__project {
+  width: 6rem;
+}
+
+/* .header__elements__div__project {
+  padding: 8px 12px;
+  font-size: 14px;
+  box-shadow: 1px 1px 5px #949494;
+  border-radius: 8px;
+} */
+
+.header__contact__button__project {
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  background: #378ce7;
+  padding: 12px 24px;
+  border-radius: 30px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden; /* Evita que el pseudo-elemento se salga */
+  z-index: 1;
+}
+
+.header__contact__button__project::before {
+  content: "";
+  position: absolute; /* Para permitir la animación */
+  top: 0;
+  left: -100%; /* Empieza fuera de la vista */
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  z-index: -1;
+  background: #1a3c91; /* El color que se impregna */
+  transition: all 0.3s ease; /* Hace la transición suave */
+}
+
+.header__contact__button__project:hover {
+  color: #fff; /* Cambia el color del texto para mayor contraste */
+  z-index: 10;
+}
+
+.header__contact__button__project:hover::before {
+  left: 0; /* Mueve el pseudo-elemento a la posición visible */
+  z-index: -1;
+}
+
+.header__contact__button__project:hover .header__contact__svg path {
+  stroke: white; /* Cambia el color del trazo del SVG a blanco */
+  transition: stroke 0.3s ease-in-out; /* Suaviza la transición del cambio de color */
+}
+
+.project__main__div {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: -30px;
+}
+
+.project__main__text {
+  font-size: 45px;
+  font-weight: 800;
+  text-align: right;
+  color: #0e0e2c;
+  max-width: 1000px;
+}
+
+.project__main__description {
+  font-size: 20px;
+  font-weight: 500;
+  color: #0e0e2c;
+  max-width: 600px;
+  text-align: end;
+}
+
+spline-viewer {
+  margin-top: 0px;
+  margin-left: 20px;
+}
+
+.project__main__div__left {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 70px;
+}
+
+.project__main__div__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  min-width: 720px;
+  margin-top: -80px;
+}
+
+.project__step__div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 5px;
+  margin-bottom: 18px;
+}
+
+.step-form-container {
+  padding: 20px;
+}
+
+.step-indicator {
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #e8e8e8;
+  height: 8px;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #1a3c91;
+  transition: width 0.3s ease-in-out;
+}
+
+.project__step__buttons__div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  margin-top: 14px;
+}
+
+.project__title__step {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0e0e2c;
+  margin: 8px 0px;
+}
+
+.step__form__main__div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 20px;
+}
+
+.project__step__buttons__prev {
+  background: #1f3d8800; /* Rojo */
+  border-radius: 50px;
+  padding: 10px 18px;
+  color: #0e0e2c;
+  border: 1px solid #0e0e2c;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.project__step__buttons__next {
+  background: #1f3c88; /* Rojo */
+  border-radius: 50px;
+  padding: 10px 18px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding-right: 12px;
+}
+
+.project__points {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 20px;
+}
+
+.project__timeline__div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 30px;
+}
+
+.project__timeline__span {
+  text-wrap: nowrap;
+}
+
+.project__timeline__div {
+  display: flex;
+  flex-direction: row; /* Para alinear horizontalmente */
+  justify-content: start;
+  align-items: center; /* Para alinear verticalmente */
+  gap: 20px; /* Espacio entre elementos */
+}
+
+.currency-field-wrapper {
+  display: flex; /* Para dividir el espacio */
+  flex-direction: row;
+  align-items: center; /* Para alinear verticalmente */
+  justify-content: start;
+  width: 100%;
+}
+
+.currency-symbol {
+  min-width: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: white; /* Color blanco para el símbolo */
+  text-align: center; /* Centra el símbolo horizontalmente */
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.name__field {
+  padding: 11px 10px;
+  border-radius: 5px;
+  background: #24242410;
+  color: #ffffffe2;
+  font-size: 14px;
+  border: 1px #00000034 solid;
+  width: 100%; /* Ajusta el ancho del campo */
+}
+
+.name__field::placeholder {
+  color: #000000d1; /* Color del placeholder */
+}
+
+.name__field:focus {
+  outline: none; /* Sin borde de enfoque */
+}
+
+.service-grid {
+  display: flex; /* Para usar flexbox */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten */
+  gap: 20px; /* Espacio entre elementos */
+}
+
+.service-checkbox {
+  display: flex; /* Para alinear el checkbox y la etiqueta */
+  align-items: center; /* Centra verticalmente */
+}
+
+.service-checkbox label {
+  margin-left: 10px; /* Espacio entre checkbox y etiqueta */
+}
+
+
+.clear {
+  clear: both;
+}
+
+.checkBox {
+  display: block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 2px #0e0e2cc8;
+}
+
+.checkBox div {
+  width: 40px;
+  height: 40px;
+  background-color: #1a3c91;
+  top: -52px;
+  left: -52px;
+  position: absolute;
+  transform: rotateZ(45deg);
+  z-index: 100;
+}
+
+.checkBox input[type=checkbox]:checked + div {
+  left: -10px;
+  top: -10px;
+}
+
+.checkBox input[type=checkbox] {
+  position: absolute;
+  left: 50px;
+  visibility: hidden;
+}
+
+.transition {
+  transition: 300ms ease;
+}
+
+.project__details__div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+}
+
+.project__details__file__div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 20px;
+}
+
+.project__details__text__div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project__message__field {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%; /* Cambiado a 100% para ocupar todo el ancho disponible */
+  height: 180px;
+  padding: 11px 10px;
+  border-radius: 5px;
+  background: #00000010;
+  font-size: 14px;
+  border: 1px #00000034 solid;
+  color: #000;
+}
+
+.project__message__field::placeholder {
+  color: #000000d1;
+}
+
+.project__message__field:focus {
+  outline: none;
+}
+ 
+.project__button__submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: #3B71FE;
+  color: #fff;
+  border-radius: 50px;
+  padding: 10px 18px;
+}
+
+.tooltip-container {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+}
+
+.tooltip {
+  position: absolute;
+  top: -90%;
+  padding: 0.4em 1em;
+  opacity: 1;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  background: #ffffff;
+  border-radius: 4px;
+  color: #333333;
+  font-size: 13px;
+  scale: 1;
+  transform-origin: 0 0;
+  text-transform: capitalize;
+  font-weight: 400;
+  margin: auto;
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.25);
+  border: 1px solid #333333bc;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  text-wrap: nowrap;
+  z-index: 10;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  left: 50%;
+  bottom: -0.35em;
+  transform: translate(-50%) rotate(45deg);
+  background: #ffffff;
+  border: 1px solid #333333bc;
+  border-top: 0px;
+  border-left: 0px;
+  z-index: 10;
+}
+
+.services__error__div {
+  width: fit-content;
+  font-size: 14px;
+  border: #c56914 1px solid;
+  border-radius: 8px;
+  padding: 5px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  color: #c56914;
+}
+
+.project__services__div {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.tooltip__message {
+  position: absolute;
+  top: -34%;
+  padding: 0.4em 1em;
+  opacity: 1;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  background: #ffffff;
+  border-radius: 4px;
+  color: #333333;
+  font-size: 13px;
+  scale: 1;
+  transform-origin: 0 0;
+  text-transform: capitalize;
+  font-weight: 400;
+  margin: auto;
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.25);
+  border: 1px solid #333333bc;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  text-wrap: nowrap;
+}
+
+.tooltip__message::before {
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  left: 50%;
+  bottom: -0.35em;
+  transform: translate(-50%) rotate(45deg);
+  background: #ffffff;
+  border: 1px solid #333333bc;
+  border-top: 0px;
+  border-left: 0px;
+}
+
+.project__details__file__span {
+  font-size: 14px;
+}

@@ -1,0 +1,117 @@
+.header__section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  margin: auto;
+  margin-top: 2.5rem;
+}
+
+.Angely__logo {
+  width: 2rem;
+}
+
+.header__elements__div {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+  margin-left: 60px;
+}
+
+.header__elements__services {
+  color: #eff5ffc2;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header__contact__button {
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.home__link {
+  color: #ebe5e5e2;
+  font-size: 14px;
+}
+
+.data__protection__section {
+  width: 90%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.data__protection__title {
+  font-size: 55px;
+  background-image: linear-gradient(to right, #ffffff, #ffffff66);
+  -webkit-background-clip: text; /* Para navegadores WebKit como Chrome y Safari */
+  color: transparent; /* Hace que el texto sea transparente */
+  display: inline-block; /* Necesario para algunos navegadores */
+}
+
+.data__protection__content__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 90%;
+  margin-top: 40px;
+  gap: 40px;
+}
+
+.data__protection__purpose__div {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.purpose__span {
+  color: #fff;
+  font-weight: 800;
+  font-size: 38px;
+}
+
+.purpose__text__span {
+    color: #fff;
+    font-size: 14px;
+}
+
+.purpose__text__ul {
+    color: #fff;
+    font-size: 14px;
+    list-style-type: disc;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.legitimation__text__span__1 {
+    color: #fff;
+    font-size: 14px;
+}
+
+.recipients__text__ul {
+    color: #fff;
+    font-size: 14px;
+    list-style-type: disc;
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}

@@ -1,15 +1,100 @@
+.main__page__main__div {
+  width: 100vw; /* Ancho completo de la ventana */
+  height: 100vh; /* Toda la altura de la ventana */
+  position: relative; /* Para establecer un contexto para el posicionamiento absoluto */
+}
+
+.main__page__main__div__bg {
+  position: absolute; /* Permite posicionamiento absoluto dentro del padre */
+  top: 15px; /* Espacio desde la parte superior */
+  left: 15px; /* Espacio desde la izquierda */
+  right: 15px; /* Espacio desde la derecha */
+  bottom: 15px; /* Espacio desde la parte inferior */
+  border-radius: 25px; /* Bordes redondeados */
+  overflow: hidden; /* Evita desbordamientos */
+  background-color: white; /* Color de fondo */
+  display: flex; /* Para alinear contenido */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  overflow-y: auto;
+  z-index: -1;
+}
+
+/* Configuración del contenido de spline para ocupar todo el espacio */
+spline-viewer {
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  height: 100%; /* Ocupa todo el alto del contenedor */
+}
+
 .header__section {
+  position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
+  width: 100%;
+  margin-top: 15px;
+  padding-top: 20px;
+  opacity: 1; /* Totalmente visible */
+  transition: all 0.5s ease-in-out; /* Transición suave */
+}
+
+.header__section__scrolled {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;
+  gap: 30px;
+  width: 100%; /* Ajusta el ancho para ser más estrecho */
+  margin: auto; /* Centra el contenedor */
+  margin-top: 15px;
+  z-index: 100;
+}
+
+.header__section__0 {
+  opacity: 0; /* Hace que el elemento sea transparente */
+  visibility: hidden; /* Opcional, para evitar que el elemento ocupe espacio */
+  transition: opacity 1.5s ease-in-out; /* Hace la transición suave y lenta */
+}
+
+.header__main__div__no__scrolled {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
   margin: auto;
-  margin-top: 2.5rem;
+  transition: all 0.5s ease-in-out; /* Transición suave */
+}
+
+.header__main__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  padding: 20px;
+  border-radius: 60px;
+  transition: all 0.5s ease-in-out; /* Transición suave */
+}
+.cristal {
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.441); /* Fondo semi-transparente */
+  backdrop-filter: blur(10px); /* Aplica el efecto de desenfoque */
+  -webkit-backdrop-filter: blur(10px); /* Para compatibilidad con Safari */
+  border-radius: 15px; /* Bordes redondeados */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Bordes translúcidos */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para
+transition: all 0.5s ease-in-out; /* Transición suave */
 }
 
 .Skaili__logo {
   width: 8rem;
+}
+
+.Skaili__logo__scrolled {
+  width: 6rem;
 }
 
 .header__elements__div {
@@ -18,8 +103,14 @@
   width: fit-content;
   justify-content: center;
   align-items: center;
-  gap: 8rem;
+  gap: 4rem;
   margin-left: 30px;
+  background-color: #fff;
+  padding: 18px 40px;
+  border-radius: 60px;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .header__elements__services {
@@ -28,230 +119,304 @@
   font-weight: 500;
 }
 
+.footer__links__span {
+  background-image: linear-gradient(to right, #1a3c91, #1741aa 50%, #000 50%);
+  font-size: 14px;
+  background-size: 200% 100%;
+  background-position: -100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+
+.footer__links__span::before {
+  content: "";
+  background: #3b71fe;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0; /* Inicia con un ancho de 0 */
+  height: 1px;
+  transition: width 0.3s ease; /* Controla la velocidad de aparición */
+}
+
 .footer__links__span:hover {
+  background-position: 0;
+}
+
+.footer__links__span:hover::before {
+  width: 100%; /* La línea se expande al 100% del elemento */
+}
+
+/* .footer__links__span:hover {
   color: #eff5ffc2;
   font-size: 14px;
   font-weight: 500;
   text-decoration: underline;
-}
+} */
 
 .header__contact__button {
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
   background: #fff;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 30px;
-  color: #000000;
+  color: #000;
   font-size: 14px;
   font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden; /* Evita que el pseudo-elemento se salga */
+  z-index: 1;
+}
+
+.header__contact__button::before {
+  content: "";
+  position: absolute; /* Para permitir la animación */
+  top: 0;
+  left: -100%; /* Empieza fuera de la vista */
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  z-index: -1;
+  background: #1a3c91; /* El color que se impregna */
+  transition: all 0.3s ease; /* Hace la transición suave */
 }
 
 .header__contact__button:hover {
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  background: transparent;
-  border: 1px solid #fff;
+  color: #fff; /* Cambia el color del texto para mayor contraste */
+  z-index: 10;
 }
 
-.carrusel__container {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
-  width: 100vw;
-  height: fit-content;
-}
-
-.carrusel__wrapper {
-  display: flex;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 15%;
-  animation: scroll 22s linear infinite;
-}
-
-.carrusel__images {
-  width: 500px;
-  height: 300px;
-}
-
-@keyframes scroll {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-218em);
-  }
-}
-
-.questions__main__div {
-  background: #000;
-  width: 55%;
-  height: fit-content;
-  padding: 1rem;
-  position: relative;
-}
-
-.questions__main__div::after {
-  content: "";
-  position: absolute;
-  inset: 10px;
-  background: linear-gradient(
-    to right,
-    #dd00ffd6,
-    #001affc9,
-    #00c3ffc9,
-    #00ffa2c1
-  );
-  filter: blur(1.2em);
+.header__contact__button:hover::before {
+  left: 0; /* Mueve el pseudo-elemento a la posición visible */
   z-index: -1;
 }
 
-.question__main__span {
-  color: #fff;
-  margin-left: 10px;
-}
-
-.question__not__hidden__div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  pointer-events: all;
-  width: 100%;
-}
-
-.question__div {
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  pointer-events: all;
-  width: 100%;
-  z-index: 10;
-  cursor: pointer;
-}
-
-.question__div__1 {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  pointer-events: all;
-  width: 100%;
-  cursor: pointer;
-}
-
-.question__1__text {
-  color: #bab3b3;
-  font-size: 14px;
+.header__contact__button:hover .header__contact__svg path {
+  stroke: white; /* Cambia el color del trazo del SVG a blanco */
+  transition: stroke 0.3s ease-in-out; /* Suaviza la transición del cambio de color */
 }
 
 .header__nav__toggle-button {
-  position: relative;
-  margin-right: 3%;
-  background: #ffffff00;
-  box-shadow: none;
-  border: none;
-  display: none;
-  margin-top: 8px;
-}
-
-#checkbox {
   display: none;
 }
 
-.toggle {
+.main__screen__text__div {
   position: relative;
-  width: 30px;
-  height: 30px;
+  border-radius: 10px; /* Bordes redondeados */
+  position: absolute; /* Posicionamiento absoluto */
+  top: 55%; /* Alineación vertical (centra el div verticalmente) */
+  transform: translateY(-50%); /* Para centrar verticalmente */
+  margin-left: 10px; /* Espacio para separar del borde izquierdo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 30px;
+  padding-left: 2%;
+}
+
+.main__screen__title {
+  font-size: 150px;
+  font-weight: 400;
+  line-height: 100%;
+  text-align: left;
+  letter-spacing: 0px;
+  color: #0e0e2c;
+}
+
+.main__screen__title__second__line__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding-right: 10px;
+}
+
+.main__screen__title__circle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  background: #0e0e2c;
+  border-radius: 80px;
+  display: flex; /* Usamos Flexbox para centrar */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 7.5px;
-  transition-duration: 0.3s;
+  border: 2px solid #0b0b21;
+  transition: all 0.3s ease; /* Aplicamos transición suave a todas las propiedades */
 }
 
-.bars {
-  width: 100%;
-  height: 3px;
-  background-color: rgb(219, 211, 211);
-  border-radius: 3.8px;
-  transition-duration: 0.3s;
+.main__screen__title__circle:hover {
+  background: #00000000; /* Cambia a transparente con borde */
+  border: 2px solid #0b0b21;
+  transform: scale(1.1); /* Aumenta el tamaño del círculo */
 }
 
-#checkbox:checked + .toggle .bars {
-  margin-left: 8px;
-}
-
-#checkbox:checked + .toggle #bar2 {
-  transform: rotate(135deg);
-  margin-left: 0;
-  transform-origin: center;
-  transition-duration: 0.3s;
-}
-
-#checkbox:checked + .toggle #bar1 {
-  transform: rotate(45deg);
-  transition-duration: 0.3s;
-  transform-origin: left center;
-}
-
-#checkbox:checked + .toggle #bar3 {
-  transform: rotate(-45deg);
-  transition-duration: 0.3s;
-  transform-origin: left center;
-}
-
-.header__toggle__menu__div {
-  display: none;
-  width: fit-content;
-  height: fit-content;
-  padding: 20px 20px;
-  background: #171414;
+.main__screen__title__circle::before {
+  content: "";
   position: absolute;
-  top: 14%;
-  right: min(4%, 10px); /* Menú inicialmente fuera de la pantalla */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0); /* Inicia en el centro y sin tamaño */
+  width: 100px;
+  height: 100px;
+  z-index: -1;
+  border-radius: 50%; /* Para mantener la forma circular */
+  background: #0b0b21; /* Color de la onda */
+  opacity: 0; /* Inicia completamente transparente */
+  animation: wave 2s infinite; /* Definimos la animación */
 }
 
-.header__toggle__menu__div > div {
-  list-style: none;
+.main__screen__title__circle:hover::before {
+  animation: none; /* Detiene la animación de la onda expansiva durante el hover */
+}
+
+@keyframes wave {
+  0% {
+    transform: translate(-50%, -50%) scale(0); /* Comienza sin expansión */
+    opacity: 0.5; /* Un poco visible */
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(2); /* Se expande al doble de tamaño */
+    opacity: 0; /* Se desvanece */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0); /* Vuelve a su estado original */
+    opacity: 0; /* Totalmente invisible */
+  }
+}
+
+.main__screen__title__circle:hover .main__screen__circle__svg path {
+  fill: #0b0b21; /* Cambia el color de blanco a negro en hover */
+  transition: fill 0.3s ease; /* Añade transición para suavizar el cambio de color */
+}
+
+.main__screen__title__second__line__text {
+  font-weight: 700;
+  font-size: 155px;
+  color: #0e0e2c;
+}
+
+.typewriter__span {
+  font-size: 150px;
+  font-weight: 400;
+  line-height: 100%;
+  text-align: left;
+  letter-spacing: 0px;
+  color: #0e0e2c;
+}
+
+.main__screen__line {
+  width: 120%;
+  height: 1px;
+  background: #0e0e2c;
+  margin-left: 0px;
+}
+
+.main__screen__important__policy {
+  font-weight: 700;
+  font-size: 18px;
+  color: #0e0e2cbb;
+}
+
+.main__screen__buttons__div {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 100%;
   gap: 25px;
 }
 
-.header__toggle__menu__div > div > a {
-  color: #fff;
+.important__policy__div {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
-.header__toggle__menu__login {
-  border: 1px #fff solid;
-  border-radius: 8px;
-  padding: 7px 11px;
-  color: #fff;
+.main__screen__contact__button {
+  position: relative;
+  background: #378ce7;
+  padding: 8px 15px;
+  border-radius: 40px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
 }
 
-@media screen and (max-width: 1005px) {
-  .carrusel__images {
-    width: 425px;
-    height: 270px;
-  }
+.main__screen__contact__button::before {
+  content: "";
+  position: absolute; /* Para permitir la animación */
+  top: 0;
+  right: -100%; /* Empieza fuera de la vista */
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  opacity: 0;
+  z-index: -1;
+  background: #378ce7; /* El color que se impregna */
+  transition: all 0.4s ease; /* Hace la transición suave */
+}
 
-  .questions__main__div {
-    width: 65%;
-  }
+.main__screen__contact__button:hover {
+  background: white; /* Fondo blanco al hacer hover */
+  z-index: 10;
+}
+
+.main__screen__contact__button:hover::before {
+  z-index: -1;
+  opacity: 1;
+  right: 100%;
+}
+
+.main__screen__planer__button {
+  border: 1px #0e0e2c solid;
+  padding: 10px 15px;
+  border-radius: 40px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.main__screen__planer__button:hover {
+  background: #1a3c91;
+  color: white;
+}
+
+.main__screen__planer__button:hover .main__screen__planner__svg path {
+  fill: #fff; /* Cambia el color de blanco a negro en hover */
+  transition: fill 0.3s ease; /* Añade transición para suavizar el cambio de color */
+}
+
+.main__screen__or {
+  font-weight: 800;
+  font-size: 38px;
+  color: #0e0e2c;
+}
+
+.main__screen__bottom__div {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  gap: 20px;
 }
 
 @media screen and (max-width: 950px) {
@@ -290,94 +455,939 @@
   }
 }
 
-@media screen and (max-width: 780px) {
-  .questions__main__div {
-    font-size: 15px;
-    width: 80%;
-  }
-
-  .question__1__text {
-    font-size: 13px;
-  }
-
-  .questions__main__div::after {
-    filter: blur(1em);
-  }
-
-  .carrusel__images {
-    width: 400px;
-    height: 250px;
-  }
-
-  .carrusel__wrapper {
-    gap: 180px;
-  }
-
-  .Skaili__logo {
-    width: 7rem;
-  }
-
-  @keyframes scroll {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(-171em);
-    }
-  }
-  
+.about__main__section {
+  width: 90vw;
+  height: fit-content;
+  margin: auto;
+  margin-top: 120px;
 }
 
-@media screen and (max-width: 610px) {
-  .questions__main__div {
+.about__section__name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0e0e2c;
+}
+
+.about__main__text__div {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  margin-left: auto;
+  gap: 45px;
+}
+
+.about__main__text {
+  font-size: 38px;
+  font-weight: 800;
+  text-align: right;
+  color: #0e0e2c;
+  max-width: 1000px;
+}
+
+.about__main__description {
+  font-size: 22px;
+  font-weight: 400;
+  text-align: right;
+  color: #0e0e2c93;
+  max-width: 600px;
+}
+
+.about__point__pattern {
+  margin-top: -200px;
+  margin-left: 200px;
+}
+
+.carousel__container {
+  margin-top: -70px;
+}
+
+.services__section {
+  margin-top: 200px;
+  width: 100vw;
+  height: fit-content;
+  background-image: url("../assets/ServicesBG.png");
+  background-position: center;
+  background-size: cover; /* Mantiene el tamaño del fondo ajustado */
+  background-repeat: no-repeat;
+  padding-bottom: 100px;
+}
+
+.services__main__div {
+  width: 90vw;
+  height: fit-content;
+  margin: auto;
+  padding-top: 40px;
+}
+
+.services__section__name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.services__main__text {
+  font-size: 38px;
+  font-weight: 800;
+  text-align: right;
+  color: #ffffff;
+  max-width: 800px;
+  margin-left: auto;
+}
+
+.services_main__text__div {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  margin-left: auto;
+  gap: 45px;
+}
+
+.services__targets__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  margin-top: 70px;
+}
+
+.services__target__1,
+.services__target__2,
+.services__target__3 {
+  width: 400px;
+  height: 750px;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  padding-bottom: 40px;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+}
+
+.services__rocket__image {
+  margin-top: -60px;
+}
+
+.services__hand__image {
+  margin: 22px 0px;
+}
+
+.services__target__titles__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.services__target__subtitle {
+  color: #326aff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.services__target__title {
+  font-size: 26px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.services__target__ul {
+  width: 100%;
+  margin-left: 10px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 14px;
+}
+
+.services__target__li {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Espacio entre SVG y texto */
+  /* width: fit-content no debería ser necesario si quieres que el texto pueda saltar de línea */
+}
+
+.services__target__li svg {
+  width: 16px; /* Tamaño fijo para el SVG */
+  height: 16px;
+  flex-shrink: 0; /* Impide que el SVG se reduzca cuando el contenido crece */
+}
+
+.services__target__span {
+  font-size: 14px;
+  white-space: normal; /* Permite que el texto salte de línea */
+  flex-grow: 1; /* Permite que el texto ocupe todo el espacio necesario */
+}
+
+.services__design__description {
+  text-align: center;
+  width: 80%;
+  font-size: 16px;
+}
+
+.services__ideal__span {
+  font-size: 14px;
+  white-space: normal; /* Permite que el texto salte de línea */
+  flex-grow: 1; /* Permite que el texto ocupe todo el espacio necesario */
+  padding: 10px 15px;
+  color: #3b71fe;
+  font-weight: 600;
+  box-shadow: 1px 2px 5px rgba(59, 113, 254, 0.42);
+  border-radius: 8px;
+}
+
+.services__averages__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.services__average__price {
+  color: #0a7d41;
+  padding: 8px 12px;
+  font-size: 14px;
+  box-shadow: 0px 0px 5px #0a7d41;
+  border-radius: 8px;
+}
+
+.services__average__time {
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 14px;
+  background: #0a7d42e6;
+  border-radius: 8px;
+}
+
+.process__section {
+  width: 90vw;
+  height: fit-content;
+  margin: auto;
+  margin-top: 230px;
+}
+
+.process__section__name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0e0e2c;
+}
+
+.process__main__div {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 50px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.process__step__div {
+  width: fit-content;
+  height: fit-content;
+  background: #f1f1f1;
+  border-radius: 15px;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  padding: 20px 30px;
+}
+
+.process__step__text__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 10px;
+}
+
+.process__step__num {
+  color: #3b71fe;
+  font-size: 48px;
+  font-weight: 800;
+  width: fit-content;
+  height: fit-content;
+}
+
+.process__step__title {
+  font-size: 34px;
+  font-weight: 800;
+  color: #0e0e2c;
+}
+
+.process__step__description {
+  font-size: 16px;
+  text-align: left;
+  max-width: 700px;
+  font-weight: 500;
+  line-height: 160%;
+}
+
+.process__step__big__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  margin-left: auto;
+}
+
+.process__step__big__div__right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  margin-right: auto;
+}
+
+.process__step__div__left {
+  width: fit-content;
+  height: fit-content;
+  background: #f1f1f1;
+  border-radius: 15px;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  padding: 20px 30px;
+  margin-left: auto;
+}
+
+.process__points__top {
+  position: absolute;
+  z-index: -1;
+  right: 100px;
+  top: 60px;
+}
+
+.process__points__bottom {
+  position: absolute;
+  z-index: -1;
+  margin-left: 100px;
+  bottom: 60px;
+}
+
+.questions__section {
+  width: 100vw;
+  background: #0b0b21;
+  height: fit-content;
+  margin: auto;
+  margin-top: 280px;
+  padding-bottom: 120px;
+  clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 80px), 0% 100%);
+}
+
+.questions__main__div {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 40px;
+  margin: auto;
+  padding-right: 180px;
+  padding-top: 80px;
+}
+
+.questions__title__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: fit-content;
+  gap: 10px;
+}
+
+.questions__section__name {
+  background: #206cbe;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 41px;
+  padding: 8px 15px;
+}
+
+.questions__main__title {
+  font-size: 38px;
+  font-weight: 700;
+  text-align: right;
+  color: #ffffff;
+  max-width: 800px;
+  margin-left: auto;
+}
+
+.questions__wrapper {
+  position: relative;
+  width: 100vw;
+  height: fit-content;
+}
+
+.questions__spline__animation__big {
+  position: absolute;
+  right: -180px;
+  top: -280px;
+  z-index: 10;
+}
+
+.questions__spline__animation__mid {
+  display: none;
+}
+
+.questions__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 20px;
+}
+
+.question__div {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  pointer-events: all;
+  width: 100%;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.question__not__hidden__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: all;
+  width: 100%;
+}
+
+.question__main__span {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  max-width: 90%;
+}
+
+.question__1__text {
+  color: #bab3b3;
+  font-size: 14px;
+}
+
+.questions__ask__div {
+  width: fit-content;
+  height: fit-content;
+  background: #fff;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: auto;
+  margin-top: 20px;
+  padding: 30px;
+}
+
+.questions__ask__title {
+  font-size: 32px;
+  color: #0b0b21;
+  line-height: 150%;
+  font-weight: 700;
+}
+
+.questions__ask__button {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  background: #3b71fe;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 60px;
+}
+
+.questions__ask__button::before {
+  content: "";
+  position: absolute; /* Para permitir la animación */
+  top: 0;
+  right: -100%; /* Empieza fuera de la vista */
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  opacity: 0;
+  z-index: -1;
+  background: #378ce7; /* El color que se impregna */
+  transition: all 0.4s ease; /* Hace la transición suave */
+}
+
+.questions__ask__button:hover {
+  background: #181875; /* Fondo blanco al hacer hover */
+  z-index: 10;
+}
+
+.questions__ask__button:hover::before {
+  z-index: -1;
+  opacity: 1;
+  right: 100%;
+}
+
+.questions__points {
+  position: absolute;
+  margin: 80px;
+}
+
+.questions__points__bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 80px;
+  margin-bottom: 140px;
+  rotate: 90deg;
+}
+
+.bottom__carousel__section {
+  width: 100vw;
+  height: fit-content;
+  margin: auto;
+  margin-top: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.marquee {
+  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  height: 130px;
+  overflow: hidden;
+}
+
+.track {
+  position: absolute;
+  white-space: nowrap;
+  text-wrap: nowrap;
+  will-change: transform;
+  animation: marquee 60s linear infinite;
+}
+
+.track__2 {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee2 60s linear infinite;
+}
+
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee2 {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.marquee__text__1 {
+  font-size: 106px;
+  font-weight: 500;
+  color: #0b0b21;
+}
+
+.footer__section {
+  width: 98%;
+  height: 540px;
+  margin: 15px auto;
+  margin-top: 140px;
+  background: #a0a4ab37;
+  border-radius: 60px;
+}
+
+.footer__main__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0px 40px 0px;
+}
+
+.footer__top__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer__title__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.footer__main__title {
+  font-size: 50px;
+  font-weight: 500;
+  color: #0b0b21;
+}
+
+.footer__title__circle {
+  position: relative;
+  background: #0b0b21;
+  border-radius: 100px;
+  width: 90px;
+  height: 90px;
+  display: flex; /* Usamos Flexbox para centrar */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid #0b0b21;
+}
+
+.footer__title__circle:hover {
+  background: #00000000; /* Cambia a transparente con borde */
+  border: 2px solid #0b0b21;
+  transform: scale(1.1); /* Aumenta el tamaño del círculo */
+}
+
+.footer__title__circle::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0); /* Inicia en el centro y sin tamaño */
+  width: 80px;
+  height: 80px;
+  z-index: -1;
+  border-radius: 50%; /* Para mantener la forma circular */
+  background: #0b0b21; /* Color de la onda */
+  opacity: 0; /* Inicia completamente transparente */
+  animation: wave 2s infinite; /* Definimos la animación */
+}
+
+.footer__title__circle:hover::before {
+  animation: none; /* Detiene la animación de la onda expansiva durante el hover */
+}
+
+@keyframes wave {
+  0% {
+    transform: translate(-50%, -50%) scale(0); /* Comienza sin expansión */
+    opacity: 0.5; /* Un poco visible */
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(2); /* Se expande al doble de tamaño */
+    opacity: 0; /* Se desvanece */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0); /* Vuelve a su estado original */
+    opacity: 0; /* Totalmente invisible */
+  }
+}
+
+.footer__title__circle:hover .footer__circle__svg path {
+  fill: #0b0b21; /* Cambia el color de blanco a negro en hover */
+  transition: fill 0.3s ease; /* Añade transición para suavizar el cambio de color */
+}
+
+.footer__main__description {
+  text-align: center;
+  max-width: 600px;
+}
+
+.footer__buttons__div {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.footer__contact__button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  background: #378ce7;
+  color: #0b0b21;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer__contact__button::before {
+  content: "";
+  position: absolute; /* Para permitir la animación */
+  top: 0;
+  right: -100%; /* Empieza fuera de la vista */
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  opacity: 0;
+  z-index: -1;
+  background: #378ce7; /* El color que se impregna */
+  transition: all 0.4s ease; /* Hace la transición suave */
+}
+
+.footer__contact__button:hover {
+  background: transparent; /* Fondo blanco al hacer hover */
+  z-index: 10;
+  border: 1px solid #0e0e2c;
+}
+
+.footer__contact__button:hover::before {
+  z-index: -1;
+  opacity: 1;
+  right: 100%;
+}
+
+.footer__planer__button {
+  background: #378ce700;
+  color: #0b0b21;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #0e0e2c;
+  transition: all 0.3s ease;
+}
+
+.footer__planer__button:hover {
+  background: #1a3c91;
+  color: white;
+}
+
+.footer__planer__button:hover .footer__planner__svg path {
+  fill: #fff; /* Cambia el color de blanco a negro en hover */
+  transition: fill 0.3s ease; /* Añade transición para suavizar el cambio de color */
+}
+
+.footer__or__span {
+  font-size: 30px;
+}
+
+.footer__middle__line {
+  width: 70%;
+  height: 1px;
+  background: #0b0b2158;
+}
+
+.footer__bottom__div {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__elements__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  padding-left: 100px;
+}
+
+.footer__email__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 12px;
+  padding-left: 20px;
+}
+
+.footer__email__intro {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0b0b21;
+}
+
+.footer__email__span {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__rights__div {
+  width: 100%;
+  margin-top: auto;
+  background: #0e0e2c;
+  height: 60px;
+  border-radius: 0px 0px 60px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__rights__span {
+  color: #ffffffb8;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 1450px) {
+  .main__screen__title {
+    font-size: 140px;
+  }
+
+  .main__screen__title__second__line__text {
+    font-size: 145px;
+  }
+
+  .typewriter__span {
+    font-size: 140px;
+  }
+
+  .main__screen__title__circle {
+    width: 110px;
+    height: 110px;
+  }
+
+  .main__screen__line {
+    width: 110%;
+  }
+
+  .main__screen__text__div {
+    padding-left: 4%;
+  }
+
+  .header__main__div {
+    width: 90%;
+  }
+
+  .header__elements__div {
+    gap: 3rem;
+  }
+
+  .header__contact__button {
     font-size: 14px;
-    width: 80%;
   }
 
-  .question__1__text {
-    font-size: 12px;
+  .about__main__text {
+    font-size: 32px;
+    max-width: 700px;
   }
 
-  .Skaili__logo {
-    width: 6rem;
+  .about__main__description {
+    font-size: 20px;
+    max-width: 640px;
   }
-}
 
-@media screen and (max-width: 550px) {
-  .carrusel__images {
-    width: 380px;
-    height: 220px;
+  .carousel__image {
+    width: 550px;
+    z-index: 100;
   }
-}
 
-@media screen and (max-width: 455px) {
+  .services__targets__div {
+   align-items: start;
+  }
+  .services__target__1,
+  .services__target__1,
+  .services__target__2 {
+    height: 100%;
+  }
+
+  .services__average__price {
+    text-align: center;
+  }
+
+  .services__average__time {
+    text-align: center;
+  }
+
+  .process__main__div {
+    margin-top: 60px;
+  }
+
+  .process__step__description {
+    font-size: 15px;
+  }
+
+  .process__step__big__div {
+    gap: 80px;
+  }
+
+  .process__step__big__div__right {
+    gap: 80px;
+  }
+
+  .questions__spline__animation__big {
+    display: none;
+  }
+
+  .questions__spline__animation__mid {
+    display: inline-block;
+    scale: 1;
+    position: absolute;
+    right: -230px;
+    top: -300px;
+    width: fit-content;
+    scale: 0.85;
+    z-index: 10;
+  }
+
+
   .questions__main__div {
-    font-size: 13px;
-    width: 80%;
+    width: 72%;
+    padding-left: 5%;
   }
 
-  .question__1__text {
-    font-size: 11px;
+  .footer__bottom__div {
+    gap: 60px;
+    width: 90%;
   }
-}
-
-@media screen and (max-width: 415px) {
-  .carrusel__images {
-    width: 360px;
-    height: 190px;
-  }
-
-  .Skaili__logo {
-    width: 5rem;
-  }
-
-  @keyframes scroll {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(-144em);
-    }
-  }
-
 }

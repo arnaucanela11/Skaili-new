@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-black overflow-hidden`}>
+      <body className={`${inter.className} bg-white overflow-hidden`}>
       <GTMnoscript />
         {children}
         <Analytics />
