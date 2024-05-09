@@ -1290,6 +1290,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
   .typewriter__span {
     font-size: 140px;
+    color: #000;
   }
 
   .main__screen__title__circle {
