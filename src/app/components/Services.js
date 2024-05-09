@@ -160,8 +160,7 @@ function Services() {
                 </div>
                 <span className="services__design__description">
                   Web Development services normally include a web design
-                  service, but you can contract only the website design service
-                  if you want.
+                  service, but <b>you can contract only the website design service</b> as well.
                 </span>
                 <ul className="services__target__ul">
                   {services3.map((text, index) => (

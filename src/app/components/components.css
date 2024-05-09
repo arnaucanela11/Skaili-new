@@ -1006,7 +1006,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   animation: marquee2 60s linear infinite;
 }
 
-
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -1333,7 +1332,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   }
 
   .services__targets__div {
-   align-items: start;
+    align-items: start;
   }
   .services__target__1,
   .services__target__1,
@@ -1380,7 +1379,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     z-index: 10;
   }
 
-
   .questions__main__div {
     width: 72%;
     padding-left: 5%;
@@ -1389,5 +1387,146 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   .footer__bottom__div {
     gap: 60px;
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  .questions__spline__animation__mid {
+    scale: 0.8;
+  }
+
+  .questions__main__title {
+    font-size: 34px;
+  }
+
+  .questions__section__name {
+    font-size: 16px;
+  }
+
+  .question__main__span {
+    font-size: 18px;
+  }
+
+  .questions__ask__title {
+    font-size: 30px;
+  }
+
+  .questions__ask__button {
+    font-size: 14px;
+  }
+
+  .questions__ask__svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .marquee__text__1 {
+    font-size: 100px;
+  }
+
+  .bottom__carousel__section {
+    gap: 0px;
+  }
+
+  .footer__email__div {
+    padding-left: 20px;
+    margin-right: -10px;
+  }
+
+  .footer__email__intro {
+    font-size: 16px;
+    text-wrap: nowrap;
+  }
+
+  .footer__main__title {
+    font-size: 45px;
+  }
+
+  .footer__title__circle {
+    width: 85px;
+    height: 85px;
+  }
+
+  .footer__title__circle::before {
+    width: 75px;
+    height: 75px;
+  }
+
+  .footer__main__description {
+    font-size: 15px;
+  }
+
+  .services__design__description {
+    font-size: 14px;
+  }
+
+  .services__target__title {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .about__point__pattern {
+    margin-left: 140px;
+    width: 240px;
+    padding-top: 20px;
+  }
+
+  .about__main__description {
+    font-size: 18px;
+    max-width: 510px;
+  }
+
+  .about__main__text {
+    font-size: 30px;
+    max-width: 660px;
+  }
+
+  .carousel__container {
+    width: 100%;
+    margin: auto;
+    margin-top: -50px;
+  }
+
+  .carousel__image {
+    width: 620px;
+  }
+
+  .services__section {
+    margin-top: 180px;
+  }
+
+  .process__section {
+    margin-top: 200px;
+  }
+
+  .services__target__1,
+  .services__target__2,
+  .services__target__3 {
+    width: 100%;
+  }
+
+  .services__targets__div {
+    gap: 60px;
+  }
+
+  .services__ideal__span {
+    font-size: 13px;
+  }
+
+  .services__average__price {
+    font-size: 13px;
+  }
+
+  .services__average__time {
+    font-size: 13px;
+  }
+
+  .process__step__big__div {
+    gap: 50px;
+  }
+
+  .process__step__big__div__right {
+    gap: 50px;
   }
 }

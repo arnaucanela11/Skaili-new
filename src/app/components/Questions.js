@@ -439,6 +439,7 @@ function Questions() {
                 <Link href={"/contact"} className="questions__ask__button">
                   Ask a question
                   <svg
+                  className="questions__ask__svg"
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
