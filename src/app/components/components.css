@@ -1278,7 +1278,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   font-size: 14px;
 }
 
-
 @media screen and (max-width: 1450px) {
   .main__screen__title {
     font-size: 140px;
@@ -1290,7 +1289,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
   .typewriter__span {
     font-size: 140px;
-    color: #000;
   }
 
   .main__screen__title__circle {
@@ -1544,20 +1542,19 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     width: 280px;
     height: 245px;
   } */
-
 }
 
 @media screen and (max-width: 1180px) {
-.questions__ask__title {
-  font-size: 25px;
-  text-wrap: nowrap;
-}
+  .questions__ask__title {
+    font-size: 25px;
+    text-wrap: nowrap;
+  }
 
-.questions__ask__button {
-  padding: 12px 18px;
-}
+  .questions__ask__button {
+    padding: 12px 18px;
+  }
 
-.questions__points {
-  margin: 60px;
-}
+  .questions__points {
+    margin: 60px;
+  }
 }
