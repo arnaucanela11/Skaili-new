@@ -172,7 +172,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   align-items: center;
   gap: 10px;
   overflow: hidden; /* Evita que el pseudo-elemento se salga */
-  z-index: 1;
+  z-index: 320;
 }
 
 .header__contact__button::before {
@@ -183,7 +183,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   width: 100%;
   height: 100%;
   border-radius: 30px;
-  z-index: -1;
+  z-index: 319;
   background: #1a3c91; /* El color que se impregna */
   transition: all 0.3s ease; /* Hace la transición suave */
 }
@@ -210,7 +210,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 .main__screen__text__div {
   position: relative;
   border-radius: 10px; /* Bordes redondeados */
-  position: absolute; /* Posicionamiento absoluto */
   top: 55%; /* Alineación vertical (centra el div verticalmente) */
   transform: translateY(-50%); /* Para centrar verticalmente */
   margin-left: 10px; /* Espacio para separar del borde izquierdo */
@@ -220,6 +219,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   align-items: start;
   gap: 30px;
   padding-left: 2%;
+  z-index: -1;
 }
 
 .main__screen__title {
@@ -315,7 +315,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 }
 
 .main__screen__line {
-  width: 120%;
+  width: 62%;
   height: 1px;
   background: #0e0e2c;
   margin-left: 0px;
@@ -1032,7 +1032,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
 .footer__section {
   width: 98%;
-  height: 540px;
+  height: fit-content;
   margin: 15px auto;
   margin-top: 140px;
   background: #a0a4ab37;
@@ -1278,6 +1278,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   font-size: 14px;
 }
 
+
 @media screen and (max-width: 1450px) {
   .main__screen__title {
     font-size: 140px;
@@ -1297,7 +1298,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   }
 
   .main__screen__line {
-    width: 110%;
+    width: 62%;
   }
 
   .main__screen__text__div {
@@ -1465,6 +1466,10 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   }
 }
 
+.process__image {
+  max-width: 220px;
+}
+
 @media screen and (max-width: 1280px) {
   .about__point__pattern {
     margin-left: 140px;
@@ -1529,4 +1534,29 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   .process__step__big__div__right {
     gap: 50px;
   }
+
+  .footer__rights__div {
+    margin: auto;
+  }
+
+  /* .process__step__svg {
+    width: 280px;
+    height: 245px;
+  } */
+
+}
+
+@media screen and (max-width: 1180px) {
+.questions__ask__title {
+  font-size: 25px;
+  text-wrap: nowrap;
+}
+
+.questions__ask__button {
+  padding: 12px 18px;
+}
+
+.questions__points {
+  margin: 60px;
+}
 }

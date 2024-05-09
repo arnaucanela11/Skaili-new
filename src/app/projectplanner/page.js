@@ -254,6 +254,7 @@ function page() {
                 }}
               ></div>
               <div className="contact__main__div">
+              
                 <button
                   className="contact__close__button"
                   onClick={() => {
@@ -282,6 +283,7 @@ function page() {
                     />
                   </svg>
                 </button>
+                <div className="contact__main__div__1">
                 <div className="contact__main__div">
                   <h2 className={`contact__main__title ${poppins.className}`}>
                     Provideo below your{" "}
@@ -524,6 +526,7 @@ function page() {
                     )}
                   </Formik>
                   {/* <div className="w-[90%] ml-[10px] m-auto h-[0.5px] bg-[#0b0b2186]"/> */}
+                  </div>
                   <div className="contact__bottom__div">
                     <div className="contact__bottom__text__div">
                       <h4
@@ -550,6 +553,7 @@ function page() {
                     </a>
                   </div>
                 </div>
+                
               </div>
             </section>
           <Image src={ProjectBG} className="project__main__bg" />

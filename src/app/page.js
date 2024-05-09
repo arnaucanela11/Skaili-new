@@ -23,6 +23,7 @@ import BottomCarousel from "./components/BottomCarousel";
 import { useEffect, useRef, useState } from "react";
 import Translator from "./components/Translator";
 import { useScroll } from "react-use";
+import { motion } from "framer-motion";
 
 import {
   Shanti,
@@ -104,6 +105,26 @@ const sendMessage = async (values) => {
   }
 };
 
+const sidebar = {
+  open: (height = 1000) => ({
+    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    transition: {
+      type: "spring",
+      stiffness: 20,
+      restDelta: 2,
+    },
+  }),
+  closed: {
+    clipPath: "circle(30px at 40px 40px)",
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+};
+
 export default function Home() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [contactForm, setContactForm] = useState(false);
@@ -136,6 +157,18 @@ export default function Home() {
     setContactForm(false);
   };
 
+  useEffect(() => {
+    // Efecto para bloquear/desbloquear el scroll del cuerpo cuando el menú está visible
+    if (toggleMenu) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [toggleMenu]);
+
   return (
     <main
       className="w-[100vw] h-[100vh] overflow-x-hidden overflow-y-scroll relative main__page"
@@ -157,7 +190,7 @@ export default function Home() {
                   setContactForm(false);
                 }}
               ></div>
-              <div className="contact__main__div">
+              <div className="contact__main__div__big">
                 <button
                   className="contact__close__button"
                   onClick={() => {
@@ -186,37 +219,38 @@ export default function Home() {
                     />
                   </svg>
                 </button>
-                <div className="contact__main__div">
-                  <h2 className={`contact__main__title ${poppins.className}`}>
-                    Provideo below your{" "}
-                    <span className="text-[#3B71FE]">
-                      contact <br />
-                      data
-                    </span>{" "}
-                    and explain your idea:
-                  </h2>
-                  <Formik
-                    validationSchema={loginSchema}
-                    initialValues={initailaState}
-                    onSubmit={(values, submitProps) =>
-                      handleSubmitContact(values, submitProps)
-                    }
-                  >
-                    {({
-                      values,
-                      handleSubmit,
-                      handleBlur,
-                      handleChange,
-                      setFieldValue,
-                    }) => (
-                      <form
-                        className="contact__form__div"
-                        onSubmit={handleSubmit}
-                      >
-                        <div className="name__fields__div">
-                          {/* <label  className="field__label">Name*</label> */}
-                          <div className="flex flex-col justify-start gap-3 w-[100%]">
-                            <div className="tooltip-container">
+                <div className="contact__main__div__1">
+                  <div className="contact__main__div">
+                    <h2 className={`contact__main__title ${poppins.className}`}>
+                      Provideo below your{" "}
+                      <span className="text-[#3B71FE]">
+                        contact <br />
+                        data
+                      </span>{" "}
+                      and explain your idea:
+                    </h2>
+                    <Formik
+                      validationSchema={loginSchema}
+                      initialValues={initailaState}
+                      onSubmit={(values, submitProps) =>
+                        handleSubmitContact(values, submitProps)
+                      }
+                    >
+                      {({
+                        values,
+                        handleSubmit,
+                        handleBlur,
+                        handleChange,
+                        setFieldValue,
+                      }) => (
+                        <form
+                          className="contact__form__div"
+                          onSubmit={handleSubmit}
+                        >
+                          <div className="name__fields__div">
+                            {/* <label  className="field__label">Name*</label> */}
+                            <div className="flex flex-col justify-start gap-3 w-[100%]">
+                              <div className="tooltip-container">
                                 <ErrorMessage
                                   name="name"
                                   render={(msg) => (
@@ -251,25 +285,25 @@ export default function Home() {
                                     </>
                                   )}
                                 />
-                              <Field
-                                name="name"
-                                type="text"
-                                className="name__field text"
-                                placeholder={`${translations.formplaceholder1}`}
-                              />
+                                <Field
+                                  name="name"
+                                  type="text"
+                                  className="name__field text"
+                                  placeholder={`${translations.formplaceholder1}`}
+                                />
+                              </div>
                             </div>
+                            {/* <label className="field__label">Company (optional)</label> */}
+                            <Field
+                              name="company"
+                              type="text"
+                              className="name__field text"
+                              placeholder={`Company name`}
+                            />
                           </div>
                           {/* <label className="field__label">Company (optional)</label> */}
-                          <Field
-                            name="company"
-                            type="text"
-                            className="name__field text"
-                            placeholder={`Company name`}
-                          />
-                        </div>
-                        {/* <label className="field__label">Company (optional)</label> */}
 
-                        <div className="tooltip-container">
+                          <div className="tooltip-container">
                             <ErrorMessage
                               name="email"
                               render={(msg) => (
@@ -312,121 +346,122 @@ export default function Home() {
                             />
                           </div>
 
-                         <div className="tooltip-container">
-                              <ErrorMessage
-                                name="message"
-                                render={(msg) => (
-                                  <>
-                                    <span className="tooltip__message">
-                                      {" "}
-                                      <svg
-                                        width="22"
-                                        height="22"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                      >
-                                        <g clip-path="url(#clip0_478_946)">
-                                          <path
-                                            d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
-                                            fill="#F08929"
+                          <div className="tooltip-container">
+                            <ErrorMessage
+                              name="message"
+                              render={(msg) => (
+                                <>
+                                  <span className="tooltip__message">
+                                    {" "}
+                                    <svg
+                                      width="22"
+                                      height="22"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <g clip-path="url(#clip0_478_946)">
+                                        <path
+                                          d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
+                                          fill="#F08929"
+                                        />
+                                      </g>
+                                      <defs>
+                                        <clipPath id="clip0_478_946">
+                                          <rect
+                                            width="24"
+                                            height="24"
+                                            fill="white"
                                           />
-                                        </g>
-                                        <defs>
-                                          <clipPath id="clip0_478_946">
-                                            <rect
-                                              width="24"
-                                              height="24"
-                                              fill="white"
-                                            />
-                                          </clipPath>
-                                        </defs>
-                                      </svg>
-                                      {msg}
-                                    </span>
-                                  </>
-                                )}
-                              />
-                              <Field
-                                as="textarea"
-                                name="message"
-                                className="message__field"
-                                placeholder={`Provide a summary of your project`}
-                              />
-                            </div>
-                        <div className="privacy__rights">
-                          <label className="privacy__rights__label">
-                            <div class="checkbox-wrapper-46">
-                              <Field
-                                name="acceptPolicy"
-                                type="checkbox"
-                                id="cbx-46"
-                                class="inp-cbx"
-                              />
-                              <label for="cbx-46" class="cbx">
-                                <span>
-                                  <svg
-                                    viewBox="0 0 12 10"
-                                    height="10px"
-                                    width="12px"
-                                  >
-                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                  </svg>
-                                </span>
-                              </label>
-                            </div>
-                            <span className="privacy__rights__span">
-                              {translations.formrights1}
-                              <Link
-                                href={"/data_protection"}
-                                className="underline"
-                              >
-                                {translations.formrights2}
-                              </Link>
-                            </span>
-                          </label>
-                          <ErrorMessage
-                            name="acceptPolicy"
-                            className="mt-3"
-                            render={(msg) => (
-                              <span className="error__message">
-                                {msg.charAt(0).toUpperCase() + msg.slice(1)}
-                              </span>
-                            )}
-                          />
-                          <button type="submit" className="button__submit">
-                            <span className="send__span">
-                              {translations.sendbutton}
-                            </span>
-                            <svg
-                              width="25"
-                              height="24"
-                              viewBox="0 0 25 24"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <g clip-path="url(#clip0_307_1013)">
-                                <path
-                                  d="M2.02651 9.315C1.50451 9.141 1.49951 8.86 2.03651 8.681L21.1235 2.319C21.6525 2.143 21.9555 2.439 21.8075 2.957L16.3535 22.043C16.2035 22.572 15.8985 22.59 15.6745 22.088L12.0805 14L18.0805 6L10.0805 12L2.02651 9.315Z"
-                                  fill="white"
+                                        </clipPath>
+                                      </defs>
+                                    </svg>
+                                    {msg}
+                                  </span>
+                                </>
+                              )}
+                            />
+                            <Field
+                              as="textarea"
+                              name="message"
+                              className="message__field"
+                              placeholder={`Provide a summary of your project`}
+                            />
+                          </div>
+                          <div className="privacy__rights">
+                            <label className="privacy__rights__label">
+                              <div class="checkbox-wrapper-46">
+                                <Field
+                                  name="acceptPolicy"
+                                  type="checkbox"
+                                  id="cbx-46"
+                                  class="inp-cbx"
                                 />
-                              </g>
-                              <defs>
-                                <clipPath id="clip0_307_1013">
-                                  <rect
-                                    width="24"
-                                    height="24"
+                                <label for="cbx-46" class="cbx">
+                                  <span>
+                                    <svg
+                                      viewBox="0 0 12 10"
+                                      height="10px"
+                                      width="12px"
+                                    >
+                                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                    </svg>
+                                  </span>
+                                </label>
+                              </div>
+                              <span className="privacy__rights__span">
+                                {translations.formrights1}
+                                <Link
+                                  href={"/data_protection"}
+                                  className="underline"
+                                >
+                                  {translations.formrights2}
+                                </Link>
+                              </span>
+                            </label>
+                            <ErrorMessage
+                              name="acceptPolicy"
+                              className="mt-3"
+                              render={(msg) => (
+                                <span className="error__message">
+                                  {msg.charAt(0).toUpperCase() + msg.slice(1)}
+                                </span>
+                              )}
+                            />
+                            <button type="submit" className="button__submit">
+                              <span className="send__span">
+                                {translations.sendbutton}
+                              </span>
+                              <svg
+                                width="25"
+                                height="24"
+                                viewBox="0 0 25 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g clip-path="url(#clip0_307_1013)">
+                                  <path
+                                    d="M2.02651 9.315C1.50451 9.141 1.49951 8.86 2.03651 8.681L21.1235 2.319C21.6525 2.143 21.9555 2.439 21.8075 2.957L16.3535 22.043C16.2035 22.572 15.8985 22.59 15.6745 22.088L12.0805 14L18.0805 6L10.0805 12L2.02651 9.315Z"
                                     fill="white"
-                                    transform="translate(0.0805054)"
                                   />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          </button>
-                        </div>
-                      </form>
-                    )}
-                  </Formik>
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_307_1013">
+                                    <rect
+                                      width="24"
+                                      height="24"
+                                      fill="white"
+                                      transform="translate(0.0805054)"
+                                    />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </button>
+                          </div>
+                        </form>
+                      )}
+                    </Formik>
+                  </div>
                   {/* <div className="w-[90%] ml-[10px] m-auto h-[0.5px] bg-[#0b0b2186]"/> */}
                   <div className="contact__bottom__div">
                     <div className="contact__bottom__text__div">
@@ -474,7 +509,7 @@ export default function Home() {
             >
               <div
                 className={
-                  isScrolled == 1
+                  isScrolled === 1
                     ? "header__main__div cristal"
                     : "header__main__div__no__scrolled"
                 }
@@ -487,16 +522,17 @@ export default function Home() {
                   }
                 />
                 <div className="header__elements__div">
-                  <a className="footer__links__span" href="#about__section">
-                    About us
-                  </a>
-                  <a className="footer__links__span" href="#services__section">
-                    {translations.headerelement1}
+                  {/* Otros elementos de la cabecera */}
+                  <a href="#services__section" className="footer__links__span">
+                    About Us
                   </a>
                   <a href="#process__section" className="footer__links__span">
-                    {translations.headerelement2}
+                    Services
                   </a>
-                  <a className="footer__links__span" href="#questions__section">
+                  <a href="#questions__section" className="footer__links__span">
+                    Process
+                  </a>
+                  <a href="#questions__section" className="footer__links__span">
                     {translations.headerelement3}
                   </a>
                   <button
@@ -508,72 +544,197 @@ export default function Home() {
                     {translations.contactbutton}
                   </button>
                 </div>
-                <Link
-                  href="/projectplanner"
-                  className="header__contact__button"
-                >
-                  Project Planner
-                  <svg
-                    className="header__contact__svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+
+                <div className="small__devices__buttons__div">
+                  <Link
+                    href="/projectplanner"
+                    className={`header__contact__button ${
+                      toggleMenu ? "active" : ""
+                    }`}
                   >
-                    <path
-                      d="M22.5 5V0M8.75 22.5H6.25M23.75 22.5H11.25M8.75 17.5H6.25M23.75 17.5H11.25M7.5 5V0M1.25 11.25H28.75M1.25 28.75H28.75V5H1.25V28.75Z"
-                      stroke="#0E0E2C"
-                      stroke-width="2"
-                    />
-                  </svg>
-                </Link>
-              </div>
-              <button className="header__nav__toggle-button">
-                <input
-                  type="checkbox"
-                  id="checkbox"
-                  value={toggleMenu}
-                  onClick={() => setToggleMenu((prev) => !prev)}
-                />
-                <label for="checkbox" class="toggle">
-                  <div class="bars" id="bar1"></div>
-                  <div class="bars" id="bar2"></div>
-                  <div class="bars" id="bar3"></div>
-                </label>
-              </button>
-              {toggleMenu ? (
-                <motion.div
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20,
-                  }}
-                  className="header__toggle__menu__div"
-                >
-                  <div>
-                    <a href="#services__section">
-                      {translations.headerelement1}
-                    </a>
-                    <a href="#process__section">
-                      {translations.headerelement2}
-                    </a>
-                    <a href="#questions__section">
-                      {translations.headerelement3}
-                    </a>
-                    <Link
-                      href={"/contact"}
-                      className="header__toggle__menu__login"
+                    Project Planner
+                    <svg
+                      className="header__contact__svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 30 30"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      {translations.contactbutton}
-                    </Link>
+                      <path
+                        d="M22.5 5V0M8.75 22.5H6.25M23.75 22.5H11.25M8.75 17.5H6.25M23.75 17.5H11.25M7.5 5V0M1.25 11.25H28.75M1.25 28.75H28.75V5H1.25V28.75Z"
+                        stroke="#0E0E2C"
+                        stroke-width="2"
+                      />
+                    </svg>
+                  </Link>
+                  <button
+                    className={`header__nav__toggle__button ${
+                      toggleMenu ? "active" : ""
+                    }`}
+                    onClick={() => setToggleMenu((prev) => !prev)}
+                  >
+                    <input
+                      type="checkbox"
+                      id="checkbox"
+                      checked={toggleMenu}
+                      onChange={() => setToggleMenu((prev) => !prev)}
+                    />
+                    <label htmlFor="checkbox" className="toggle">
+                      <div className="bars" id="bar1"></div>
+                      <div className="bars" id="bar2"></div>
+                      <div className="bars" id="bar3"></div>
+                    </label>
+                  </button>
+                </div>
+              </div>
+              <div
+                className={
+                  toggleMenu
+                    ? "contact__form__section open"
+                    : "contact__form__section"
+                }
+              >
+                <div
+                  className="contact__cristal__div"
+                  onClick={() => {
+                    setContactForm(false);
+                  }}
+                ></div>
+                <div className="header__toggle__menu__div">
+                  <div className="header__toggle__menu__big__div">
+                    <div className="header__toggle__menu__div__items">
+                      <a onClick={() => {
+                        setToggleMenu((prev) => !prev)
+                      }}
+                        href="#services__section"
+                        className={`header__toggle__menu__item ${titillium.className}`}
+                      >
+                        About Us
+                      </a>
+                      <a onClick={() => {
+                        setToggleMenu((prev) => !prev)
+                      }}
+                        href="#process__section"
+                        className={`header__toggle__menu__item ${titillium.className}`}
+                      >
+                        Services
+                      </a>
+                      <a onClick={() => {
+                        setToggleMenu((prev) => !prev)
+                      }}
+                        href="#questions__section"
+                        className={`header__toggle__menu__item ${titillium.className}`}
+                      >
+                        Process
+                      </a>
+                      <a onClick={() => {
+                        setToggleMenu((prev) => !prev)
+                      }}
+                        href="#questions__section"
+                        className={`header__toggle__menu__item ${titillium.className}`}
+                      >
+                        {translations.headerelement3}
+                      </a>
+                      <button onClick={() => {
+                        setToggleMenu((prev) => !prev)
+                        setContactForm(true)
+                      }}
+                        className={`header__toggle__menu__item ${titillium.className}`}
+                      >
+                        Contact
+                      </button>
+                    </div>
+                    <div className="m-auto w-[90%] h-[0.1px] bg-white" />
+                    <div className="header__toggle__stars__div">
+                      <svg
+                        width="20"
+                        height="19"
+                        viewBox="0 0 20 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                          fill="white"
+                        />
+                      </svg>
+                      <svg
+                        width="20"
+                        height="19"
+                        viewBox="0 0 20 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                          fill="white"
+                        />
+                      </svg>
+                      <svg
+                        width="20"
+                        height="19"
+                        viewBox="0 0 20 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                          fill="white"
+                        />
+                      </svg>
+                      <svg
+                        width="20"
+                        height="19"
+                        viewBox="0 0 20 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                          fill="white"
+                        />
+                      </svg>
+                      <svg
+                        width="20"
+                        height="19"
+                        viewBox="0 0 20 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                          fill="white"
+                        />
+                      </svg>
+                      <svg
+                        width="20"
+                        height="19"
+                        viewBox="0 0 20 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                          fill="white"
+                        />
+                      </svg>
+                      <svg
+                        width="20"
+                        height="19"
+                        viewBox="0 0 20 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
                   </div>
-                </motion.div>
-              ) : (
-                ""
-              )}
+                </div>
+              </div>
             </section>
             <div className="main__screen__text__div">
               <span className={`main__screen__title ${titillium.className}`}>
@@ -706,124 +867,128 @@ export default function Home() {
       <Questions />
       <BottomCarousel />
       <Translator>
-      {(translations) => (
-        <section className="footer__section">
-          <div className="footer__main__div">
-            <div className="footer__top__div">
-              <div className="footer__title__div">
-                <h2 className={`footer__main__title ${poppins.className}`}>
-                  DISCOVER NEW LIMITS FOR YOUR BUSINESS
-                </h2>
-                <a className="footer__title__circle" href="#main__screen">
-                  <svg
-                  className="footer__circle__svg"
-                    width="30"
-                    height="42"
-                    viewBox="0 0 30 42"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M14.8101 1.67747L15.5485 1.00309L14.8101 0.194637L14.0717 1.00309L14.8101 1.67747ZM29.0485 15.7842L15.5485 1.00309L14.0717 2.35185L27.5717 17.133L29.0485 15.7842ZM14.0717 1.00309L0.571739 15.7842L2.0485 17.133L15.5485 2.35185L14.0717 1.00309ZM13.8101 1.67747L13.8101 41.0937L15.8101 41.0937L15.8101 1.67747L13.8101 1.67747Z"
-                      fill="white"
-                    />
-                  </svg>
-                </a>
-              </div>
-              <span className="footer__main__description">
-                Skaili agency is a digitalitzation agency that offers
-                profesional web solutions around the world. ¡All ready to do
-                your business more scalable!
-              </span>
-              <div className="footer__buttons__div">
-                <Link href={"/contact"} className="footer__contact__button">
-                  Ask for a quote
-                  <svg
-                    width="29"
-                    height="29"
-                    viewBox="0 0 29 29"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_391_947)">
+        {(translations) => (
+          <section className="footer__section">
+            <div className="footer__main__div">
+              <div className="footer__top__div">
+                <div className="footer__title__div">
+                  <h2 className={`footer__main__title ${poppins.className}`}>
+                    DISCOVER NEW LIMITS FOR YOUR BUSINESS
+                  </h2>
+                  <a className="footer__title__circle" href="#main__screen">
+                    <svg
+                      className="footer__circle__svg"
+                      width="30"
+                      height="42"
+                      viewBox="0 0 30 42"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
-                        d="M24.4506 6.87055C24.9726 5.42659 23.5734 4.02734 22.1294 4.55055L4.48172 10.933C3.03293 11.4574 2.85772 13.4342 4.19051 14.2063L9.82376 17.4676L14.854 12.4373C15.0819 12.2172 15.3872 12.0954 15.704 12.0982C16.0208 12.1009 16.3239 12.228 16.5479 12.4521C16.7719 12.6761 16.899 12.9792 16.9018 13.296C16.9045 13.6128 16.7827 13.918 16.5626 14.1459L11.5323 19.1762L14.7948 24.8095C15.5658 26.1423 17.5426 25.9658 18.067 24.5183L24.4506 6.87055Z"
+                        d="M14.8101 1.67747L15.5485 1.00309L14.8101 0.194637L14.0717 1.00309L14.8101 1.67747ZM29.0485 15.7842L15.5485 1.00309L14.0717 2.35185L27.5717 17.133L29.0485 15.7842ZM14.0717 1.00309L0.571739 15.7842L2.0485 17.133L15.5485 2.35185L14.0717 1.00309ZM13.8101 1.67747L13.8101 41.0937L15.8101 41.0937L15.8101 1.67747L13.8101 1.67747Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </a>
+                </div>
+                <span className="footer__main__description">
+                  Skaili agency is a digitalitzation agency that offers
+                  profesional web solutions around the world. ¡All ready to do
+                  your business more scalable!
+                </span>
+                <div className="footer__buttons__div">
+                  <Link href={"/contact"} className="footer__contact__button">
+                    Ask for a quote
+                    <svg
+                      width="29"
+                      height="29"
+                      viewBox="0 0 29 29"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_391_947)">
+                        <path
+                          d="M24.4506 6.87055C24.9726 5.42659 23.5734 4.02734 22.1294 4.55055L4.48172 10.933C3.03293 11.4574 2.85772 13.4342 4.19051 14.2063L9.82376 17.4676L14.854 12.4373C15.0819 12.2172 15.3872 12.0954 15.704 12.0982C16.0208 12.1009 16.3239 12.228 16.5479 12.4521C16.7719 12.6761 16.899 12.9792 16.9018 13.296C16.9045 13.6128 16.7827 13.918 16.5626 14.1459L11.5323 19.1762L14.7948 24.8095C15.5658 26.1423 17.5426 25.9658 18.067 24.5183L24.4506 6.87055Z"
+                          fill="#0E0E2C"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_391_947">
+                          <rect width="27" height="27" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </Link>
+                  {/* <span className={`${titillium.className} footer__or__span`}>OR</span> */}
+                  <Link href={"/contact"} className="footer__planer__button">
+                    Plan a project{" "}
+                    <svg
+                      className="footer__planner__svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 30 30"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M22.5 5V0M8.75 22.5H6.25M23.75 22.5H11.25M8.75 17.5H6.25M23.75 17.5H11.25M7.5 5V0M1.25 11.25H28.75M1.25 28.75H28.75V5H1.25V28.75Z"
+                        stroke="#0E0E2C"
+                        stroke-width="2"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+              <div className="footer__middle__line" />
+              <div className="footer__bottom__div">
+                <Image src={SkailiFooterLogo} alt="Skaili logo" />
+                <div className="footer__elements__div">
+                  <a className="footer__links__span" href="#services__section">
+                    Home
+                  </a>
+                  <a className="footer__links__span" href="#services__section">
+                    About us
+                  </a>
+                  <a className="footer__links__span" href="#services__section">
+                    {translations.headerelement1}
+                  </a>
+                  <a href="#process__section" className="footer__links__span">
+                    {translations.headerelement2}
+                  </a>
+                  <a className="footer__links__span" href="#questions__section">
+                    {translations.headerelement3}
+                  </a>
+                </div>
+                <div className="footer__email__div">
+                  <span className="footer__email__intro">
+                    Don't like our forms? Email us:
+                  </span>
+                  <div className="footer__email__span">
+                    <svg
+                      width="20"
+                      height="16"
+                      viewBox="0 0 20 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M18 0H2C0.9 0 0.00999999 0.9 0.00999999 2L0 14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM18 4L10 9L2 4V2L10 7L18 2V4Z"
                         fill="#0E0E2C"
                       />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_391_947">
-                        <rect width="27" height="27" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </Link>
-                {/* <span className={`${titillium.className} footer__or__span`}>OR</span> */}
-                <Link href={"/contact"} className="footer__planer__button">
-                  Plan a project{" "}
-                  <svg
-                  className="footer__planner__svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M22.5 5V0M8.75 22.5H6.25M23.75 22.5H11.25M8.75 17.5H6.25M23.75 17.5H11.25M7.5 5V0M1.25 11.25H28.75M1.25 28.75H28.75V5H1.25V28.75Z"
-                      stroke="#0E0E2C"
-                      stroke-width="2"
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-            <div className="footer__middle__line" />
-            <div className="footer__bottom__div">
-              <Image src={SkailiFooterLogo} alt="Skaili logo" />
-              <div className="footer__elements__div">
-              <a className="footer__links__span" href="#services__section">
-                  Home
-                </a>
-                <a className="footer__links__span" href="#services__section">
-                  About us
-                </a>
-                <a className="footer__links__span" href="#services__section">
-                  {translations.headerelement1}
-                </a>
-                <a href="#process__section" className="footer__links__span">
-                  {translations.headerelement2}
-                </a>
-                <a className="footer__links__span" href="#questions__section">
-                  {translations.headerelement3}
-                </a>
-              </div>
-              <div className="footer__email__div">
-                <span className="footer__email__intro">
-                  Don't like our forms? Email us:
-                </span>
-                <div className="footer__email__span">
-                  <svg
-                    width="20"
-                    height="16"
-                    viewBox="0 0 20 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M18 0H2C0.9 0 0.00999999 0.9 0.00999999 2L0 14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM18 4L10 9L2 4V2L10 7L18 2V4Z"
-                      fill="#0E0E2C"
-                    />
-                  </svg>
-                  <span>info.skaili@gmail.com</span>
+                    </svg>
+                    <span>info.skaili@gmail.com</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="footer__rights__div"><span className="footer__rights__span">© 2024 Skaili all rights reserved.</span></div>
-        </section>
-      )}
-    </Translator>
+            <div className="footer__rights__div">
+              <span className="footer__rights__span">
+                © 2024 Skaili all rights reserved.
+              </span>
+            </div>
+          </section>
+        )}
+      </Translator>
     </main>
   );
 }

@@ -78,7 +78,6 @@ main::-webkit-scrollbar {
   width: 100%; /* Ocupa media pantalla */
   height: 100vh; /* Ocupa toda la altura */
   transition: transform 0.5s ease-in-out; /* Transición suave para el deslizamiento */
-  z-index: 200;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -90,7 +89,7 @@ main::-webkit-scrollbar {
 }
 
 .contact__cristal__div {
-  width: 50vw; /* Ocupa la otra mitad de la pantalla */
+  width: 100%; /* Ocupa la otra mitad de la pantalla */
   height: 100vh; /* Ocupa toda la altura */
   backdrop-filter: blur(10px); /* Efecto acristalado */
   -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
@@ -98,7 +97,7 @@ main::-webkit-scrollbar {
   transition: opacity 0.5s ease-in-out; /* Para transición suave */
 }
 
-.contact__main__div {
+.contact__main__div__big {
   background: #fff;
   width: 50vw;
   height: 100vh;
@@ -116,12 +115,12 @@ main::-webkit-scrollbar {
 }
 
 .contact__main__div {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  margin: auto;
-  padding: 20px;
+  padding: 30px;
   padding-top: 0px;
   gap: 35px;
 }
@@ -131,7 +130,6 @@ main::-webkit-scrollbar {
   color: #0E0E2C;
   text-align: start;
   font-weight: 700;
-  margin-top: -40px;
   line-height: 140%;
 }
 
@@ -336,14 +334,13 @@ main::-webkit-scrollbar {
 
 .contact__bottom__div {
   background: #efefef;
-  width: fit-content;
+  width: 90%;
   height: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 40px;
-  margin: 10px 30px 0px 50px;
+  gap: 50px;
   border-radius: 10px;
   padding: 25px;
 }
@@ -469,4 +466,186 @@ main::-webkit-scrollbar {
   border: 1px solid #333333bc;
   border-top: 0px;
   border-left: 0px;
+}
+
+.contact__main__div__1 {
+  width: 100%;
+  height: fit-content;
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.small__devices__buttons__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 320;
+}
+
+
+.header__nav__toggle__button {
+  position: relative;
+  background: #ffffff;
+  box-shadow: none;
+  border: none;
+  width: 50px;
+  height: 50px;
+  display: none;
+  border-radius: 60px;
+}
+
+#checkbox {
+  display: none;
+}
+
+.toggle {
+  
+  width: 100%;
+  height: 70%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition-duration: 1s;
+}
+
+.bars {
+  width: 22px;
+  height: 2px;
+  background-color: rgba(37, 37, 37, 0.888);
+  border-radius: 3.8px;
+  transition-duration: 0.3s;
+}
+
+#checkbox:checked + .toggle .bars {
+  margin-left: 8px;
+}
+
+#checkbox:checked + .toggle #bar2 {
+  transform: rotate(135deg);
+  margin-left: 0;
+  transform-origin: center;
+  transition-duration: 0.3s;
+}
+
+#checkbox:checked + .toggle #bar1 {
+  transform: rotate(45deg);
+  transition-duration: 0.3s;
+  transform-origin: left center;
+}
+
+#checkbox:checked + .toggle #bar3 {
+  transform: rotate(-45deg);
+  transition-duration: 0.3s;
+  transform-origin: left center;
+}
+
+
+@media screen and (max-width: 1500px) {
+  .contact__planner__button {
+    font-size: 14px;
+  }
+
+  .contact__main__title {
+    font-size: 32px;
+    margin-top: -20px;
+  }
+
+  .contact__bottom__title {
+    font-size: 32px;
+  }
+
+  .contact__bottom__description {
+    font-size: 14px;
+  }
+
+  .contact__planner__button {
+    font-size: 14px;
+    text-wrap: nowrap;
+  }
+
+  .contact__bottom__div {
+    gap: 30px;
+  }
+
+  .contact__close__button {
+    padding-right: 20px;
+  }
+}
+
+.header__toggle__menu__div {
+  position: absolute;
+  width: 370px;
+  right: 0;
+  background: #3B71FE;
+  height: 100vh;
+  color: #000;
+  padding: 0px 0px 20px 0px;
+  z-index: 320;
+}
+
+.active {
+  background: #ffffff;
+}
+
+.header__toggle__menu__big__div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header__toggle__menu__div__items {
+  top: 0;
+  display: flex;
+  width: 100%;
+  height: 97%;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  padding-right: 20px;
+}
+
+.header__toggle__menu__item {
+  font-size: 34px;
+  color: #fff;
+}
+
+.header__toggle__stars__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1180px) {
+
+  .header__elements__div {
+    display: none; /* Oculta la navegación en pantallas más pequeñas */
+  }
+
+  .header__nav__toggle__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header__toggle__menu__div {
+    display: block; /* Muestra el botón en pantallas más pequeñas */
+  }
+  
+  .cristal {
+    display: none;
+  }
+
 }

@@ -6,6 +6,7 @@ import { poppins } from "./MainScreen";
 import ProcessAnimation1 from "../assets/ProcessAnimation1.png";
 import ProcessAnimation2 from "../assets/ProcessAnimation2.png";
 import ProcessAnimation3 from "../assets/ProcessAnimation3.png";
+import ProcessAnimation4 from "../assets/ProcessAnimation4.png";
 import PointPattern2 from "../assets/Point_pattern2.png";
 
 function Process() {
@@ -23,7 +24,7 @@ function Process() {
           <div className="process__main__div">
             <div className="process__step__div">
               <Image
-                className="w-[240px]"
+                className="process__image"
                 src={ProcessAnimation1}
                 alt="process animation 1"
               />
@@ -112,7 +113,7 @@ function Process() {
 
               <div className="process__step__div">
                 <Image
-                  className="w-[240px]"
+                  className="process__image"
                   src={ProcessAnimation2}
                   alt="process animation 1"
                 />
@@ -139,7 +140,7 @@ function Process() {
             <div className="process__step__big__div__right">
               <div className="process__step__div">
                 <Image
-                  className="w-[240px]"
+                  className="process__image"
                   src={ProcessAnimation3}
                   alt="process animation 1"
                 />
@@ -164,6 +165,7 @@ function Process() {
                 </div>
               </div>
               <svg
+              className="process__step__svg"
                 width="301"
                 height="260"
                 viewBox="0 0 301 260"
@@ -214,8 +216,8 @@ function Process() {
             </div>
             <div className="process__step__div__left">
               <Image
-                className="w-[240px]"
-                src={ProcessAnimation2}
+                className="process__image"
+                src={ProcessAnimation4}
                 alt="process animation 1"
               />
               <div className="process__step__text__div">
