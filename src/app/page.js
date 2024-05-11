@@ -433,6 +433,7 @@ export default function Home() {
                                 {translations.sendbutton}
                               </span>
                               <svg
+                              className="send__svg"
                                 width="25"
                                 height="24"
                                 viewBox="0 0 25 24"
@@ -591,8 +592,8 @@ export default function Home() {
               <div
                 className={
                   toggleMenu
-                    ? "contact__form__section open"
-                    : "contact__form__section"
+                    ? "contact__form__section__toggle open"
+                    : "contact__form__section__toggle"
                 }
               >
                 <div
@@ -785,8 +786,7 @@ export default function Home() {
                   </svg>
 
                   <span className="main__screen__important__policy">
-                    Si no está satisfecho con el resultado, puede cancelar sin
-                    costo.
+                    Si no está satisfecho con el resultado, puede cancelar <span className="underline"> sin costo</span>.
                   </span>
                   <svg
                     width="20"
@@ -811,6 +811,7 @@ export default function Home() {
                   >
                     Contact now
                     <svg
+                    className="main__screen__contact__svg"
                       width="29"
                       height="29"
                       viewBox="0 0 29 29"
@@ -941,7 +942,7 @@ export default function Home() {
               </div>
               <div className="footer__middle__line" />
               <div className="footer__bottom__div">
-                <Image src={SkailiFooterLogo} alt="Skaili logo" />
+                <Image src={SkailiFooterLogo} alt="Skaili logo" className="footer__logo__image" />
                 <div className="footer__elements__div">
                   <a className="footer__links__span" href="#services__section">
                     Home

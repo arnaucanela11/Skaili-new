@@ -2,6 +2,7 @@
   width: 100vw; /* Ancho completo de la ventana */
   height: 100vh; /* Toda la altura de la ventana */
   position: relative; /* Para establecer un contexto para el posicionamiento absoluto */
+  z-index: 10;
 }
 
 .main__page__main__div__bg {
@@ -24,6 +25,7 @@
 spline-viewer {
   width: 100%; /* Ocupa todo el ancho del contenedor */
   height: 100%; /* Ocupa todo el alto del contenedor */
+  z-index: -1;
 }
 
 .header__section {
@@ -83,10 +85,10 @@ spline-viewer {
   background: rgba(255, 255, 255, 0.441); /* Fondo semi-transparente */
   backdrop-filter: blur(10px); /* Aplica el efecto de desenfoque */
   -webkit-backdrop-filter: blur(10px); /* Para compatibilidad con Safari */
-  border-radius: 15px; /* Bordes redondeados */
   border: 1px solid rgba(255, 255, 255, 0.2); /* Bordes translúcidos */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para
 transition: all 0.5s ease-in-out; /* Transición suave */
+z-index: 10;
 }
 
 .Skaili__logo {
@@ -399,7 +401,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   color: white;
 }
 
-.main__screen__planer__button:hover .main__screen__planner__svg path {
+.main__screen__planer__button:hover .__svg path {
   fill: #fff; /* Cambia el color de blanco a negro en hover */
   transition: fill 0.3s ease; /* Añade transición para suavizar el cambio de color */
 }
@@ -422,10 +424,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 @media screen and (max-width: 950px) {
   .header__elements__div {
     display: none; /* Oculta la navegación en pantallas más pequeñas */
-  }
-
-  .header__contact__button {
-    display: none;
   }
 
   .header__nav__toggle-button {
@@ -548,19 +546,29 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   gap: 45px;
 }
 
+.services__targets__div__flex {
+  display: flex;
+  justify-content: center; /* Distribuye los elementos uniformemente a lo largo del contenedor */
+  align-items: start;
+  gap: 100px;
+  margin-top: 70px;
+  width: 100%;
+}
+
 .services__targets__div {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   gap: 100px;
-  margin-top: 70px;
+  max-width: calc(2/3 * 100%);
 }
 
 .services__target__1,
 .services__target__2,
 .services__target__3 {
-  width: 400px;
+  flex: 1;
+  width: 100%;
   height: 750px;
   background-color: rgb(255, 255, 255);
   padding: 20px;
@@ -572,6 +580,8 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   align-items: center;
   gap: 20px;
 }
+
+
 
 .services__rocket__image {
   margin-top: -60px;
@@ -640,7 +650,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 .services__ideal__span {
   font-size: 14px;
   white-space: normal; /* Permite que el texto salte de línea */
-  flex-grow: 1; /* Permite que el texto ocupe todo el espacio necesario */
   padding: 10px 15px;
   color: #3b71fe;
   font-weight: 600;
@@ -850,7 +859,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   z-index: 10;
 }
 
-.questions__spline__animation__mid {
+.questions__spline__animation__mid{
   display: none;
 }
 
@@ -913,6 +922,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   color: #0b0b21;
   line-height: 150%;
   font-weight: 700;
+  max-width: 400px;
 }
 
 .questions__ask__button {
@@ -1335,8 +1345,8 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     align-items: start;
   }
   .services__target__1,
-  .services__target__1,
-  .services__target__2 {
+  .services__target__2,
+  .services__target__3 {
     height: 100%;
   }
 
@@ -1463,6 +1473,11 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   .services__target__title {
     font-size: 24px;
   }
+
+  .main__screen__planer__button {
+    background: #fff;
+    border: none;
+  }
 }
 
 .process__image {
@@ -1510,6 +1525,10 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     width: 100%;
   }
 
+  .services__targets__div__flex {
+    gap: 60px;
+  }
+
   .services__targets__div {
     gap: 60px;
   }
@@ -1547,7 +1566,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 @media screen and (max-width: 1180px) {
   .questions__ask__title {
     font-size: 25px;
-    text-wrap: nowrap;
+    text-wrap: wrap;
   }
 
   .questions__ask__button {
@@ -1556,5 +1575,890 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
   .questions__points {
     margin: 60px;
+  }
+
+  .footer__main__title {
+    font-size: 42px;
+  }
+
+  .footer__title__circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .footer__title__circle::before {
+    width: 70px;
+    height: 70px;
+  }
+
+  .footer__email__span {
+    font-size: 14px;
+  }
+
+  .footer__email__intro {
+    display: none;
+  }
+
+  .footer__email__div {
+    margin-left: 30px;
+  }
+
+  .process__image {
+    max-width: 200px;
+  }
+
+  .process__step__description {
+    font-size: 14px;
+    max-width: 650px;
+  }
+
+  .questions__spline__animation__mid {
+    scale: 0.75;
+    margin-top: -40px;
+  }
+
+  .question__1__text {
+    font-size: 13px;
+  }
+
+  .questions__ask__button {
+    text-wrap: nowrap;
+  }
+
+  .about__point__pattern {
+    margin-left: 70px;
+  }
+
+  .cristal {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 1080px) {
+  .marquee__text__1 {
+    font-size: 90px;
+  }
+
+  .marquee {
+    max-height: 120px;
+  }
+
+  .main__screen__line {
+    width: 80%;
+  }
+
+  .main__screen__important__policy {
+    font-size: 17px;
+  }
+
+  .main__screen__title__circle::before {
+    width: 90px;
+    height: 90px;
+  }
+
+  .about__point__pattern {
+    margin-left: 50px;
+  }
+
+  .about__main__text {
+    font-size: 28px;
+    max-width: 600px;
+  }
+
+  .about__main__description {
+    font-size: 17px;
+    max-width: 400px;
+  }
+
+  .services__target__title {
+    font-size: 20px;
+  }
+
+  .services__target__span {
+    font-size: 13px;
+  }
+
+  .services__targets__div {
+    gap: 40px;
+  }
+
+  .services__targets__div__flex {
+    gap: 40px;
+  }
+
+  .services__ideal__span {
+    text-wrap: nowrap;
+  }
+
+  .questions__main__title {
+    text-align: start;
+    font-size: 32px;
+    text-wrap: nowrap;
+  }
+
+  .questions__points {
+    margin: 45px;
+    margin-top: 55px;
+  }
+
+  .question__main__span {
+    font-size: 17px;
+  }
+
+  .questions__ask__div {
+    padding: 25px 20px;
+  }
+
+  .questions__ask__title {
+    max-width: 300px;
+    text-wrap: wrap;
+  }
+
+  .footer__elements__div {
+    padding-left: 30px;
+  }
+
+  .footer__email__div {
+    margin-left: 5px;
+  }
+
+  .footer__main__title {
+    font-size: 40px;
+  }
+
+  .footer__links__span {
+    font-size: 12px;
+    text-wrap: nowrap;
+  }
+
+  .footer__links__span:first-child {
+    display: none;
+  }
+
+  .footer__logo__image {
+    max-width: 100px;
+  }
+
+  .footer__rights__div {
+    height: 50px;
+  }
+
+  .footer__rights__span {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .carousel__container {
+    margin: auto;
+    margin-top: -50px;
+    width: 100%;
+  }
+
+  .services__targets__div {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .services__targets__div__flex {
+    flex-direction: column;
+  }
+
+  .services__target__3 {
+    height: fit-content;
+    margin: auto;
+    max-width: 50%;
+  }
+
+}
+
+@media screen and (max-width: 980px) {
+  .main__screen__title {
+    font-size: 120px;
+  }
+
+  .main__screen__title__second__line__text {
+    font-size: 128px;
+  }
+
+  .typewriter__span {
+    font-size: 120px;
+  }
+
+  .main__screen__title__circle {
+    width: 105px;
+    height: 105px;
+  }
+
+  .main__screen__title__circle::before {
+    width: 90px;
+    height: 90px;
+  }
+
+  .main__screen__line {
+    width: 85%;
+  }
+
+  .main__screen__title__second__line__div {
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .main__screen__title__circle {
+    width: 95px;
+    height: 95px;
+  }
+
+  .main__screen__title__circle::before {
+    width: 82px;
+    height: 82px;
+  }
+
+  .main__screen__circle__svg {
+    width: 40px;
+  }
+
+  .main__screen__title {
+    font-size: 110px;
+  }
+
+  .main__screen__title__second__line__text {
+    font-size: 118px;
+  }
+
+  .typewriter__span {
+    font-size: 110px;
+  }
+
+  .main__screen__title__second__line__div {
+    gap: 20px;
+  }
+
+  .main__screen__important__policy {
+    font-size: 16px;
+  }
+
+  .main__screen__contact__button {
+    font-size: 14px;
+  }
+
+  .main__screen__contact__svg {
+    width: 25px;
+  }
+
+  .main__screen__planer__button {
+    font-size: 14px;
+  }
+
+  .main__screen__planner__svg {
+    width: 22px;
+  }
+
+  .main__screen__or {
+    font-size: 34px;
+  }
+
+  .main__screen__text__div {
+    top: 52%;
+  }
+
+  .main__page__main__div {
+    height: 100vh;
+  }
+
+  .services__target__li:first-child {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 900px) {
+.services__main__text {
+  font-size: 34px;
+}
+}
+
+@media screen and (max-width: 800px) {
+  .services__main__text {
+    font-size: 32px;
+  }
+
+  .main__screen__title {
+    font-size: 100px;
+  }
+
+  .main__screen__title__second__line__text {
+    font-size: 105px;
+  }
+
+  .typewriter__span {
+    font-size: 100px;
+  }
+
+  .main__screen__title__circle {
+    width: 90px;
+    height: 90px;
+  }
+
+  .main__screen__title__circle::before {
+    width: 75px;
+    height: 75px;
+  }
+
+  .main__screen__text__div {
+    top: 53%;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .services__main__text {
+    font-size: 30px;
+  }
+
+  .services__section__name {
+    font-size: 18px;
+  }
+
+  .main__screen__title {
+    font-size: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-right: 30px;
+  }
+
+  .typewriter__span {
+    font-size: 90px;
+  }
+
+  .main__screen__title__second__line__text {
+    font-size: 98px;
+  }
+
+  .main__screen__circle__svg {
+    width: 34px;
+  }
+
+  .main__page__main__div {
+    height: 96vh;
+  }
+
+  .main__screen__line {
+    width: 90%;
+    margin: auto;
+    padding: 0px;
+  }
+
+  .main__screen__text__div {
+    justify-content: center;
+    align-items: center;
+    padding-left: 0px;
+  }
+
+  .important__policy__div {
+    background: rgba(255, 255, 255, 0.521); /* Fondo semi-transparente */
+    backdrop-filter: blur(10px); /* Aplica el efecto de desenfoque */
+    -webkit-backdrop-filter: blur(10px); /* Para compatibilidad con Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Bordes translúcidos */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 8px 20px;
+    border-radius: 8px;
+  }
+
+  .important__policy__div > svg {
+    width: 16px;
+  }
+
+  .main__screen__important__policy {
+    font-size: 14px;
+  }
+  
+}
+
+@media screen and (max-width: 670px) {
+  .services__main__text {
+    font-size: 28px;
+  }
+
+  .services__target__title {
+    font-size: 18px;
+  }
+
+  .services__target__span {
+    font-size: 12px;
+  }
+
+  .services__rocket__image {
+    width: 170px;
+    margin-top: -50px;
+  }
+
+  .services__PC__image {
+    width: 140px;
+  }
+
+  .services__target__ul > .services__target__li:nth-child(6) {
+    display: none;
+  }
+
+  .main__screen__title {
+    font-size: 82px;
+  }
+
+  .main__screen__title__second__line__text {
+    font-size: 90px;
+  }
+
+  .typewriter__span {
+    font-size: 82px;
+  }
+
+  .main__screen__title__circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .main__screen__circle__svg {
+    width: 30px;
+  }
+
+  .main__screen__contact__button {
+    padding: 6px 14px;
+    gap: 5px;
+    font-size: 13px;
+  }
+
+
+  .main__screen__planer__button {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  .main__screen__planner__svg {
+    width: 25px;
+  }
+
+  .services__targets__div {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+  }
+
+  .services__target__3 {
+    max-width: 457px;
+    margin: auto;
+  }
+
+  .services__targets__div__flex {
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .services__main__text {
+    font-size: 26px;
+    max-width: 260px;
+  }
+
+  .services__section__name {
+    font-size: 16px;
+  }
+
+  .services__targets__div__flex {
+    margin-top: 50px;
+  }
+
+  .services__target__1,
+  .services__target__2,
+  .services__target__3 {
+    width: 400px;
+  }
+
+  .main__screen__title {
+    margin-right: 10px;
+    font-size: 75px;
+  }
+
+  .typewriter__span {
+    font-size: 75px;
+  }
+
+  .main__screen__title__second__line__text {
+    font-size: 83px;
+  }
+
+  .main__screen__title__circle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .main__screen__title__circle::before {
+    width: 60px;
+    height: 60px;
+  }
+
+  .main__screen__circle__svg {
+    width: 26px;
+  }
+
+  .main__screen__important__policy {
+    font-size: 12px;
+  }
+
+  .important__policy__div > svg {
+    width: 14px;
+  }
+
+  .header__contact__button {
+    font-size: 13px;
+    padding: 12px 18px;
+  }
+
+  .header__contact__button > svg {
+    width: 17px;
+  }
+
+  .Skaili__logo__scrolled {
+    margin-left: 10px;
+  }
+
+  .main__screen__title {
+    font-size: 66px;
+    margin-right: 28px;
+  }
+
+  .typewriter__span {
+    font-size: 66px;
+  }
+
+  .main__screen__title__second__line__text {
+    font-size: 74px;
+  }
+
+  .main__screen__title__circle {
+    width: 65px;
+    height: 65px;
+  }
+
+  .main__screen__title__circle::before {
+    width: 54px;
+    height: 54px;
+  }
+
+  .main__page__main__div {
+    height: 92vh;
+  }
+
+  .main__screen__planer__button {
+    font-weight: 600;
+    padding: 10px 14px;
+  }
+
+  .main__screen__planer__button > svg {
+    width: 17px;
+  }
+
+  .main__screen__contact__button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+.main__screen__important__policy {
+  text-wrap: wrap;
+  max-width: 300px;
+  text-align: center;
+  width: fit-content;
+}
+
+.important__policy__div {
+  gap: 0px;
+}
+
+.main__screen__or {
+  font-size: 25px;
+}
+
+.main__screen__bottom__div {
+  gap: 30px;
+}
+
+.main__screen__title {
+  font-size: 60px;
+}
+
+.typewriter__span {
+  font-size: 60px;
+}
+
+.main__screen__title__second__line__text {
+  font-size: 68px;
+}
+
+.main__screen__title__circle {
+  width: 60px;
+  height: 60px;
+}
+
+.main__screen__title__circle::before {
+  width: 50px;
+  height: 50px;
+}
+
+.main__screen__title__circle > svg {
+  width: 32px;
+  height: 32px;
+}
+}
+
+
+@media screen and (max-width: 470px) {
+  .services__main__text {
+    font-size: 24px;
+    max-width: 240px;
+  }
+
+  .services__section__name {
+    font-size: 15px;
+  }
+
+  .services__target__1,
+  .services__target__2,
+  .services__target__3 {
+    width: 360px;
+  }
+
+  .main__screen__text__div {
+    margin: 0px;
+  }
+
+  .main__screen__title {
+    margin-right: 10px;
+    font-size: 55px;
+  }
+
+  .main__screen__title__second__line__text {
+    font-size: 63px;
+  }
+
+  .typewriter__span {
+    font-size: 55px;
+  }
+
+  .main__screen__title__circle {
+    width: 55px;
+    height: 55px;
+  }
+
+  .main__screen__title__circle::before {
+    width: 45px;
+    height: 45px;
+  }
+
+
+  .main__screen__title__circle > svg {
+    width: 20px;
+  }
+
+  .main__screen__line {
+    width: 85%;
+  }
+
+  .main__screen__buttons__div {
+    gap: 15px;
+  }
+
+  .main__screen__planer__button {
+    font-size: 12px;
+  }
+
+  .main__screen__contact__button {
+    font-size: 12px;
+  }
+
+  .main__screen__contact__button > svg {
+    width: 20px;
+  }
+
+  .main__screen__planer__button > svg {
+    width: 15px;
+  }
+
+  .main__screen__text__div {
+    top: 55%;
+  }
+
+  .header__contact__button  {
+    font-size: 12px;
+  }
+
+  .Skaili__logo__scrolled {
+    width: 80px;
+  }
+
+  .main__page__main__div {
+    height: 82vh;
+  }
+
+  .about__main__section {
+    margin-top: 90px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .services__main__text {
+    font-size: 22px;
+    max-width: 220px;
+  }
+
+
+  .main__page__main__div__bg {
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+  }
+
+  .header__section {
+    margin-top: 10px;
+  }
+
+  .services__section__name {
+    font-size: 14px;
+  }
+
+  .services__target__1,
+  .services__target__2,
+  .services__target__3 {
+    width: 335px;
+  }
+
+  .services__ideal__span {
+    font-size: 12px;
+  }
+
+  .services__design__description {
+    font-size: 12spx;
+  }
+
+  .main__screen__title {
+    font-size: 50px;
+  }
+
+  .typewriter__span {
+    font-size: 50px;
+  }
+
+  .main__screen__title__second__line__text {
+    font-size: 58px;
+  }
+
+  .main__screen__title__circle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .main__screen__title__circle:hover {
+    border: 0.8px solid #0e0e2c;
+  }
+
+  .main__screen__title__circle::before {
+    width: 40px;
+    height: 40px;
+  }
+
+  .main__screen__title__circle > svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .header__contact__button  {
+    padding: 10px 15px;
+  }
+
+  .main__screen__important__policy {
+    max-width: 250px;
+  }
+
+  .main__screen__line {
+    height: 0.7px;
+  }
+
+}
+
+@media screen and (max-width: 410px) {
+.main__screen__title {
+  font-size: 48px;
+}
+
+.typewriter__span {
+  font-size: 48px;
+}
+
+.main__screen__title__second__line__text {
+  font-size: 52px;
+}
+
+.main__screen__title__circle {
+  width: 45px;
+  height: 45px;
+}
+
+.main__screen__title__circle > svg {
+  width: 18px;
+}
+}
+
+@media screen and (max-width: 390px) {
+  .services__main__text {
+    font-size: 20px;
+    max-width: 180px;
+  }
+
+  .services__target__1,
+  .services__target__2,
+  .services__target__3 {
+    width: 310px;
+  }
+
+  .Skaili__logo__scrolled {
+    width: 70px;
+  }
+
+}
+
+@media screen and (max-width: 375px) {
+  .services__main__text {
+    font-size: 20px;
+    max-width: 170px;
+  }
+
+  .main__screen__title {
+    font-size: 45px;
+    margin-right: 0px;
+  }
+
+  .typewriter__span {
+    font-size: 45px;
+  }
+
+  .main__screen__title__second__line__div {
+    gap: 12px;
+  }
+
+  .important__policy__div {
+    padding: 5px 10px;
   }
 }

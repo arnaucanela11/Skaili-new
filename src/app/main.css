@@ -82,9 +82,28 @@ main::-webkit-scrollbar {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  z-index: 400;
+}
+
+.contact__form__section__toggle {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Comienza fuera de la vista */
+  width: 100%; /* Ocupa media pantalla */
+  height: 100vh; /* Ocupa toda la altura */
+  transition: transform 0.5s ease-in-out; /* Transición suave para el deslizamiento */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 300;
 }
 
 .contact__form__section.open {
+  transform: translateX(-100%); /* Desliza el formulario hacia la vista */
+}
+
+.contact__form__section__toggle.open {
   transform: translateX(-100%); /* Desliza el formulario hacia la vista */
 }
 
@@ -99,7 +118,7 @@ main::-webkit-scrollbar {
 
 .contact__main__div__big {
   background: #fff;
-  width: 50vw;
+  width: 100vw;
   height: 100vh;
 }
 
@@ -338,11 +357,11 @@ main::-webkit-scrollbar {
   height: fit-content;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 50px;
+  gap: 0px;
   border-radius: 10px;
-  padding: 25px;
+  padding: 25px 50px;
 }
 
 .contact__bottom__text__div {
@@ -490,7 +509,7 @@ main::-webkit-scrollbar {
 
 .header__nav__toggle__button {
   position: relative;
-  background: #ffffff;
+  background: #fff;
   box-shadow: none;
   border: none;
   width: 50px;
@@ -627,6 +646,34 @@ main::-webkit-scrollbar {
   width: 100%;
 }
 
+@media screen and (max-width: 1380px) {
+  .contact__bottom__div {
+    padding: 25px 30px;
+  }
+
+  .privacy__rights__span {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1380px) {
+  .contact__bottom__div {
+    padding: 25px 20px;
+  }
+
+  .privacy__rights__span {
+    width: fit-content;
+  }
+
+  .privacy__rights {
+    gap: 20px;
+  }
+
+  .contact__bottom__description {
+    font-size: 13px;
+  }
+}
+
 @media screen and (max-width: 1180px) {
 
   .header__elements__div {
@@ -644,8 +691,158 @@ main::-webkit-scrollbar {
     display: block; /* Muestra el botón en pantallas más pequeñas */
   }
   
-  .cristal {
-    display: none;
+
+  .privacy__rights {
+    gap: 20px;
   }
 
+  .privacy__rights__label {
+    margin-left: 10px;
+  }
+
+  .send__span {
+    font-size: 14px;
+  }
+
+  .message__field {
+    height: 140px;
+  }
+
+  .contact__main__title {
+    font-size: 30px;
+  }
+
+  .contact__form__div {
+    padding-right: 0px;
+  }
+
+
+}
+
+@media screen and (max-width: 1080px) {
+  .contact__main__div__big {
+    width: 130vw;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .contact__main__title {
+    font-size: 28px;
+  }
+
+  .contact__main__div__big {
+    width: 135vw;
+  }
+
+  .contact__bottom__title {
+    font-size: 30px;
+  }
+
+  .send__svg {
+    width: 22px;
+    height: 20px;
+  }
+
+  .contact__main__div__1 {
+    gap: 20px;
+  }
+
+  .contact__bottom__div {
+    padding: 15px 20px;
+  }
+
+
+  .message__field {
+    height: 150px;
+  }
+
+  
+}
+
+@media screen and (max-width: 900px) {
+  .contact__main__div__big {
+    width: 160vw;
+  }
+
+  .tech__wrapper {
+    margin-top: 100px;
+    height: 130px;
+  }
+
+  .tech__wrapper__div {
+    height: 100%;
+  }
+
+  li > img {
+    scale: 0.8;
+  }
+
+  .about-partners_logo_list_item__HqkHi {
+    width: 250px;
+  }
+
+}
+
+
+@media screen and (max-width: 850px) {
+  .contact__main__div__big {
+    width: 210vw;
+  }
+
+}
+
+@media screen and (max-width: 760px) {
+  .contact__main__div__big {
+    width: 100%;
+  }
+
+  .contact__cristal__div {
+    width: 0%;
+  }
+
+  .contact__main__title {
+    font-size: 32px;
+  }
+
+  .contact__bottom__div {
+    padding: 25px 30px;
+  }
+
+}
+
+
+@media screen and (max-width: 450px) {
+ .header__nav__toggle__button {
+  width: 45px;
+  height: 45px;
+ }
+
+ .toggle {
+  gap: 5px;
+ }
+
+ .bars {
+  width: 45%;
+  height: 2px;
+ }
+
+ .small__devices__buttons__div {
+  margin-right: 8px;
+  gap: 10px;
+ }
+
+ .tech__wrapper {
+  margin-top: 80px;
+ }
+
+}
+
+@media screen and (max-width: 390px) {
+  .small__devices__buttons__div {
+    margin-right: 0px;
+  }
+
+  .header__toggle__menu__div {
+    width: 100%;
+  }
 }

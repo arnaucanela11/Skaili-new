@@ -83,7 +83,7 @@ function Footer() {
             </div>
             <div className="footer__middle__line" />
             <div className="footer__bottom__div">
-              <Image src={SkailiFooterLogo} alt="Skaili logo" />
+              <Image src={SkailiFooterLogo} alt="Skaili logo" className="footer__logo__image"/>
               <div className="footer__elements__div">
               <a className="footer__links__span" href="#services__section">
                   Home

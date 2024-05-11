@@ -433,7 +433,7 @@ function Questions() {
               </div>
               <div className="questions__ask__div">
                 <h3 className="questions__ask__title">
-                  ANY OTHER <br />
+                  ANY OTHER
                   QUESTION? LET US KNOW
                 </h3>
                 <Link href={"/contact"} className="questions__ask__button">
