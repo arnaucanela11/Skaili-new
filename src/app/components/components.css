@@ -88,7 +88,7 @@ spline-viewer {
   border: 1px solid rgba(255, 255, 255, 0.2); /* Bordes translúcidos */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para
 transition: all 0.5s ease-in-out; /* Transición suave */
-z-index: 10;
+  z-index: 10;
 }
 
 .Skaili__logo {
@@ -561,7 +561,7 @@ z-index: 10;
   justify-content: center;
   align-items: start;
   gap: 100px;
-  max-width: calc(2/3 * 100%);
+  max-width: calc(2 / 3 * 100%);
 }
 
 .services__target__1,
@@ -580,8 +580,6 @@ z-index: 10;
   align-items: center;
   gap: 20px;
 }
-
-
 
 .services__rocket__image {
   margin-top: -60px;
@@ -682,10 +680,12 @@ z-index: 10;
 }
 
 .process__section {
-  width: 90vw;
+  width: 98vw;
   height: fit-content;
   margin: auto;
   margin-top: 230px;
+  /* background: #a0a4ab37;
+  border-radius: 20px; */
 }
 
 .process__section__name {
@@ -859,7 +859,7 @@ z-index: 10;
   z-index: 10;
 }
 
-.questions__spline__animation__mid{
+.questions__spline__animation__mid {
   display: none;
 }
 
@@ -1556,6 +1556,20 @@ z-index: 10;
   .footer__rights__div {
     margin: auto;
   }
+  .questions__ask__button {
+    text-wrap: nowrap;
+  }
+
+  .questions__ask__div {
+    width: 100%;
+    gap: 5px;
+    padding: 30px 20px;
+  }
+
+  .questions__ask__title {
+    width: fit-content;
+  }
+
 
   /* .process__step__svg {
     width: 280px;
@@ -1567,6 +1581,7 @@ z-index: 10;
   .questions__ask__title {
     font-size: 25px;
     text-wrap: wrap;
+    max-width: 60%;
   }
 
   .questions__ask__button {
@@ -1631,6 +1646,10 @@ z-index: 10;
 
   .cristal {
     display: none;
+  }
+
+  .questions__ask__div {
+    gap: 10px;
   }
 
 }
@@ -1711,8 +1730,9 @@ z-index: 10;
   }
 
   .questions__ask__title {
-    max-width: 300px;
+    max-width: 280px;
     text-wrap: wrap;
+    font-size: 22px;
   }
 
   .footer__elements__div {
@@ -1747,6 +1767,11 @@ z-index: 10;
   .footer__rights__span {
     font-size: 13px;
   }
+
+  .questions__ask__button {
+    font-size: 13px;
+    padding: 10px 15px;
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -1762,7 +1787,6 @@ z-index: 10;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
-    
   }
 
   .services__targets__div__flex {
@@ -1774,7 +1798,6 @@ z-index: 10;
     margin: auto;
     max-width: 50%;
   }
-
 }
 
 @media screen and (max-width: 980px) {
@@ -1806,6 +1829,16 @@ z-index: 10;
 
   .main__screen__title__second__line__div {
     gap: 15px;
+  }
+
+  .questions__ask__div {
+    width: 110%;
+    margin: auto;
+    margin-top: 10px;
+    margin-left: -25px;
+  }
+  .questions__ask__button {
+    font-size: 12px;
   }
 }
 
@@ -1877,10 +1910,35 @@ z-index: 10;
   }
 }
 
-@media screen and (max-width: 900px) {
-.services__main__text {
-  font-size: 34px;
+@media screen and (max-width: 910px) {
+  .services__main__text {
+    font-size: 34px;
+  }
+
+  .questions__ask__title {
+    max-width: 260px;
+    font-size: 20px;
+  }
+
+  .questions__ask__div {
+    gap: 0px;
+  }
 }
+
+@media screen and (max-width: 870px) {
+  .questions__ask__button {
+    padding: 9px 12px;
+  }
+
+  .questions__ask__title {
+    max-width: 200px;
+    font-size: 22px;
+  }
+
+  .questions__ask__div {
+    gap: 10px;
+    padding: 20px 30px;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -1912,6 +1970,34 @@ z-index: 10;
 
   .main__screen__text__div {
     top: 53%;
+  }
+
+  .questions__ask__title {
+    font-size: 20px;
+    max-width: 180px;
+  }
+  .questions__ask__svg {
+    display: none;
+  }
+
+  .questions__ask__button {
+    padding: 9px 16px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .questions__ask__div {
+    padding: 18px 10px;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+    gap: 15px;
+  }
+
+  .questions__ask__title {
+    max-width: 90%;
+    text-align: center;
   }
 }
 
@@ -1977,7 +2063,13 @@ z-index: 10;
   .main__screen__important__policy {
     font-size: 14px;
   }
-  
+}
+
+@media screen and (max-width: 700px) {
+  .questions__ask__title {
+    width: 100%;
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 670px) {
@@ -2033,7 +2125,6 @@ z-index: 10;
     font-size: 13px;
   }
 
-
   .main__screen__planer__button {
     padding: 11px 14px;
     font-size: 13px;
@@ -2062,7 +2153,6 @@ z-index: 10;
     align-items: center;
     width: 100%;
   }
-
 }
 
 @media screen and (max-width: 600px) {
@@ -2176,53 +2266,52 @@ z-index: 10;
 }
 
 @media screen and (max-width: 520px) {
-.main__screen__important__policy {
-  text-wrap: wrap;
-  max-width: 300px;
-  text-align: center;
-  width: fit-content;
-}
+  .main__screen__important__policy {
+    text-wrap: wrap;
+    max-width: 300px;
+    text-align: center;
+    width: fit-content;
+  }
 
-.important__policy__div {
-  gap: 0px;
-}
+  .important__policy__div {
+    gap: 0px;
+  }
 
-.main__screen__or {
-  font-size: 25px;
-}
+  .main__screen__or {
+    font-size: 25px;
+  }
 
-.main__screen__bottom__div {
-  gap: 30px;
-}
+  .main__screen__bottom__div {
+    gap: 30px;
+  }
 
-.main__screen__title {
-  font-size: 60px;
-}
+  .main__screen__title {
+    font-size: 60px;
+  }
 
-.typewriter__span {
-  font-size: 60px;
-}
+  .typewriter__span {
+    font-size: 60px;
+  }
 
-.main__screen__title__second__line__text {
-  font-size: 68px;
-}
+  .main__screen__title__second__line__text {
+    font-size: 68px;
+  }
 
-.main__screen__title__circle {
-  width: 60px;
-  height: 60px;
-}
+  .main__screen__title__circle {
+    width: 60px;
+    height: 60px;
+  }
 
-.main__screen__title__circle::before {
-  width: 50px;
-  height: 50px;
-}
+  .main__screen__title__circle::before {
+    width: 50px;
+    height: 50px;
+  }
 
-.main__screen__title__circle > svg {
-  width: 32px;
-  height: 32px;
+  .main__screen__title__circle > svg {
+    width: 32px;
+    height: 32px;
+  }
 }
-}
-
 
 @media screen and (max-width: 470px) {
   .services__main__text {
@@ -2267,7 +2356,6 @@ z-index: 10;
     height: 45px;
   }
 
-
   .main__screen__title__circle > svg {
     width: 20px;
   }
@@ -2300,7 +2388,7 @@ z-index: 10;
     top: 55%;
   }
 
-  .header__contact__button  {
+  .header__contact__button {
     font-size: 12px;
   }
 
@@ -2322,7 +2410,6 @@ z-index: 10;
     font-size: 22px;
     max-width: 220px;
   }
-
 
   .main__page__main__div__bg {
     top: 10px;
@@ -2384,7 +2471,7 @@ z-index: 10;
     height: 26px;
   }
 
-  .header__contact__button  {
+  .header__contact__button {
     padding: 10px 15px;
   }
 
@@ -2395,30 +2482,29 @@ z-index: 10;
   .main__screen__line {
     height: 0.7px;
   }
-
 }
 
 @media screen and (max-width: 410px) {
-.main__screen__title {
-  font-size: 48px;
-}
+  .main__screen__title {
+    font-size: 48px;
+  }
 
-.typewriter__span {
-  font-size: 48px;
-}
+  .typewriter__span {
+    font-size: 48px;
+  }
 
-.main__screen__title__second__line__text {
-  font-size: 52px;
-}
+  .main__screen__title__second__line__text {
+    font-size: 52px;
+  }
 
-.main__screen__title__circle {
-  width: 45px;
-  height: 45px;
-}
+  .main__screen__title__circle {
+    width: 45px;
+    height: 45px;
+  }
 
-.main__screen__title__circle > svg {
-  width: 18px;
-}
+  .main__screen__title__circle > svg {
+    width: 18px;
+  }
 }
 
 @media screen and (max-width: 390px) {
@@ -2436,7 +2522,6 @@ z-index: 10;
   .Skaili__logo__scrolled {
     width: 70px;
   }
-
 }
 
 @media screen and (max-width: 375px) {
