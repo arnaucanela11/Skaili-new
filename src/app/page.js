@@ -31,9 +31,11 @@ import {
   Poppins,
   Titillium_Web,
   IBM_Plex_Mono,
+  Be_Vietnam_Pro
 } from "next/font/google";
 export const raleway = Raleway({ subsets: ["latin"], weight: ["400", "700"] });
 export const shanti = Shanti({ subsets: ["latin"], weight: ["400"] });
+export const be_vietnam_pro = Be_Vietnam_Pro({ subsets: ["latin"], weight: ["700"], style: ['italic']});
 export const titillium = Titillium_Web({
   subsets: ["latin"],
   weight: ["400", "600"],
@@ -135,7 +137,6 @@ export default function Home() {
   const { x, y } = useScroll(scrollRef);
 
   useEffect(() => {
-    console.log(y);
     if (y >= 2) {
       if (y >= 1000) {
         setIsScrolled(3);
