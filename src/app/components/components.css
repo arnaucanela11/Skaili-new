@@ -680,44 +680,134 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 }
 
 .process__section {
-  width: 98vw;
+  position: relative;
+  width: 96vw;
   height: fit-content;
   margin: auto;
   margin-top: 230px;
-  /* background: #a0a4ab37;
-  border-radius: 20px; */
+  background: #bcb5b534;
+  border-radius: 20px;
+  padding-top: 50px;
+}
+
+
+.process__sticky__content {
+  position: relative;
+  z-index: 100; /* Asegura que el contenido pegajoso esté sobre los demás */
+}
+
+.process__section.sticky {
+  position: sticky;
+  top: 0;
+}
+
+.process__title__div {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 85px;
+  margin-top: -20px;
 }
 
 .process__section__name {
   font-size: 22px;
   font-weight: 600;
   color: #0e0e2c;
+  margin-left: 80px;
+  margin-top: 70px;
+}
+
+.process__main__text {
+font-size: 38px;
+font-weight: 700;
+line-height: 135%;
 }
 
 .process__main__div {
-  position: relative;
-  width: 100%;
+  width: 90%;
+  margin-right: auto;
   display: flex;
-  flex-direction: column;
-  justify-content: start;
+  flex-direction: row;
+  justify-content: center;
   align-items: start;
-  gap: 50px;
-  margin: auto;
-  margin-top: 50px;
+  gap: 110px;
+  margin-top: 100px;
+  margin-left: 60px;
 }
 
-.process__step__div {
-  width: fit-content;
-  height: fit-content;
-  background: #f1f1f1;
-  border-radius: 15px;
-  border: 1px solid #000;
+.process__steps__col__div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  margin-right: auto;
+  z-index: 200; /* Ajusta la altura según necesites */
+}
+
+
+.process__main__target__div {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 35px;
-  padding: 20px 30px;
+  gap: 109px;
+  opacity: 0;
+  transform: translateY(20px); /* Anima la entrada desplazando hacia arriba */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.process__main__target__div.in-view {
+  opacity: 1;
+  transform: translateY(0); /* Anima la entrada hacia la posición original */
+}
+
+.step__number {
+  font-size: 144px;
+  font-style: italic;
+  opacity: 0.25;
+  color: #1F3C88;
+  margin-top: 16px;
+}
+
+.process__step__div {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background: #fff;
+  border-radius: 23px;
+  padding: 10px 50px;
+}
+
+.process__step__div::before, .process__step__div::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.process__step__div::before {
+  top: -3px; /* sobresale hacia arriba */
+  right: -3px; /* sobresale hacia la derecha */
+  background-color: #032068; /* color azul oscuro */
+  z-index: -1; /* coloca el pseudo-elemento detrás del contenido */
+  border-radius: 23px 27px 23px 23px;
+}
+
+.process__step__div::after {
+  bottom: -3px; /* sobresale hacia abajo */
+  left: -3px; /* sobresale hacia la izquierda */
+  background-color: #3B71FE; /* color azul claro */
+  z-index: -1; /* coloca el pseudo-elemento detrás del contenido */
+  border-radius: 23px 23px 23px 27px;
 }
 
 .process__step__text__div {
@@ -725,6 +815,40 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   flex-direction: column;
   justify-content: start;
   align-items: start;
+}
+
+
+.process__line__div {
+  position: absolute;
+  left: 21%;
+  width: 1px;
+  height: 100%;
+  background: #0e0e2c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-bottom: auto;
+  top: 0%;
+}
+
+.step__marker {
+  width: 32px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 80px;
+  z-index: 10;
+}
+
+
+.process__step__text__div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  width: 80%;
   gap: 10px;
 }
 
@@ -740,6 +864,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   font-size: 34px;
   font-weight: 800;
   color: #0e0e2c;
+  text-wrap: nowrap;
 }
 
 .process__step__description {
@@ -748,6 +873,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   max-width: 700px;
   font-weight: 500;
   line-height: 160%;
+  margin-top: 10px;
 }
 
 .process__step__big__div {

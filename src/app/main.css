@@ -1,12 +1,4 @@
-main {
-  -webkit-overflow-scrolling: touch; /* Para un desplazamiento suave en dispositivos táctiles */
-  overflow-y: scroll; /* Permite el scroll vertical */
-  scrollbar-width: none; /* Firefox */
-}
 
-main::-webkit-scrollbar {
-  display: none; /* Oculta la barra de scroll en WebKit */
-}
 
 .tech__wrapper {
   position: relative;
