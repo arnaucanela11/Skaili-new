@@ -45,7 +45,7 @@ const Step = ({ step, index }) => {
           <h3 className="process__step__title">
             {step.title} <span className="text-[#3B71FE]">.</span>
           </h3>
-          <span className="process__step__description">
+          <span className={`process__step__description ${poppins.className}`}>
             {step.description}
           </span>
         </div>

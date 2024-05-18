@@ -28,6 +28,8 @@ import ProcessAnimation1 from "./assets/ProcessImage1.png";
 import ProcessAnimation2 from "./assets/ProcessImage2.png";
 import ProcessAnimation3 from "./assets/ProcessImage3.png";
 import ProcessAnimation4 from "./assets/ProcessImage4.png";
+import ProcessPoints from "./assets/ProcessPoints.png";
+import { useInView } from "react-intersection-observer";
 
 import {
   Shanti,
@@ -35,11 +37,15 @@ import {
   Poppins,
   Titillium_Web,
   IBM_Plex_Mono,
-  Be_Vietnam_Pro
+  Be_Vietnam_Pro,
 } from "next/font/google";
 export const raleway = Raleway({ subsets: ["latin"], weight: ["400", "700"] });
 export const shanti = Shanti({ subsets: ["latin"], weight: ["400"] });
-export const be_vietnam_pro = Be_Vietnam_Pro({ subsets: ["latin"], weight: ["700"], style: ['italic']});
+export const be_vietnam_pro = Be_Vietnam_Pro({
+  subsets: ["latin"],
+  weight: ["700"],
+  style: ["italic"],
+});
 export const titillium = Titillium_Web({
   subsets: ["latin"],
   weight: ["400", "600"],
@@ -116,47 +122,68 @@ const processSteps = [
     number: "01",
     title: "Get In Touch",
     description:
-      "The first step in the process is to get in touch. For that, we offer both our contact form (to explain the idea you have in mind or ask any question) and our project planner (if you have a clearer idea of your project). We let's responde you the faster we can, explaining all the details (including the budget).",
+      "The first step in the process is to <strong>get in touch</strong>. For that, we offer both our contact form (to explain the idea you have in mind or ask any question) and our project planner (if you have a clearer idea of your project). <br />We let's responde you the faster we can, explaining all the details (<u>including the budget</u>).",
     image: ProcessAnimation1,
   },
   {
     number: "02",
     title: "Start Working",
-    description: "If you agree with the budget, estimated time, and all the other details, we will can start working on your project. Most times you will have two persons (one designer and one developer) working on your project. During the process stay in touch to ensure that we create the project you had in your mind.",
+    description:
+      "If you agree with the budget, estimated time, and all the other details, we will can start working on your project. Most times you will have <b>two persons (one designer and one developer)</b> working on your project. <br/>During the process stay in touch to ensure that we create the project you had in your mind.",
     image: ProcessAnimation2,
   },
   {
     number: "03",
     title: "Work Delivering",
-    description: "Finally, it will be time to deliver the final product. If you like the product, we will consider the project completed. On the other hand, if you're not satisfied, we can make the necessary adjustments (at no extra cost), or cancel the contract if the delivered product is significantly different from the one initially requested (in this case, no fees will be charged for the services provided).",
+    description:
+      "Finally, it will be time to deliver the final product. If you like the product, <b>we will consider the project completed</b>. On the other hand, if you're not satisfied, we can make the necessary adjustments (<u>at no extra cost</u>), or <b>cancel the contract</b> if the delivered product is significantly different from the one initially requested (in this case, <u>no fees will be charged for the services provided</u>).",
     image: ProcessAnimation3,
   },
   {
     number: "04",
     title: "Maintenance",
-    description: "Even though we have declared the project completed, this does not mean that the contract between Skaili Agency (as a web service provider) and you has ended. We will therefore handle both the maintenance of your website and the correction of any minor errors that may arise in the future.",
+    description:
+      "Even though we have declared the project completed, this <u>does not mean</u> that the contract between Skaili Agency (as a web service provider) and you has ended. Therefore, we can handle both <b>the maintenance of your website and the correction of any minor errors that may arise in the future</b>.",
     image: ProcessAnimation4,
   },
 ];
 
 const Step = ({ step, index }) => {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
+
+  const variants = {
+    hidden: { opacity: 0, x: 100},
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: "linear" },
+    },
+  };
+
   return (
     <div key={index} className="process__main__target__div">
       <div className="step__marker" />
-      <div className="process__step__div">
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        variants={variants}
+        className="process__step__div"
+      >
+        <div className={`process__step__div__before ${inView ? "animate" : ""}`} />
+        <div className={`process__step__div__after ${inView ? "animate" : ""}`} />
         <div className="process__step__text__div">
           <h3 className="process__step__title">
             {step.title} <span className="text-[#3B71FE]">.</span>
           </h3>
-          <span className="process__step__description">
-            {step.description}
-          </span>
+          <span className={`process__step__description ${poppins.className}`} dangerouslySetInnerHTML={{ __html: step.description }} />
         </div>
         <Image src={step.image} alt="illustration" />
-      </div>
+      </motion.div>
     </div>
   );
 };
+
 
 export default function Home() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -169,19 +196,18 @@ export default function Home() {
 
   const [currentStep, setCurrentStep] = useState(processSteps[0].number);
   const stepRefs = useRef([]);
-  const containerRef = useRef(null)
+  const containerRef = useRef(null);
 
   useEffect(() => {
     if (y <= 4000) {
-      setCurrentStep(processSteps[0].number)
+      setCurrentStep(processSteps[0].number);
     }
     if (y > 4000 && y <= 4300) {
-      setCurrentStep(processSteps[1].number)
+      setCurrentStep(processSteps[1].number);
     } else if (y > 4300 && y <= 4600) {
-      setCurrentStep(processSteps[2].number)
-    }
-    else if (y > 4700 && y <= 5900) {
-      setCurrentStep(processSteps[3].number)
+      setCurrentStep(processSteps[2].number);
+    } else if (y > 4700 && y <= 5900) {
+      setCurrentStep(processSteps[3].number);
     }
   }, [y]);
 
@@ -483,7 +509,7 @@ export default function Home() {
                                 {translations.sendbutton}
                               </span>
                               <svg
-                              className="send__svg"
+                                className="send__svg"
                                 width="25"
                                 height="24"
                                 viewBox="0 0 25 24"
@@ -574,13 +600,13 @@ export default function Home() {
                 />
                 <div className="header__elements__div">
                   {/* Otros elementos de la cabecera */}
-                  <a href="#services__section" className="footer__links__span">
+                  <a href="#about__section" className="footer__links__span">
                     About Us
                   </a>
-                  <a href="#process__section" className="footer__links__span">
+                  <a href="#services__section" className="footer__links__span">
                     Services
                   </a>
-                  <a href="#questions__section" className="footer__links__span">
+                  <a href="#process__section" className="footer__links__span">
                     Process
                   </a>
                   <a href="#questions__section" className="footer__links__span">
@@ -655,42 +681,47 @@ export default function Home() {
                 <div className="header__toggle__menu__div">
                   <div className="header__toggle__menu__big__div">
                     <div className="header__toggle__menu__div__items">
-                      <a onClick={() => {
-                        setToggleMenu((prev) => !prev)
-                      }}
+                      <a
+                        onClick={() => {
+                          setToggleMenu((prev) => !prev);
+                        }}
                         href="#services__section"
                         className={`header__toggle__menu__item ${titillium.className}`}
                       >
                         About Us
                       </a>
-                      <a onClick={() => {
-                        setToggleMenu((prev) => !prev)
-                      }}
+                      <a
+                        onClick={() => {
+                          setToggleMenu((prev) => !prev);
+                        }}
                         href="#process__section"
                         className={`header__toggle__menu__item ${titillium.className}`}
                       >
                         Services
                       </a>
-                      <a onClick={() => {
-                        setToggleMenu((prev) => !prev)
-                      }}
+                      <a
+                        onClick={() => {
+                          setToggleMenu((prev) => !prev);
+                        }}
                         href="#questions__section"
                         className={`header__toggle__menu__item ${titillium.className}`}
                       >
                         Process
                       </a>
-                      <a onClick={() => {
-                        setToggleMenu((prev) => !prev)
-                      }}
+                      <a
+                        onClick={() => {
+                          setToggleMenu((prev) => !prev);
+                        }}
                         href="#questions__section"
                         className={`header__toggle__menu__item ${titillium.className}`}
                       >
                         {translations.headerelement3}
                       </a>
-                      <button onClick={() => {
-                        setToggleMenu((prev) => !prev)
-                        setContactForm(true)
-                      }}
+                      <button
+                        onClick={() => {
+                          setToggleMenu((prev) => !prev);
+                          setContactForm(true);
+                        }}
                         className={`header__toggle__menu__item ${titillium.className}`}
                       >
                         Contact
@@ -836,7 +867,8 @@ export default function Home() {
                   </svg>
 
                   <span className="main__screen__important__policy">
-                    Si no está satisfecho con el resultado, puede cancelar <span className="underline"> sin costo</span>.
+                    Si no está satisfecho con el resultado, puede cancelar{" "}
+                    <span className="underline"> sin costo</span>.
                   </span>
                   <svg
                     width="20"
@@ -861,7 +893,7 @@ export default function Home() {
                   >
                     Contact now
                     <svg
-                    className="main__screen__contact__svg"
+                      className="main__screen__contact__svg"
                       width="29"
                       height="29"
                       viewBox="0 0 29 29"
@@ -915,33 +947,30 @@ export default function Home() {
       <About />
       <Services />
       <div ref={containerRef}>
-          <motion.section className="process__section" id="process__section">
-            <motion.div className="process__sticky__content sticky">
-              <span className="process__section__name">PROCESS</span>
-              <div className="process__title__div">
-                <h2 className={`process__main__text ${poppins.className}`}>
-                  KNOW ABOUT OUR
-                  <span className="text-[#586CF5]"> WORKING PROCESS</span>
-                </h2>
-              </div>
-            </motion.div>
-            <div className="process__main__div">
-              <span className={`${be_vietnam_pro.className} step__number`}>
-                {currentStep}
-              </span>
-              <div className="process__line__div" />
-              <div className="process__steps__col__div">
-                {processSteps.map((step, index) => (
-                  <Step
-                    key={index}
-                    step={step}
-                    index={index}
-                  />
-                ))}
-              </div>
+        <motion.section className="process__section" id="process__section">
+          <motion.div className="process__sticky__content sticky">
+            <span className="process__section__name">PROCESS</span>
+            <div className="process__title__div">
+              {/* <Image src={ProcessPoints} alt="points"/> */}
+              <h2 className={`process__main__text ${poppins.className}`}>
+                KNOW ABOUT OUR
+                <span className="text-[#586CF5]"> WORKING PROCESS</span>
+              </h2>
             </div>
-          </motion.section>
-        </div>
+          </motion.div>
+          <div className="process__main__div">
+            <span className={`${be_vietnam_pro.className} step__number`}>
+              {currentStep}
+            </span>
+            <div className="process__line__div" />
+            <div className="process__steps__col__div">
+              {processSteps.map((step, index) => (
+                <Step key={index} step={step} index={index} />
+              ))}
+            </div>
+          </div>
+        </motion.section>
+      </div>
       <Questions />
       <BottomCarousel />
       <Translator>
@@ -1019,7 +1048,11 @@ export default function Home() {
               </div>
               <div className="footer__middle__line" />
               <div className="footer__bottom__div">
-                <Image src={SkailiFooterLogo} alt="Skaili logo" className="footer__logo__image" />
+                <Image
+                  src={SkailiFooterLogo}
+                  alt="Skaili logo"
+                  className="footer__logo__image"
+                />
                 <div className="footer__elements__div">
                   <a className="footer__links__span" href="#services__section">
                     Home

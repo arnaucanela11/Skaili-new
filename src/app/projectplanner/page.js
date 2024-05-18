@@ -3,6 +3,7 @@ import Image from "next/image";
 import AngelyLogo from "../assets/SkailiLogo.png";
 import ProjectPoints from "../assets/ProjectPoints.png";
 import ProjectBG from "../assets/ProjectBG.png";
+import ProjectPointsSmall1 from "../assets/ProjectPointsSmall1.png";
 import ProjectImage from "../assets/ProjectImage.png";
 import Link from "next/link";
 import "./contact.css";
@@ -14,6 +15,7 @@ import { useState } from "react";
 import "./contact.css";
 import { poppins } from "../page";
 import Footer from "../components/Footer";
+import { titillium } from "../page";
 
 const serviceOptions = [
   "Web Development with CSM (no code tools)",
@@ -35,7 +37,7 @@ const loginSchema = yup.object().shape({
   acceptPolicy: yup
     .boolean()
     .oneOf([true], "You have to accepts the privacy policy."),
-}); 
+});
 
 const plannerSchema = yup.object().shape({
   name: yup.string().required("required"),
@@ -56,22 +58,21 @@ const plannerSchema = yup.object().shape({
     .min(1, "At least one service must be selected") // Requiere al menos uno
     .required("You have to define at least one service"), // El array debe ser obligatorio
   message: yup.string().required("required"),
-  file: yup
-    .mixed()
-    // .test("fileType", "Only pdf or docx files are allowed", (value) => {
-    //   if (!value) return false; // Si no hay archivo, devuelve falso
-    //   const allowedTypes = [
-    //     "application/pdf",
-    //     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    //     "application/msword",
-    //   ];
-    //   return allowedTypes.includes(value.type); // Verifica el tipo de archivo
-    // })
-    // .test("fileSize", "File is too large", (value) => {
-    //   if (!value) return true; // Si no hay archivo, no verifica tamaño
-    //   const maxSize = 10 * 1024 * 1024; // Máximo 5 MB
-    //   return value.size <= maxSize; // Verifica el tamaño del archivo
-    // }),
+  file: yup.mixed(),
+  // .test("fileType", "Only pdf or docx files are allowed", (value) => {
+  //   if (!value) return false; // Si no hay archivo, devuelve falso
+  //   const allowedTypes = [
+  //     "application/pdf",
+  //     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  //     "application/msword",
+  //   ];
+  //   return allowedTypes.includes(value.type); // Verifica el tipo de archivo
+  // })
+  // .test("fileSize", "File is too large", (value) => {
+  //   if (!value) return true; // Si no hay archivo, no verifica tamaño
+  //   const maxSize = 10 * 1024 * 1024; // Máximo 5 MB
+  //   return value.size <= maxSize; // Verifica el tamaño del archivo
+  // }),
 });
 
 const initailaStateFull = {
@@ -95,7 +96,6 @@ const initailaState = {
   acceptPolicy: false,
 };
 
-
 const sendMessageFull = async (values) => {
   try {
     const resp = await fetch(
@@ -114,7 +114,6 @@ const sendMessageFull = async (values) => {
     return error;
   }
 };
-
 
 const sendMessage = async (values) => {
   try {
@@ -136,7 +135,6 @@ const sendMessage = async (values) => {
 };
 
 function page() {
-
   const [toggleMenu, setToggleMenu] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -144,16 +142,15 @@ function page() {
 
   const totalSteps = 4;
 
-
   const handleSubmitContactFull = async (values, { resetForm }) => {
     if (!values.company) {
       values.company = "a company";
     }
-    
+
     await sendMessageFull(values);
 
     resetForm();
-    setCurrentStep(1)
+    setCurrentStep(1);
   };
 
   const handleSubmitContact = async (values, { resetForm }) => {
@@ -241,49 +238,48 @@ function page() {
       {(translations) => (
         <main className="project__main">
           <section
-              className={
-                contactForm
-                  ? "contact__form__section open"
-                  : "contact__form__section"
-              }
-            >
-              <div
-                className="contact__cristal__div"
+            className={
+              contactForm
+                ? "contact__form__section open"
+                : "contact__form__section"
+            }
+          >
+            <div
+              className="contact__cristal__div"
+              onClick={() => {
+                setContactForm(false);
+              }}
+            ></div>
+            <div className="contact__main__div__big">
+              <button
+                className="contact__close__button"
                 onClick={() => {
                   setContactForm(false);
                 }}
-              ></div>
-              <div className="contact__main__div">
-              
-                <button
-                  className="contact__close__button"
-                  onClick={() => {
-                    setContactForm(false);
-                  }}
+              >
+                <svg
+                  width="50"
+                  height="50"
+                  viewBox="0 0 50 50"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    width="50"
-                    height="50"
-                    viewBox="0 0 50 50"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="25" cy="25" r="25" fill="#F2F2F2" />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M19.0142 20.014C19.1431 19.8853 19.3178 19.813 19.5 19.813C19.6822 19.813 19.8569 19.8853 19.9858 20.014L30.9858 31.0141C31.0534 31.077 31.1076 31.1529 31.1451 31.2372C31.1827 31.3216 31.2029 31.4126 31.2045 31.5049C31.2062 31.5972 31.1892 31.6889 31.1546 31.7745C31.12 31.8601 31.0686 31.9379 31.0033 32.0032C30.938 32.0685 30.8602 32.1199 30.7746 32.1545C30.689 32.1891 30.5973 32.2061 30.505 32.2044C30.4127 32.2028 30.3217 32.1826 30.2373 32.145C30.153 32.1074 30.0771 32.0533 30.0142 31.9857L19.0142 20.9857C18.8854 20.8568 18.8131 20.6821 18.8131 20.4999C18.8131 20.3177 18.8854 20.143 19.0142 20.014Z"
-                      fill="#0E0E2C"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M30.9858 20.014C31.1146 20.143 31.1869 20.3177 31.1869 20.4999C31.1869 20.6821 31.1146 20.8568 30.9858 20.9857L19.9858 31.9857C19.8555 32.1072 19.6831 32.1733 19.505 32.1701C19.3269 32.167 19.157 32.0948 19.031 31.9689C18.9051 31.8429 18.8329 31.673 18.8298 31.4949C18.8266 31.3168 18.8927 31.1444 19.0142 31.014L30.0142 20.014C30.1431 19.8853 30.3178 19.813 30.5 19.813C30.6822 19.813 30.8569 19.8853 30.9858 20.014Z"
-                      fill="#0E0E2C"
-                    />
-                  </svg>
-                </button>
-                <div className="contact__main__div__1">
+                  <circle cx="25" cy="25" r="25" fill="#F2F2F2" />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M19.0142 20.014C19.1431 19.8853 19.3178 19.813 19.5 19.813C19.6822 19.813 19.8569 19.8853 19.9858 20.014L30.9858 31.0141C31.0534 31.077 31.1076 31.1529 31.1451 31.2372C31.1827 31.3216 31.2029 31.4126 31.2045 31.5049C31.2062 31.5972 31.1892 31.6889 31.1546 31.7745C31.12 31.8601 31.0686 31.9379 31.0033 32.0032C30.938 32.0685 30.8602 32.1199 30.7746 32.1545C30.689 32.1891 30.5973 32.2061 30.505 32.2044C30.4127 32.2028 30.3217 32.1826 30.2373 32.145C30.153 32.1074 30.0771 32.0533 30.0142 31.9857L19.0142 20.9857C18.8854 20.8568 18.8131 20.6821 18.8131 20.4999C18.8131 20.3177 18.8854 20.143 19.0142 20.014Z"
+                    fill="#0E0E2C"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M30.9858 20.014C31.1146 20.143 31.1869 20.3177 31.1869 20.4999C31.1869 20.6821 31.1146 20.8568 30.9858 20.9857L19.9858 31.9857C19.8555 32.1072 19.6831 32.1733 19.505 32.1701C19.3269 32.167 19.157 32.0948 19.031 31.9689C18.9051 31.8429 18.8329 31.673 18.8298 31.4949C18.8266 31.3168 18.8927 31.1444 19.0142 31.014L30.0142 20.014C30.1431 19.8853 30.3178 19.813 30.5 19.813C30.6822 19.813 30.8569 19.8853 30.9858 20.014Z"
+                    fill="#0E0E2C"
+                  />
+                </svg>
+              </button>
+              <div className="contact__main__div__1">
                 <div className="contact__main__div">
                   <h2 className={`contact__main__title ${poppins.className}`}>
                     Provideo below your{" "}
@@ -315,107 +311,11 @@ function page() {
                           {/* <label  className="field__label">Name*</label> */}
                           <div className="flex flex-col justify-start gap-3 w-[100%]">
                             <div className="tooltip-container">
-                                <ErrorMessage
-                                  name="name"
-                                  render={(msg) => (
-                                    <>
-                                      <span className="tooltip">
-                                        {" "}
-                                        <svg
-                                          width="22"
-                                          height="22"
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <g clip-path="url(#clip0_478_946)">
-                                            <path
-                                              d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
-                                              fill="#F08929"
-                                            />
-                                          </g>
-                                          <defs>
-                                            <clipPath id="clip0_478_946">
-                                              <rect
-                                                width="24"
-                                                height="24"
-                                                fill="white"
-                                              />
-                                            </clipPath>
-                                          </defs>
-                                        </svg>
-                                        {msg}
-                                      </span>
-                                    </>
-                                  )}
-                                />
-                              <Field
-                                name="name"
-                                type="text"
-                                className="name__field text"
-                                placeholder={`${translations.formplaceholder1}`}
-                              />
-                            </div>
-                          </div>
-                          {/* <label className="field__label">Company (optional)</label> */}
-                          <Field
-                            name="company"
-                            type="text"
-                            className="name__field text"
-                            placeholder={`Company name`}
-                          />
-                        </div>
-                        {/* <label className="field__label">Company (optional)</label> */}
-
-                        <div className="tooltip-container">
-                            <ErrorMessage
-                              name="email"
-                              render={(msg) => (
-                                <>
-                                  <span className="tooltip">
-                                    {" "}
-                                    <svg
-                                      width="22"
-                                      height="22"
-                                      viewBox="0 0 24 24"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <g clip-path="url(#clip0_478_946)">
-                                        <path
-                                          d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
-                                          fill="#F08929"
-                                        />
-                                      </g>
-                                      <defs>
-                                        <clipPath id="clip0_478_946">
-                                          <rect
-                                            width="24"
-                                            height="24"
-                                            fill="white"
-                                          />
-                                        </clipPath>
-                                      </defs>
-                                    </svg>
-                                    {msg}
-                                  </span>
-                                </>
-                              )}
-                            />
-                            <Field
-                              name="email"
-                              type="text"
-                              className="name__field text"
-                              placeholder={`${translations.formplaceholder3}`}
-                            />
-                          </div>
-
-                         <div className="tooltip-container">
                               <ErrorMessage
-                                name="message"
+                                name="name"
                                 render={(msg) => (
                                   <>
-                                    <span className="tooltip__message">
+                                    <span className="tooltip">
                                       {" "}
                                       <svg
                                         width="22"
@@ -446,12 +346,108 @@ function page() {
                                 )}
                               />
                               <Field
-                                as="textarea"
-                                name="message"
-                                className="message__field"
-                                placeholder={`Provide a summary of your project`}
+                                name="name"
+                                type="text"
+                                className="name__field text"
+                                placeholder={`${translations.formplaceholder1}`}
                               />
                             </div>
+                          </div>
+                          {/* <label className="field__label">Company (optional)</label> */}
+                          <Field
+                            name="company"
+                            type="text"
+                            className="name__field text"
+                            placeholder={`Company name`}
+                          />
+                        </div>
+                        {/* <label className="field__label">Company (optional)</label> */}
+
+                        <div className="tooltip-container">
+                          <ErrorMessage
+                            name="email"
+                            render={(msg) => (
+                              <>
+                                <span className="tooltip">
+                                  {" "}
+                                  <svg
+                                    width="22"
+                                    height="22"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <g clip-path="url(#clip0_478_946)">
+                                      <path
+                                        d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
+                                        fill="#F08929"
+                                      />
+                                    </g>
+                                    <defs>
+                                      <clipPath id="clip0_478_946">
+                                        <rect
+                                          width="24"
+                                          height="24"
+                                          fill="white"
+                                        />
+                                      </clipPath>
+                                    </defs>
+                                  </svg>
+                                  {msg}
+                                </span>
+                              </>
+                            )}
+                          />
+                          <Field
+                            name="email"
+                            type="text"
+                            className="name__field text"
+                            placeholder={`${translations.formplaceholder3}`}
+                          />
+                        </div>
+
+                        <div className="tooltip-container">
+                          <ErrorMessage
+                            name="message"
+                            render={(msg) => (
+                              <>
+                                <span className="tooltip__message">
+                                  {" "}
+                                  <svg
+                                    width="22"
+                                    height="22"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <g clip-path="url(#clip0_478_946)">
+                                      <path
+                                        d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
+                                        fill="#F08929"
+                                      />
+                                    </g>
+                                    <defs>
+                                      <clipPath id="clip0_478_946">
+                                        <rect
+                                          width="24"
+                                          height="24"
+                                          fill="white"
+                                        />
+                                      </clipPath>
+                                    </defs>
+                                  </svg>
+                                  {msg}
+                                </span>
+                              </>
+                            )}
+                          />
+                          <Field
+                            as="textarea"
+                            name="message"
+                            className="message__field"
+                            placeholder={`Provide a summary of your project`}
+                          />
+                        </div>
                         <div className="privacy__rights">
                           <label className="privacy__rights__label">
                             <div class="checkbox-wrapper-46">
@@ -497,6 +493,7 @@ function page() {
                               {translations.sendbutton}
                             </span>
                             <svg
+                              className="send__svg"
                               width="25"
                               height="24"
                               viewBox="0 0 25 24"
@@ -525,37 +522,36 @@ function page() {
                       </form>
                     )}
                   </Formik>
-                  {/* <div className="w-[90%] ml-[10px] m-auto h-[0.5px] bg-[#0b0b2186]"/> */}
-                  </div>
-                  <div className="contact__bottom__div">
-                    <div className="contact__bottom__text__div">
-                      <h4
-                        className={`${poppins.className} contact__bottom__title`}
-                      >
-                        OR
-                      </h4>
-                      <span
-                        className={`${poppins.className} contact__bottom__description`}
-                      >
-                        If you know most general espects of the project you
-                        want, you can{" "}
-                        <span className="font-semibold">
-                          visit our project planner for more refined
-                          step-by-step prrocess.
-                        </span>
-                      </span>
-                    </div>
-                    <a
-                      href={"/projectplanner"}
-                      className={`${poppins.className} contact__planner__button`}
-                    >
-                      Project Planner
-                    </a>
-                  </div>
                 </div>
-                
+                {/* <div className="w-[90%] ml-[10px] m-auto h-[0.5px] bg-[#0b0b2186]"/> */}
+                <div className="contact__bottom__div">
+                  <div className="contact__bottom__text__div">
+                    <h4
+                      className={`${poppins.className} contact__bottom__title`}
+                    >
+                      OR
+                    </h4>
+                    <span
+                      className={`${poppins.className} contact__bottom__description`}
+                    >
+                      If you know most general espects of the project you want,
+                      you can{" "}
+                      <span className="font-semibold">
+                        visit our project planner for more refined step-by-step
+                        prrocess.
+                      </span>
+                    </span>
+                  </div>
+                  <a
+                    href={"/projectplanner"}
+                    className={`${poppins.className} contact__planner__button`}
+                  >
+                    Project Planner
+                  </a>
+                </div>
               </div>
-            </section>
+            </div>
+          </section>
           <Image src={ProjectBG} className="project__main__bg" />
           <section className="header__section__project">
             <div className="header__main__div__project">
@@ -567,16 +563,16 @@ function page() {
                 />
               </a>
               <div className="header__elements__div header__elements__div__project">
-                <a className="footer__links__span" href="#services__section">
+                <a className="footer__links__span" href="/#about__section">
                   About us
                 </a>
-                <a className="footer__links__span" href="#services__section">
+                <a className="footer__links__span" href="/#services__section">
                   {translations.headerelement1}
                 </a>
-                <a href="#process__section" className="footer__links__span">
+                <a href="/#process__section" className="footer__links__span">
                   {translations.headerelement2}
                 </a>
-                <a className="footer__links__span" href="#questions__section">
+                <a className="footer__links__span" href="/#questions__section">
                   {translations.headerelement3}
                 </a>
                 <button
@@ -588,21 +584,44 @@ function page() {
                   {translations.contactbutton}
                 </button>
               </div>
-              <a href="/" className="header__contact__button__project">
-                Home
-                <svg
-                  width="14"
-                  height="16"
-                  viewBox="0 0 14 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div className="small__devices__buttons__div">
+                <a href="/" className={`header__contact__button__project ${toggleMenu ? 'toggle-active' : ''}`}>
+                  Home
+                  <svg
+                    width="14"
+                    height="16"
+                    viewBox="0 0 14 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 14.9999H4.692V9.11591H9.308V14.9999H13V5.99991L7 1.46191L1 5.99991V14.9999ZM0 15.9999V5.49991L7 0.211914L14 5.49991V15.9999H8.308V10.1159H5.692V15.9999H0Z"
+                      fill="#0E0E2C"
+                    />
+                  </svg>
+                </a>
+                <button
+                  className={`header__nav__toggle__button ${
+                    toggleMenu ? "active" : ""
+                  }`}
+                  style={{
+                    background: "#fff",
+                  }}
+                  onClick={() => setToggleMenu((prev) => !prev)}
                 >
-                  <path
-                    d="M1 14.9999H4.692V9.11591H9.308V14.9999H13V5.99991L7 1.46191L1 5.99991V14.9999ZM0 15.9999V5.49991L7 0.211914L14 5.49991V15.9999H8.308V10.1159H5.692V15.9999H0Z"
-                    fill="#0E0E2C"
+                  <input
+                    type="checkbox"
+                    id="checkbox"
+                    checked={toggleMenu}
+                    onChange={() => setToggleMenu((prev) => !prev)}
                   />
-                </svg>
-              </a>
+                  <label htmlFor="checkbox" className="toggle">
+                    <div className="bars" id="bar1"></div>
+                    <div className="bars" id="bar2"></div>
+                    <div className="bars" id="bar3"></div>
+                  </label>
+                </button>
+              </div>
             </div>
             <button className="header__nav__toggle-button">
               <input
@@ -617,37 +636,161 @@ function page() {
                 <div class="bars" id="bar3"></div>
               </label>
             </button>
-            {toggleMenu ? (
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
+            <div
+              className={
+                toggleMenu
+                  ? "contact__form__section__toggle open"
+                  : "contact__form__section__toggle"
+              }
+            >
+              <div
+                className="contact__cristal__div"
+                onClick={() => {
+                  setContactForm(false);
                 }}
-                className="header__toggle__menu__div"
-              >
-                <div>
-                  <a href="#services__section">{translations.headerelement1}</a>
-                  <a href="#process__section">{translations.headerelement2}</a>
-                  <a href="#questions__section">
-                    {translations.headerelement3}
-                  </a>
-                  <Link
-                    href={"/contact"}
-                    className="header__toggle__menu__login"
-                  >
-                    {translations.contactbutton}
-                  </Link>
+              ></div>
+              <div className="header__toggle__menu__div">
+                <div className="header__toggle__menu__big__div">
+                  <div className="header__toggle__menu__div__items">
+                    <a
+                      onClick={() => {
+                        setToggleMenu((prev) => !prev);
+                      }}
+                      href="#services__section"
+                      className={`header__toggle__menu__item ${titillium.className}`}
+                    >
+                      About Us
+                    </a>
+                    <a
+                      onClick={() => {
+                        setToggleMenu((prev) => !prev);
+                      }}
+                      href="#process__section"
+                      className={`header__toggle__menu__item ${titillium.className}`}
+                    >
+                      Services
+                    </a>
+                    <a
+                      onClick={() => {
+                        setToggleMenu((prev) => !prev);
+                      }}
+                      href="#questions__section"
+                      className={`header__toggle__menu__item ${titillium.className}`}
+                    >
+                      Process
+                    </a>
+                    <a
+                      onClick={() => {
+                        setToggleMenu((prev) => !prev);
+                      }}
+                      href="#questions__section"
+                      className={`header__toggle__menu__item ${titillium.className}`}
+                    >
+                      {translations.headerelement3}
+                    </a>
+                    <button
+                      onClick={() => {
+                        setToggleMenu((prev) => !prev);
+                        setContactForm(true);
+                      }}
+                      className={`header__toggle__menu__item ${titillium.className}`}
+                    >
+                      Contact
+                    </button>
+                  </div>
+                  <div className="m-auto w-[90%] h-[0.1px] bg-white" />
+                  <div className="header__toggle__stars__div">
+                    <svg
+                      width="20"
+                      height="19"
+                      viewBox="0 0 20 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                        fill="white"
+                      />
+                    </svg>
+                    <svg
+                      width="20"
+                      height="19"
+                      viewBox="0 0 20 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                        fill="white"
+                      />
+                    </svg>
+                    <svg
+                      width="20"
+                      height="19"
+                      viewBox="0 0 20 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                        fill="white"
+                      />
+                    </svg>
+                    <svg
+                      width="20"
+                      height="19"
+                      viewBox="0 0 20 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                        fill="white"
+                      />
+                    </svg>
+                    <svg
+                      width="20"
+                      height="19"
+                      viewBox="0 0 20 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                        fill="white"
+                      />
+                    </svg>
+                    <svg
+                      width="20"
+                      height="19"
+                      viewBox="0 0 20 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                        fill="white"
+                      />
+                    </svg>
+                    <svg
+                      width="20"
+                      height="19"
+                      viewBox="0 0 20 19"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
                 </div>
-              </motion.div>
-            ) : (
-              ""
-            )}
+              </div>
+            </div>
           </section>
           <section className="project__section">
-            <span className="process__section__name">PROJECT PLANNER</span>
+            <span className="project__section__name">PROJECT PLANNER</span>
             <div className="project__main__text__div">
               <h2 className={`project__main__text ${poppins.className}`}>
                 <span className="text-[#3B71FE]">Plan</span> Your project with
@@ -664,61 +807,132 @@ function page() {
               <div className="project__main__div__left">
                 <Image src={ProjectImage} />
               </div>
-              <div className="project__main__div__right">
-                {/* Indicador del paso actual */}
-                <div className="project__step__div">
-                  <div className="step-indicator">
-                    Step {currentStep} of {totalSteps}
+              <div className="project__main__div__right__small__devices">
+                <div className="project__main__div__right__shadow" />
+                <Image
+                  src={ProjectPointsSmall1}
+                  className="small__points__1"
+                  alt="points1"
+                />
+                <Image
+                  src={ProjectPointsSmall1}
+                  className="small__points__2"
+                  alt="points2"
+                />
+                <div className="project__main__div__right">
+                  {/* Indicador del paso actual */}
+                  <div className="project__step__div">
+                    <div className="step-indicator">
+                      Step {currentStep} of {totalSteps}
+                    </div>
+
+                    {/* Barra de progreso */}
+                    <div className="progress-bar">
+                      <div
+                        className="progress"
+                        style={{
+                          width: `${(currentStep / totalSteps) * 100}%`, // Proporción completada
+                        }}
+                      ></div>
+                    </div>
                   </div>
 
-                  {/* Barra de progreso */}
-                  <div className="progress-bar">
-                    <div
-                      className="progress"
-                      style={{
-                        width: `${(currentStep / totalSteps) * 100}%`, // Proporción completada
-                      }}
-                    ></div>
-                  </div>
-                </div>
-
-                {/* Contenido del formulario basado en el paso actual */}
-                <Formik
-                  validationSchema={plannerSchema}
-                  initialValues={initailaStateFull}
-                  onSubmit={(values, submitProps) =>
-                    handleSubmitContactFull(values, submitProps)
-                  }
-                >
-                  {({
-                    values,
-                    handleSubmit,
-                    handleBlur,
-                    handleChange,
-                    setFieldValue,
-                    isValid,
-                    setTouched,
-                    validateForm,
-                  }) => (
-                    <form
-                      className="contact__form__div"
-                      onSubmit={handleSubmit}
-                    >
-                      {currentStep === 1 && (
-                        <div className="step__form__main__div">
-                          <h3
-                            className={`${poppins.className} project__title__step`}
-                          >
-                            Let's start at the very beginning
-                          </h3>
-                          {/* Form fields for step 1 */}
-                          <div className="name__fields__div">
-                            {/* <label  className="field__label">Name*</label> */}
-                            <div className="flex flex-col justify-start gap-3 w-[100%]">
-                              <div className="tooltip-container">
+                  {/* Contenido del formulario basado en el paso actual */}
+                  <Formik
+                    validationSchema={plannerSchema}
+                    initialValues={initailaStateFull}
+                    onSubmit={(values, submitProps) =>
+                      handleSubmitContactFull(values, submitProps)
+                    }
+                  >
+                    {({
+                      values,
+                      handleSubmit,
+                      handleBlur,
+                      handleChange,
+                      setFieldValue,
+                      isValid,
+                      setTouched,
+                      validateForm,
+                    }) => (
+                      <form
+                        className="contact__form__div"
+                        onSubmit={handleSubmit}
+                      >
+                        {currentStep === 1 && (
+                          <div className="step__form__main__div">
+                            <h3
+                              className={`${poppins.className} project__title__step`}
+                            >
+                              Let's start at the very beginning
+                            </h3>
+                            {/* Form fields for step 1 */}
+                            <div className="name__fields__div">
+                              {/* <label  className="field__label">Name*</label> */}
+                              <div className="flex flex-col justify-start gap-3 w-[100%]">
+                                <div className="tooltip-container">
+                                  {validationAttempted && (
+                                    <ErrorMessage
+                                      name="name"
+                                      render={(msg) => (
+                                        <>
+                                          <span className="tooltip">
+                                            {" "}
+                                            <svg
+                                              width="22"
+                                              height="22"
+                                              viewBox="0 0 24 24"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <g clip-path="url(#clip0_478_946)">
+                                                <path
+                                                  d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
+                                                  fill="#F08929"
+                                                />
+                                              </g>
+                                              <defs>
+                                                <clipPath id="clip0_478_946">
+                                                  <rect
+                                                    width="24"
+                                                    height="24"
+                                                    fill="white"
+                                                  />
+                                                </clipPath>
+                                              </defs>
+                                            </svg>
+                                            {msg}
+                                          </span>
+                                        </>
+                                      )}
+                                    />
+                                  )}
+                                  <Field
+                                    name="name"
+                                    type="text"
+                                    className="name__field text"
+                                    placeholder={`${translations.formplaceholder1}`}
+                                  />
+                                </div>
+                              </div>
+                              {/* <label className="field__label">Company (optional)</label> */}
+                              <Field
+                                name="surname"
+                                type="text"
+                                className="name__field text"
+                                placeholder={`Surname`}
+                              />
+                            </div>
+                            <Field
+                              name="company"
+                              type="text"
+                              className="name__field text"
+                              placeholder={`${translations.formplaceholder2}`}
+                            />
+                            <div className="tooltip-container">
                               {validationAttempted && (
                                 <ErrorMessage
-                                  name="name"
+                                  name="email"
                                   render={(msg) => (
                                     <>
                                       <span className="tooltip">
@@ -752,347 +966,242 @@ function page() {
                                   )}
                                 />
                               )}
-                                <Field
-                                  name="name"
-                                  type="text"
-                                  className="name__field text"
-                                  placeholder={`${translations.formplaceholder1}`}
-                                />
-                              </div>
-                            </div>
-                            {/* <label className="field__label">Company (optional)</label> */}
-                            <Field
-                              name="surname"
-                              type="text"
-                              className="name__field text"
-                              placeholder={`Surname`}
-                            />
-                          </div>
-                          <Field
-                            name="company"
-                            type="text"
-                            className="name__field"
-                            placeholder={`${translations.formplaceholder2}`}
-                          />
-                          <div className="tooltip-container">
-                          {validationAttempted && (
-                            <ErrorMessage
-                              name="email"
-                              render={(msg) => (
-                                <>
-                                  <span className="tooltip">
-                                    {" "}
-                                    <svg
-                                      width="22"
-                                      height="22"
-                                      viewBox="0 0 24 24"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <g clip-path="url(#clip0_478_946)">
-                                        <path
-                                          d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
-                                          fill="#F08929"
-                                        />
-                                      </g>
-                                      <defs>
-                                        <clipPath id="clip0_478_946">
-                                          <rect
-                                            width="24"
-                                            height="24"
-                                            fill="white"
-                                          />
-                                        </clipPath>
-                                      </defs>
-                                    </svg>
-                                    {msg}
-                                  </span>
-                                </>
-                              )}
-                            />
-                          )}
-                            <Field
-                              name="email"
-                              type="text"
-                              className="name__field text"
-                              placeholder={`${translations.formplaceholder3}`}
-                            />
-                          </div>
-                        </div>
-                      )}
-                      {currentStep === 2 && (
-                        <div className="step__form__main__div">
-                          <h3
-                            className={`${poppins.className} project__title__step`}
-                          >
-                            Let’s talk budget & timelines
-                          </h3>
-                          {/* Form fields for step 1 */}
-                          <div className="project__timeline__div">
-                            {/* <label  className="field__label">Name*</label> */}
-                            <div className="flex flex-col justify-start gap-3 w-fit">
-                              <span className="project__timeline__span">
-                                I want to launch my project on:
-                              </span>
-                            </div>
-                            {/* <label className="field__label">Company (optional)</label> */}
-                            <div className="tooltip-container">
-                            {validationAttempted && (
-                              <ErrorMessage
-                                name="timeline"
-                                render={(msg) => (
-                                  <>
-                                    <span className="tooltip">
-                                      {" "}
-                                      <svg
-                                        width="22"
-                                        height="22"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                      >
-                                        <g clip-path="url(#clip0_478_946)">
-                                          <path
-                                            d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
-                                            fill="#F08929"
-                                          />
-                                        </g>
-                                        <defs>
-                                          <clipPath id="clip0_478_946">
-                                            <rect
-                                              width="24"
-                                              height="24"
-                                              fill="white"
-                                            />
-                                          </clipPath>
-                                        </defs>
-                                      </svg>
-                                      {msg}
-                                    </span>
-                                  </>
-                                )}
-                              />
-                            )}
                               <Field
-                                name="timeline"
-                                type="date"
+                                name="email"
+                                type="text"
                                 className="name__field text"
                                 placeholder={`${translations.formplaceholder3}`}
                               />
                             </div>
                           </div>
-                          <div className="project__timeline__div">
-                            <span className="project__timeline__span">
-                              My budget is between:
-                            </span>
-
-                            <div className="tooltip-container">
-                              <div className="currency-field-wrapper">
-                              {validationAttempted && (
-                                <ErrorMessage
-                                  name="inferiorlimit"
-                                  render={(msg) => (
-                                    <>
-                                      <span className="tooltip">
-                                        {" "}
-                                        <svg
-                                          width="24"
-                                          height="24"
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <g clip-path="url(#clip0_478_946)">
-                                            <path
-                                              d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
-                                              fill="#F08929"
-                                            />
-                                          </g>
-                                          <defs>
-                                            <clipPath id="clip0_478_946">
-                                              <rect
-                                                width="22"
-                                                height="22"
-                                                fill="white"
+                        )}
+                        {currentStep === 2 && (
+                          <div className="step__form__main__div">
+                            <h3
+                              className={`${poppins.className} project__title__step`}
+                            >
+                              Let’s talk budget & timelines
+                            </h3>
+                            {/* Form fields for step 1 */}
+                            <div className="project__timeline__div">
+                              {/* <label  className="field__label">Name*</label> */}
+                              <div className="flex flex-col justify-start gap-3 w-fit">
+                                <span className="project__timeline__span">
+                                  I want to launch my project on:
+                                </span>
+                              </div>
+                              {/* <label className="field__label">Company (optional)</label> */}
+                              <div className="tooltip-container">
+                                {validationAttempted && (
+                                  <ErrorMessage
+                                    name="timeline"
+                                    render={(msg) => (
+                                      <>
+                                        <span className="tooltip">
+                                          {" "}
+                                          <svg
+                                            width="22"
+                                            height="22"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <g clip-path="url(#clip0_478_946)">
+                                              <path
+                                                d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
+                                                fill="#F08929"
                                               />
-                                            </clipPath>
-                                          </defs>
-                                        </svg>
-                                        {msg}
-                                      </span>
-                                    </>
-                                  )}
-                                />
-                              )}
+                                            </g>
+                                            <defs>
+                                              <clipPath id="clip0_478_946">
+                                                <rect
+                                                  width="24"
+                                                  height="24"
+                                                  fill="white"
+                                                />
+                                              </clipPath>
+                                            </defs>
+                                          </svg>
+                                          {msg}
+                                        </span>
+                                      </>
+                                    )}
+                                  />
+                                )}
                                 <Field
-                                  name="inferiorlimit"
-                                  type="number"
-                                  className="name__field" // Campo de entrada para el 70%
-                                  placeholder="Inferior limit"
+                                  name="timeline"
+                                  type="date"
+                                  className="name__field text"
+                                  placeholder={`${translations.formplaceholder3}`}
                                 />
-                                <span className="currency-symbol">€</span>{" "}
-                                {/* Simbolo de moneda */}
                               </div>
                             </div>
-                            <span className="project__timeline__span">and</span>
+                            <div className="project__timeline__div">
+                              <span className="project__timeline__span">
+                                My budget is between:
+                              </span>
 
-                            <div className="tooltip-container">
-                              <div className="currency-field-wrapper">
-                              {validationAttempted && (
-                                <ErrorMessage
-                                  name="superiorlimit"
-                                  render={(msg) => (
-                                    <>
-                                      <span className="tooltip">
-                                        {" "}
-                                        <svg
-                                          width="22"
-                                          height="22"
-                                          viewBox="0 0 24 24"
-                                          fill="none"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <g clip-path="url(#clip0_478_946)">
-                                            <path
-                                              d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
-                                              fill="#F08929"
-                                            />
-                                          </g>
-                                          <defs>
-                                            <clipPath id="clip0_478_946">
-                                              <rect
-                                                width="24"
-                                                height="24"
-                                                fill="white"
-                                              />
-                                            </clipPath>
-                                          </defs>
-                                        </svg>
-                                        {msg}
-                                      </span>
-                                    </>
+                              <div className="tooltip-container">
+                                <div className="currency-field-wrapper">
+                                  {validationAttempted && (
+                                    <ErrorMessage
+                                      name="inferiorlimit"
+                                      render={(msg) => (
+                                        <>
+                                          <span className="tooltip">
+                                            {" "}
+                                            <svg
+                                              width="24"
+                                              height="24"
+                                              viewBox="0 0 24 24"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <g clip-path="url(#clip0_478_946)">
+                                                <path
+                                                  d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
+                                                  fill="#F08929"
+                                                />
+                                              </g>
+                                              <defs>
+                                                <clipPath id="clip0_478_946">
+                                                  <rect
+                                                    width="22"
+                                                    height="22"
+                                                    fill="white"
+                                                  />
+                                                </clipPath>
+                                              </defs>
+                                            </svg>
+                                            {msg}
+                                          </span>
+                                        </>
+                                      )}
+                                    />
                                   )}
-                                />
-                              )}
-                                <Field
-                                  name="superiorlimit"
-                                  type="number"
-                                  className="name__field" // Campo de entrada para el 70%
-                                  placeholder="Superior limit"
-                                />
-                                <span className="currency-symbol">€</span>{" "}
-                                {/* Simbolo de moneda */}
+                                  <Field
+                                    name="inferiorlimit"
+                                    type="number"
+                                    className="name__field" // Campo de entrada para el 70%
+                                    placeholder="Inferior limit"
+                                  />
+                                  <span className="currency-symbol">€</span>{" "}
+                                  {/* Simbolo de moneda */}
+                                </div>
+                              </div>
+                              <span className="project__timeline__span">
+                                and
+                              </span>
+
+                              <div className="tooltip-container">
+                                <div className="currency-field-wrapper">
+                                  {validationAttempted && (
+                                    <ErrorMessage
+                                      name="superiorlimit"
+                                      render={(msg) => (
+                                        <>
+                                          <span className="tooltip">
+                                            {" "}
+                                            <svg
+                                              width="22"
+                                              height="22"
+                                              viewBox="0 0 24 24"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                              <g clip-path="url(#clip0_478_946)">
+                                                <path
+                                                  d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
+                                                  fill="#F08929"
+                                                />
+                                              </g>
+                                              <defs>
+                                                <clipPath id="clip0_478_946">
+                                                  <rect
+                                                    width="24"
+                                                    height="24"
+                                                    fill="white"
+                                                  />
+                                                </clipPath>
+                                              </defs>
+                                            </svg>
+                                            {msg}
+                                          </span>
+                                        </>
+                                      )}
+                                    />
+                                  )}
+                                  <Field
+                                    name="superiorlimit"
+                                    type="number"
+                                    className="name__field" // Campo de entrada para el 70%
+                                    placeholder="Superior limit"
+                                  />
+                                  <span className="currency-symbol">€</span>{" "}
+                                  {/* Simbolo de moneda */}
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      )}
-                      {currentStep === 3 && (
-                        <div className="step__form__main__div">
-                          <h3
-                            className={`${poppins.className} project__title__step`}
-                          >
-                            What services do you require?
-                          </h3>
-                          {/* Form fields for step 1 */}
-                          <div className="project__services__div">
-                            {/* <label  className="field__label">Name*</label> */}
-                            <FieldArray
-                              name="services" // Nombre del FieldArray
-                              render={(arrayHelpers) => (
-                                <div className="service-grid">
-                                  {" "}
-                                  {/* El grid para los checkboxes */}
-                                  {serviceOptions.map((service, index) => (
-                                    <div
-                                      key={index}
-                                      className="service-checkbox"
-                                    >
-                                      {" "}
-                                      {/* Estilo para el checkbox */}
-                                      <div class="content">
-                                        <label class="checkBox">
-                                          <Field
-                                            id="ch1"
-                                            type="checkbox"
-                                            name="services" // Nombre del FieldArray
-                                            value={service} // Valor de este checkbox
-                                            onChange={(e) => {
-                                              // Manejo del cambio de estado
-                                              if (e.target.checked) {
-                                                arrayHelpers.push(service); // Agrega al array si está seleccionado
-                                              } else {
-                                                const idx =
-                                                  arrayHelpers.form.values.services.indexOf(
-                                                    service
-                                                  );
-                                                arrayHelpers.remove(idx); // Elimina del array si se deselecciona
-                                              }
-                                            }}
-                                          />
-                                          <div class="transition"></div>
-                                        </label>
+                        )}
+                        {currentStep === 3 && (
+                          <div className="step__form__main__div">
+                            <h3
+                              className={`${poppins.className} project__title__step`}
+                            >
+                              What services do you require?
+                            </h3>
+                            {/* Form fields for step 1 */}
+                            <div className="project__services__div">
+                              {/* <label  className="field__label">Name*</label> */}
+                              <FieldArray
+                                name="services" // Nombre del FieldArray
+                                render={(arrayHelpers) => (
+                                  <div className="service-grid">
+                                    {" "}
+                                    {/* El grid para los checkboxes */}
+                                    {serviceOptions.map((service, index) => (
+                                      <div
+                                        key={index}
+                                        className="service-checkbox"
+                                      >
+                                        {" "}
+                                        {/* Estilo para el checkbox */}
+                                        <div class="content">
+                                          <label class="checkBox">
+                                            <Field
+                                              id="ch1"
+                                              type="checkbox"
+                                              name="services" // Nombre del FieldArray
+                                              value={service} // Valor de este checkbox
+                                              onChange={(e) => {
+                                                // Manejo del cambio de estado
+                                                if (e.target.checked) {
+                                                  arrayHelpers.push(service); // Agrega al array si está seleccionado
+                                                } else {
+                                                  const idx =
+                                                    arrayHelpers.form.values.services.indexOf(
+                                                      service
+                                                    );
+                                                  arrayHelpers.remove(idx); // Elimina del array si se deselecciona
+                                                }
+                                              }}
+                                            />
+                                            <div class="transition"></div>
+                                          </label>
+                                        </div>
+                                        <label>{service}</label>{" "}
+                                        {/* Etiqueta para el checkbox */}
                                       </div>
-                                      <label>{service}</label>{" "}
-                                      {/* Etiqueta para el checkbox */}
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-                            />
-                            {validationAttempted && (
-                            <ErrorMessage
-                              name="services"
-                              render={(msg) => (
-                                <div className="services__error__div">
-                                  {" "}
-                                  <svg
-                                    width="22"
-                                    height="22"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                  >
-                                    <g clip-path="url(#clip0_478_946)">
-                                      <path
-                                        d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
-                                        fill="#F08929"
-                                      />
-                                    </g>
-                                    <defs>
-                                      <clipPath id="clip0_478_946">
-                                        <rect
-                                          width="24"
-                                          height="24"
-                                          fill="white"
-                                        />
-                                      </clipPath>
-                                    </defs>
-                                  </svg>
-                                  {msg}
-                                </div>
-                              )}
-                            />
-                            )}
-                          </div>
-                        </div>
-                      )}
-                      {currentStep === 4 && (
-                        <div className="step__form__main__div">
-                          <h3
-                            className={`${poppins.className} project__title__step`}
-                          >
-                            Give us the details!
-                          </h3>
-                          {/* Form fields for step 1 */}
-                          <div className="project__details__div">
-                            <div className="tooltip-container">
-                            {validationAttempted && (
-                              <ErrorMessage
-                                name="message"
-                                render={(msg) => (
-                                  <>
-                                    <span className="tooltip__message">
+                                    ))}
+                                  </div>
+                                )}
+                              />
+                              {validationAttempted && (
+                                <ErrorMessage
+                                  name="services"
+                                  render={(msg) => (
+                                    <div className="services__error__div">
                                       {" "}
                                       <svg
                                         width="22"
@@ -1118,19 +1227,67 @@ function page() {
                                         </defs>
                                       </svg>
                                       {msg}
-                                    </span>
-                                  </>
-                                )}
-                              />
-                            )}
-                              <Field
-                                as="textarea"
-                                name="message"
-                                className="project__message__field"
-                                placeholder={`Provide a summary of your project`}
-                              />
+                                    </div>
+                                  )}
+                                />
+                              )}
                             </div>
-                            {/* <div className="project__details__file__div">
+                          </div>
+                        )}
+                        {currentStep === 4 && (
+                          <div className="step__form__main__div">
+                            <h3
+                              className={`${poppins.className} project__title__step`}
+                            >
+                              Give us the details!
+                            </h3>
+                            {/* Form fields for step 1 */}
+                            <div className="project__details__div">
+                              <div className="tooltip-container">
+                                {validationAttempted && (
+                                  <ErrorMessage
+                                    name="message"
+                                    render={(msg) => (
+                                      <>
+                                        <span className="tooltip__message">
+                                          {" "}
+                                          <svg
+                                            width="22"
+                                            height="22"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <g clip-path="url(#clip0_478_946)">
+                                              <path
+                                                d="M13.2991 3.14795L21.9331 18.1019C22.0647 18.33 22.134 18.5886 22.134 18.8519C22.134 19.1152 22.0647 19.3739 21.9331 19.6019C21.8014 19.83 21.6121 20.0193 21.384 20.151C21.156 20.2826 20.8974 20.3519 20.6341 20.3519H3.36605C3.10275 20.3519 2.84409 20.2826 2.61606 20.151C2.38804 20.0193 2.19869 19.83 2.06704 19.6019C1.93539 19.3739 1.86609 19.1152 1.86609 18.8519C1.86609 18.5886 1.9354 18.33 2.06705 18.1019L10.7011 3.14795C11.2781 2.14795 12.7211 2.14795 13.2991 3.14795ZM12.0001 14.9999C11.7348 14.9999 11.4805 15.1053 11.2929 15.2928C11.1054 15.4804 11.0001 15.7347 11.0001 15.9999C11.0001 16.2652 11.1054 16.5195 11.2929 16.7071C11.4805 16.8946 11.7348 16.9999 12.0001 16.9999C12.2653 16.9999 12.5196 16.8946 12.7072 16.7071C12.8947 16.5195 13.0001 16.2652 13.0001 15.9999C13.0001 15.7347 12.8947 15.4804 12.7072 15.2928C12.5196 15.1053 12.2653 14.9999 12.0001 14.9999ZM12.0001 7.99995C11.7551 7.99998 11.5187 8.08991 11.3357 8.25266C11.1526 8.41542 11.0357 8.6397 11.0071 8.88295L11.0001 8.99995V12.9999C11.0003 13.2548 11.0979 13.5 11.2729 13.6853C11.4479 13.8707 11.687 13.9822 11.9414 13.9971C12.1959 14.0121 12.4464 13.9293 12.6419 13.7657C12.8373 13.6021 12.9629 13.37 12.9931 13.1169L13.0001 12.9999V8.99995C13.0001 8.73473 12.8947 8.48038 12.7072 8.29284C12.5196 8.10531 12.2653 7.99995 12.0001 7.99995Z"
+                                                fill="#F08929"
+                                              />
+                                            </g>
+                                            <defs>
+                                              <clipPath id="clip0_478_946">
+                                                <rect
+                                                  width="24"
+                                                  height="24"
+                                                  fill="white"
+                                                />
+                                              </clipPath>
+                                            </defs>
+                                          </svg>
+                                          {msg}
+                                        </span>
+                                      </>
+                                    )}
+                                  />
+                                )}
+                                <Field
+                                  as="textarea"
+                                  name="message"
+                                  className="project__message__field"
+                                  placeholder={`Provide a summary of your project`}
+                                />
+                              </div>
+                              {/* <div className="project__details__file__div">
                               <div className="project__details__text__div">
                                 <span className="project__details__file__span">
                                   Or upload a project brief
@@ -1147,82 +1304,87 @@ function page() {
                                 placeholder={`Provide a summary of your project`}
                               />
                             </div> */}
+                            </div>
                           </div>
-                        </div>
-                      )}
-                      <div className="project__step__buttons__div">
-                        {currentStep > 1 && (
-                          <button
-                            className="project__step__buttons__prev"
-                            onClick={handlePrevious}
-                          >
-                            Previous
-                          </button>
                         )}
-                        {currentStep < totalSteps && (
-                          <button
-                            className="project__step__buttons__next"
-                            onClick={() => handleNext(validateForm, setTouched)}
-                          >
-                            Next{" "}
-                            <svg
-                              width="24"
-                              height="24"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
+                        <div className="project__step__buttons__div">
+                          {currentStep > 1 && (
+                            <button
+                              className="project__step__buttons__prev"
+                              onClick={handlePrevious}
                             >
-                              <path
-                                d="M10.0201 18L16.0201 12L10.0201 6L8.61011 7.41L13.1901 12L8.61011 16.59L10.0201 18Z"
-                                fill="white"
-                              />
-                            </svg>
-                          </button>
-                        )}
-                        {currentStep === totalSteps && (
-                          <button
-                            type="submit"
-                            onClick={() => handleSubmitFinal(validateForm, setTouched)}
-                            className="project__button__submit"
-                          >
-                            <span className="send__span">
-                              {translations.sendbutton}
-                            </span>
-                            <svg
-                              width="25"
-                              height="24"
-                              viewBox="0 0 25 24"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
+                              Previous
+                            </button>
+                          )}
+                          {currentStep < totalSteps && (
+                            <button
+                              className="project__step__buttons__next"
+                              onClick={() =>
+                                handleNext(validateForm, setTouched)
+                              }
                             >
-                              <g clip-path="url(#clip0_307_1013)">
+                              Next{" "}
+                              <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
                                 <path
-                                  d="M2.02651 9.315C1.50451 9.141 1.49951 8.86 2.03651 8.681L21.1235 2.319C21.6525 2.143 21.9555 2.439 21.8075 2.957L16.3535 22.043C16.2035 22.572 15.8985 22.59 15.6745 22.088L12.0805 14L18.0805 6L10.0805 12L2.02651 9.315Z"
+                                  d="M10.0201 18L16.0201 12L10.0201 6L8.61011 7.41L13.1901 12L8.61011 16.59L10.0201 18Z"
                                   fill="white"
                                 />
-                              </g>
-                              <defs>
-                                <clipPath id="clip0_307_1013">
-                                  <rect
-                                    width="24"
-                                    height="24"
+                              </svg>
+                            </button>
+                          )}
+                          {currentStep === totalSteps && (
+                            <button
+                              type="submit"
+                              onClick={() =>
+                                handleSubmitFinal(validateForm, setTouched)
+                              }
+                              className="project__button__submit"
+                            >
+                              <span className="send__span">
+                                {translations.sendbutton}
+                              </span>
+                              <svg
+                                width="25"
+                                height="24"
+                                viewBox="0 0 25 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g clip-path="url(#clip0_307_1013)">
+                                  <path
+                                    d="M2.02651 9.315C1.50451 9.141 1.49951 8.86 2.03651 8.681L21.1235 2.319C21.6525 2.143 21.9555 2.439 21.8075 2.957L16.3535 22.043C16.2035 22.572 15.8985 22.59 15.6745 22.088L12.0805 14L18.0805 6L10.0805 12L2.02651 9.315Z"
                                     fill="white"
-                                    transform="translate(0.0805054)"
                                   />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          </button>
-                        )}
-                      </div>
-                    </form>
-                  )}
-                </Formik>
-                <Image
-                  src={ProjectPoints}
-                  alt="project points"
-                  className="project__points"
-                />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_307_1013">
+                                    <rect
+                                      width="24"
+                                      height="24"
+                                      fill="white"
+                                      transform="translate(0.0805054)"
+                                    />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </button>
+                          )}
+                        </div>
+                      </form>
+                    )}
+                  </Formik>
+                  <Image
+                    src={ProjectPoints}
+                    alt="project points"
+                    className="project__points"
+                  />
+                </div>
               </div>
             </div>
           </section>

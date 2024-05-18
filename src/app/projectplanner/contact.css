@@ -328,7 +328,6 @@ spline-viewer {
   margin-left: 10px; /* Espacio entre checkbox y etiqueta */
 }
 
-
 .clear {
   clear: both;
 }
@@ -356,12 +355,12 @@ spline-viewer {
   z-index: 100;
 }
 
-.checkBox input[type=checkbox]:checked + div {
+.checkBox input[type="checkbox"]:checked + div {
   left: -10px;
   top: -10px;
 }
 
-.checkBox input[type=checkbox] {
+.checkBox input[type="checkbox"] {
   position: absolute;
   left: 50px;
   visibility: hidden;
@@ -418,14 +417,14 @@ spline-viewer {
 .project__message__field:focus {
   outline: none;
 }
- 
+
 .project__button__submit {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  background: #3B71FE;
+  background: #3b71fe;
   color: #fff;
   border-radius: 50px;
   padding: 10px 18px;
@@ -547,3 +546,221 @@ spline-viewer {
 .project__details__file__span {
   font-size: 14px;
 }
+
+.project__section__name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0e0e2c;
+  margin-left: 0px;
+  margin-top: 70px;
+}
+
+@media screen and (max-width: 1570px) {
+  .project__main__div__right {
+    min-width: 700px;
+  }
+
+  .project__main__div {
+    margin-top: 0px;
+  }
+}
+
+@media screen and (max-width: 1450px) {
+  .project__main__div__right {
+    min-width: 680px;
+  }
+
+  .project__main__div {
+    margin-top: 20px;
+  }
+
+  .project__points {
+    bottom: -10px;
+    max-width: 210px;
+  }
+}
+
+@media screen and (max-width: 1390px) {
+  .project__main__div__right {
+    min-width: 660px;
+  }
+
+  .project__points {
+    bottom: -10px;
+    max-width: 210px;
+  }
+}
+
+@media screen and (max-width: 1340px) {
+  .project__main__div__right {
+    min-width: 600px;
+  }
+
+  .project__main__div {
+    margin-top: 50px;
+  }
+
+
+  .project__main__description {
+    font-size: 18px;
+    max-width: 550px;
+  }
+  .project__points {
+    bottom: -20px;
+    max-width: 190px;
+  }
+}
+
+@media screen and (max-width: 1240px) {
+
+  .project__main__div__right {
+    min-width: 580px;
+  }
+  .project__main__text {
+    font-size: 42px;
+  }
+
+  .project__main__description {
+    font-size: 16px;
+    max-width: 500px;
+  }
+
+  .project__points {
+    bottom: -30px;
+    max-width: 185px;
+  }
+
+  .process__section__name {
+    margin-left: -20px;
+  }
+
+  .project__main__div__left > img {
+    max-width: 430px;
+    height: 510px;
+  }
+}
+
+.header__contact__button__project.toggle-active {
+  background: #fff;
+  transition: all 0.5s linear;
+}
+
+@media screen and (max-width: 1150px) {
+.project__main__text {
+  font-size: 42px;
+}
+
+.project__main__div__left {
+  padding-right: 50px;
+}
+
+.project__main__div__left > img {
+  max-width: 400px;
+  height: 490px;
+}
+
+.project__main__div__right {
+  min-width: 550px;
+} 
+
+.project__title__step {
+  font-size: 28px;
+}
+
+.project__step__buttons__next {
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.project__step__buttons__next > svg {
+  width: 20px;
+}
+
+.name__field.text {
+  font-size: 13px;
+}
+
+.project__main__description {
+  font-size: 16px;
+  max-width: 470px;
+}
+
+}
+
+.small__points__1 {
+ display: none;   
+}
+
+.small__points__2 {
+  display: none;   
+ }
+
+
+@media screen and (max-width: 1060px) {
+
+  .project__main__div__left {
+    display: none;
+  }
+
+  .project__main__div__right {
+    min-width: 750px;
+    margin-top: 0px;
+  }
+
+  .project__main__div__right__small__devices {
+    margin-top: 60px;
+    position: relative;
+    padding: 40px;
+    border-radius: 23px;
+    background: #fff;
+    padding-bottom: 40px;
+  }
+
+
+  .project__main__div__right__shadow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 82%;
+    height: 65%;
+    transform: translate(-50%, -50%);
+    background-color: #1F3C88; /* Color azul para la sombra */
+    border-radius: 23px; /* Asegura que el borde sea redondeado igual que el div superior */
+    z-index: -1; /* Asegura que este div esté debajo del div superior */
+    filter: blur(65px); /* Aplica el desenfoque */
+  }
+
+  .project__main__bg {
+    visibility: hidden;
+  }
+
+  .project__points {
+    bottom: 40px;
+    right: 30px;
+    display: none;
+  }
+
+  .project__main__div {
+    margin-top: 20px;
+  }
+
+  .small__points__1 {
+    display: block;
+    position: absolute;
+    top: -80px;
+    left: -20px;
+    z-index: -1;
+  }
+
+  .small__points__2 {
+    display: block;
+    position: absolute;
+    bottom: -80px;
+    right: -20px;
+    z-index: -1;
+  }
+  
+  }
