@@ -440,9 +440,11 @@ spline-viewer {
   place-items: center;
 }
 
-.tooltip {
+.tooltip,
+.tooltip__2 {
   position: absolute;
   top: -90%;
+  /* left: -20%; */
   padding: 0.4em 1em;
   opacity: 1;
   pointer-events: none;
@@ -455,13 +457,13 @@ spline-viewer {
   transform-origin: 0 0;
   text-transform: capitalize;
   font-weight: 400;
-  margin: auto;
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.25);
   border: 1px solid #333333bc;
   display: flex;
   flex-direction: row;
   gap: 6px;
   align-items: center;
+  margin: auto;
   text-wrap: nowrap;
   z-index: 10;
 }
@@ -471,7 +473,6 @@ spline-viewer {
   content: "";
   height: 0.6em;
   width: 0.6em;
-  left: 50%;
   bottom: -0.35em;
   transform: translate(-50%) rotate(45deg);
   background: #ffffff;
@@ -479,6 +480,22 @@ spline-viewer {
   border-top: 0px;
   border-left: 0px;
   z-index: 10;
+  left: 50%;
+}
+
+.tooltip__2::before {
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  bottom: -0.35em;
+  transform: translate(-50%) rotate(45deg);
+  background: #ffffff;
+  border: 1px solid #333333bc;
+  border-top: 0px;
+  border-left: 0px;
+  z-index: 10;
+  left: 50%;
 }
 
 .services__error__div {
@@ -600,7 +617,6 @@ spline-viewer {
     margin-top: 50px;
   }
 
-
   .project__main__description {
     font-size: 18px;
     max-width: 550px;
@@ -612,7 +628,6 @@ spline-viewer {
 }
 
 @media screen and (max-width: 1240px) {
-
   .project__main__div__right {
     min-width: 580px;
   }
@@ -646,61 +661,58 @@ spline-viewer {
 }
 
 @media screen and (max-width: 1150px) {
-.project__main__text {
-  font-size: 42px;
-}
+  .project__main__text {
+    font-size: 42px;
+  }
 
-.project__main__div__left {
-  padding-right: 50px;
-}
+  .project__main__div__left {
+    padding-right: 50px;
+  }
 
-.project__main__div__left > img {
-  max-width: 400px;
-  height: 490px;
-}
+  .project__main__div__left > img {
+    max-width: 400px;
+    height: 490px;
+  }
 
-.project__main__div__right {
-  min-width: 550px;
-} 
+  .project__main__div__right {
+    min-width: 550px;
+  }
 
-.project__title__step {
-  font-size: 28px;
-}
+  .project__title__step {
+    font-size: 28px;
+  }
 
-.project__step__buttons__next {
-  font-size: 14px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
+  .project__step__buttons__next {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
 
-.project__step__buttons__next > svg {
-  width: 20px;
-}
+  .project__step__buttons__next > svg {
+    width: 20px;
+  }
 
-.name__field.text {
-  font-size: 13px;
-}
+  .name__field.text {
+    font-size: 13px;
+  }
 
-.project__main__description {
-  font-size: 16px;
-  max-width: 470px;
-}
-
+  .project__main__description {
+    font-size: 16px;
+    max-width: 470px;
+  }
 }
 
 .small__points__1 {
- display: none;   
+  display: none;
 }
 
 .small__points__2 {
-  display: none;   
- }
-
+  display: none;
+}
 
 @media screen and (max-width: 1060px) {
-
   .project__main__div__left {
     display: none;
   }
@@ -719,7 +731,6 @@ spline-viewer {
     padding-bottom: 40px;
   }
 
-
   .project__main__div__right__shadow {
     position: absolute;
     top: 50%;
@@ -727,7 +738,7 @@ spline-viewer {
     width: 82%;
     height: 65%;
     transform: translate(-50%, -50%);
-    background-color: #1F3C88; /* Color azul para la sombra */
+    background-color: #1f3c88; /* Color azul para la sombra */
     border-radius: 23px; /* Asegura que el borde sea redondeado igual que el div superior */
     z-index: -1; /* Asegura que este div esté debajo del div superior */
     filter: blur(65px); /* Aplica el desenfoque */
@@ -762,5 +773,721 @@ spline-viewer {
     right: -20px;
     z-index: -1;
   }
-  
+
+  .project__section {
+    margin-bottom: 180px;
   }
+
+  .project__title__step {
+    font-size: 32px;
+  }
+}
+
+.header__nav__toggle-button__project {
+  display: none;
+}
+
+@media screen and (max-width: 980px) {
+  .project__main__text {
+    font-size: 40px;
+  }
+
+  .project__main__description {
+    max-width: 460px;
+  }
+
+  .project__main__div__right {
+    min-width: 650px;
+    max-width: 650px;
+  }
+
+  .small__points__1 {
+    max-width: 180px;
+    top: -60px;
+    left: -40px;
+  }
+  .small__points__2 {
+    max-width: 180px;
+    bottom: -60px;
+    right: -40px;
+  }
+
+  .project__section__name {
+    font-size: 17px;
+  }
+
+  .project__section {
+    margin-bottom: 160px;
+  }
+
+  .service-checkbox > label {
+    font-size: 15px;
+  }
+
+  .services__error__div {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .project__main__div__right {
+    min-width: 580px;
+    max-width: 580px;
+  }
+
+  .project__main__text {
+    font-size: 38px;
+  }
+
+  .project__main__description {
+    font-size: 15px;
+    max-width: 400px;
+  }
+
+  .project__title__step {
+    font-size: 28px;
+  }
+
+  .tooltip__2 {
+    margin: 0px;
+    left: -30%;
+    font-size: 12px;
+  }
+
+  input.name__field {
+    font-size: 13px;
+  }
+
+  input.name__field.text {
+    font-size: 13px;
+  }
+
+  .currency-symbol {
+    margin-right: -10px;
+    margin-left: 0px;
+    background: transparent;
+  }
+
+  .project__step__buttons__div {
+    gap: 15px;
+  }
+
+  .service-checkbox > label {
+    font-size: 14px;
+  }
+
+  .services__error__div {
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .project__main__div__right {
+    min-width: 530px;
+    max-width: 530px;
+  }
+
+  .project__main__text {
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .project__section__name {
+    text-wrap: wrap;
+    font-size: 16px;
+  }
+
+  .project__main__text {
+    font-size: 32px;
+  }
+
+  .project__main__description {
+    font-size: 14px;
+  }
+
+  .project__main__div__right {
+    min-width: 480px;
+    max-width: 490px;
+  }
+
+  .small__points__1 {
+    max-width: 160px;
+    left: -30px;
+  }
+
+  .small__points__2 {
+    max-width: 160px;
+    right: -30px;
+  }
+
+  .project__timeline__span {
+    font-size: 13px;
+  }
+
+  span.tooltip {
+    font-size: 12px;
+  }
+
+  .tooltip__2 {
+    margin: 0px;
+    left: -38%;
+    font-size: 12px;
+  }
+
+  .services__error__div {
+    padding: 5px;
+  }
+
+  .services__error__div {
+    font-size: 12px;
+    max-width: 150px;
+  }
+
+  .service-checkbox > label {
+    font-size: 13px;
+  }
+
+  .project__services__div {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .project__main__text__div {
+    margin-top: 20px;
+  }
+
+  .project__section {
+    margin-top: 80px;
+  }
+
+  .project__main__text {
+    font-size: 30px;
+  }
+
+  .project__main__description {
+    font-size: 13px;
+    max-width: 350px;
+  }
+
+  .project__main__div__right {
+    min-width: 440px;
+    max-width: 450px;
+  }
+
+  .step-indicator {
+    font-size: 16px;
+  }
+
+  .progress-bar {
+    height: 5px;
+  }
+
+  .project__step__div {
+    margin-bottom: 0px;
+  }
+
+  .project__title__step {
+    font-size: 24px;
+  }
+
+  .name__field.text {
+    padding: 10px 9px;
+    font-size: 12px;
+  }
+
+  .project__main__div {
+    margin-top: 10px;
+  }
+
+  span.tooltip {
+    font-size: 12px;
+  }
+
+  .tooltip__2 {
+    margin: 0px;
+    left: -55%;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .small__points__1 {
+    left: -20px;
+    top: -50px;
+    max-width: 150px;
+  }
+
+  .small__points__2 {
+    right: -20px;
+    bottom: -45px;
+    max-width: 150px;
+  }
+
+  .project__section {
+    margin-bottom: 0px;
+  }
+
+  .project__main__div__right {
+    min-width: 400px;
+    max-width: 410px;
+  }
+
+  .project__title__step {
+    font-size: 22px;
+  }
+
+  .step__form__main__div {
+    gap: 18px;
+  }
+
+  .project__step__buttons__next {
+    font-size: 13px;
+    padding: 8px 12px 8px 14px;
+  }
+
+  .project__step__buttons__prev {
+    font-size: 13px;
+    padding: 10px 15px;
+  }
+
+  .project__button__submit {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+
+  .project__message__field {
+    font-size: 12px;
+  }
+
+  .project__button__submit > svg {
+    width: 20px;
+  }
+
+  .project__step__buttons__next > svg {
+    width: 18px;
+  }
+
+  .project__main__text {
+    font-size: 28px;
+  }
+
+  .project__main__text__div {
+    gap: 15px;
+  }
+
+  .currency-symbol {
+    font-size: 13px;
+  }
+
+  input.name__field {
+    font-size: 12px;
+  }
+
+  div.project__timeline__div {
+    gap: 10px;
+  }
+
+  .currency-symbol {
+    margin-right: -10px;
+    margin-left: -5px;
+    background: transparent;
+  }
+
+  .project__step__buttons__div {
+    gap: 15px;
+  }
+
+  span.tooltip {
+    font-size: 12px;
+  }
+
+  .checkBox {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .header__contact__button__project {
+    font-size: 13px;
+    align-items: center;
+  }
+
+  .header__contact__button__project > svg {
+    width: 12px;
+  }
+
+  .project__main__text__div {
+    margin-top: 0px;
+  }
+
+  .project__section__name {
+    font-size: 15px;
+  }
+
+  .project__main__text {
+    font-size: 28px;
+    text-wrap: wrap;
+    max-width: 250px;
+  }
+
+  .project__main__description {
+    font-size: 13px;
+    max-width: 320px;
+  }
+
+  .project__main__div__right {
+    min-width: 350px;
+    max-width: 360px;
+  }
+
+  .project__title__step {
+    font-size: 20px;
+  }
+
+  .small__points__1 {
+    max-width: 140px;
+    top: -40px;
+    left: -15px;
+  }
+
+  .small__points__2 {
+    max-width: 140px;
+    bottom: -40px;
+    right: -15px;
+  }
+
+  .tooltip__2 {
+    margin: 0px;
+    left: -93%;
+    font-size: 12px;
+  }
+
+  .service-grid {
+    gap: 15px;
+    width: 108%;
+  }
+
+  .service-checkbox > label {
+    font-size: 12px;
+  }
+
+  .services__error__div {
+    font-size: 11px;
+    max-width: 130px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .project__main__div__right {
+    min-width: 330px;
+    max-width: 340px;
+  }
+
+  .small__points__1 {
+    max-width: 140px;
+    top: -35px;
+    left: -15px;
+  }
+
+  .small__points__2 {
+    max-width: 140px;
+    bottom: -40px;
+    right: -15px;
+  }
+
+  .project__title__step {
+    font-size: 18px;
+  }
+
+  .step__form__main__div {
+    gap: 13px;
+  }
+
+  .step-indicator {
+    font-size: 15px;
+  }
+
+  .project__section {
+    margin-bottom: -20px;
+  }
+
+  .project__main__div__right__shadow {
+    background-color: #1f3d88e2;
+  }
+
+  form.contact__form__div {
+    gap: 12px;
+  }
+
+  .step__form__main__div {
+    gap: 15px;
+  }
+
+  input.name__field.text {
+    font-size: 12px;
+  }
+
+  span.tooltip {
+    font-size: 11px;
+  }
+
+  .tooltip__2 {
+    margin: 0px;
+    left: -100%;
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .project__main__text {
+    font-size: 24px;
+  }
+
+  .project__main__description {
+    font-size: 12px;
+  }
+
+  .project__section__name {
+    font-size: 13px;
+  }
+
+  .step-indicator {
+    font-size: 14px;
+  }
+
+  div.header__toggle__menu__div {
+    width: 100%;
+  }
+
+  .project__main__div__right__small__devices {
+    padding: 25px;
+  }
+
+  .name__field.text {
+    padding: 9px 8px;
+  }
+
+  .project__main__div__right {
+    min-width: 300px;
+    max-width: 320px;
+  }
+
+  .small__points__1 {
+    max-width: 120px;
+    top: -30px;
+    left: -10px;
+  }
+
+  .small__points__2 {
+    max-width: 120px;
+    bottom: -30px;
+    right: -10px;
+  }
+
+  .project__section {
+    margin-bottom: -30px;
+  }
+
+  .project__title__step {
+    font-size: 17px;
+  }
+
+  input.name__field.text {
+    font-size: 11px;
+  }
+
+  input.name__field {
+    font-size: 11px;
+  }
+
+  .project__timeline__span {
+    font-size: 12px;
+  }
+
+  span.tooltip {
+    font-size: 11px;
+  }
+
+  .tooltip__2 {
+    margin: 0px;
+    left: -108%;
+    font-size: 11px;
+  }
+
+  .checkBox {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .small__points__1 {
+    display: none;
+  }
+
+  .small__points__2 {
+    display: none;
+  }
+
+  .project__main__div__right__small__devices {
+    margin-top: 30px;
+    padding: 0;
+  }
+
+  .project__main__description {
+    max-width: 280px;
+    font-size: 11px;
+  }
+
+  .project__section {
+    margin-top: 70px;
+    margin-bottom: -50px;
+  }
+
+  .project__main__text__div {
+    margin-top: 20px;
+  }
+
+  .project__main__div__right {
+    max-width: 340px;
+    width: 340px;
+    gap: 10px;
+  }
+
+  .project__main__div__right__shadow {
+    display: none;
+  }
+
+  .step__form__main__div {
+    gap: 20px;
+  }
+
+  .project__title__step {
+    font-size: 19px;
+  }
+
+  .project__main__bg {
+    display: inline;
+    visibility: visible;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .progress-bar {
+    height: 6px;
+  }
+
+  span.tooltip {
+    font-size: 10px;
+  }
+
+  span.tooltip > svg {
+    width: 18px;
+  }
+
+  .tooltip__2 {
+    margin: 0px;
+    left: -78%;
+    font-size: 10px;
+  }
+
+  .tooltip__2 > svg {
+    width: 18px;
+  }
+
+  .services__error__div {
+    font-size: 11px;
+    text-wrap: nowrap;
+    padding: 5px 10px;
+    max-width: 250px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .project__main__text {
+    font-size: 22px;
+    max-width: 200px;
+  }
+
+  .project__main__description {
+    font-size: 10px;
+  }
+
+  .step-indicator {
+    font-size: 13px;
+  }
+
+  .project__title__step {
+    font-size: 17px;
+  }
+
+  .project__step__buttons__next {
+    font-size: 12px;
+    padding: 6px 10px 6px 12px;
+  }
+
+  .project__step__buttons__prev {
+    font-size: 12px;
+    padding: 8px 10px 8px 12px;
+  }
+
+
+  .project__button__submit {
+    gap: 5px;
+    padding: 6px 12px;
+  }
+  .project__button__submit > svg {
+    width: 18px;
+  }
+
+  .project__button__submit > span {
+    font-size: 12px;
+  }
+
+  .project__message__field {
+    margin-top: -8px;
+  }
+
+  span.tooltip {
+    font-size: 10px;
+  }
+
+  .project__section {
+    margin-bottom: -60px;
+  }
+
+  .project__step__buttons__div {
+    justify-content: center;
+  }
+
+  form.contact__form__div {
+    gap: 15px;
+  }
+
+  .service-grid {
+    width: 100%;
+  }
+
+  .project__main__div__right {
+    max-width: 310px;
+    width: 310px;
+  }
+
+  .tooltip__2 {
+    margin: 0px;
+    left: -105%;
+    font-size: 10px;
+  }
+
+  div.small__devices__buttons__div {
+    gap: 14px;
+  }
+
+  .header__contact__button__project {
+    padding: 10px 16px;
+  }
+}

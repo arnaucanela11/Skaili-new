@@ -982,12 +982,15 @@ export default function Home() {
                   <h2 className={`footer__main__title ${poppins.className}`}>
                     DISCOVER NEW LIMITS FOR YOUR BUSINESS
                   </h2>
+                  <h2 className={`footer__main__title__small ${poppins.className}`}>
+                    NEW LIMITS FOR YOUR BUSINESS
+                  </h2>
                   <a className="footer__title__circle" href="#main__screen">
                     <svg
                       className="footer__circle__svg"
                       width="30"
                       height="42"
-                      viewBox="0 0 30 42"
+                      viewBox="0 0 30 42" 
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -1002,6 +1005,10 @@ export default function Home() {
                   Skaili agency is a digitalitzation agency that offers
                   profesional web solutions around the world. ¡All ready to do
                   your business more scalable!
+                </span>
+                <span className="footer__main__description__small">
+                  Skaili agency is a digitalitzation agency that offers
+                  profesional web solutions around the world.
                 </span>
                 <div className="footer__buttons__div">
                   <Link href={"/contact"} className="footer__contact__button">
@@ -1045,6 +1052,21 @@ export default function Home() {
                     </svg>
                   </Link>
                 </div>
+                <div className="footer__email__span__small">
+                    <svg
+                      width="20"
+                      height="16"
+                      viewBox="0 0 20 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M18 0H2C0.9 0 0.00999999 0.9 0.00999999 2L0 14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM18 4L10 9L2 4V2L10 7L18 2V4Z"
+                        fill="#0E0E2C"
+                      />
+                    </svg>
+                    <span>info.skaili@gmail.com</span>
+                  </div>
               </div>
               <div className="footer__middle__line" />
               <div className="footer__bottom__div">
