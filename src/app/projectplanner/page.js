@@ -623,7 +623,7 @@ function page() {
                 </button>
               </div>
             </div>
-            <button className="header__nav__toggle-button">
+            <button className="header__nav__toggle-button__project">
               <input
                 type="checkbox"
                 id="checkbox"
@@ -1048,7 +1048,7 @@ function page() {
                                       name="inferiorlimit"
                                       render={(msg) => (
                                         <>
-                                          <span className="tooltip">
+                                          <span className="tooltip__2">
                                             {" "}
                                             <svg
                                               width="24"
@@ -1100,7 +1100,7 @@ function page() {
                                       name="superiorlimit"
                                       render={(msg) => (
                                         <>
-                                          <span className="tooltip">
+                                          <span className="tooltip__2">
                                             {" "}
                                             <svg
                                               width="22"
