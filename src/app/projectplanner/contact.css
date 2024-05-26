@@ -1409,8 +1409,8 @@ spline-viewer {
 
 @media screen and (max-width: 390px) {
   .project__main__text {
-    font-size: 22px;
-    max-width: 200px;
+    font-size: 26 px;
+    max-width: 250px;
   }
 
   .project__main__description {
@@ -1461,8 +1461,9 @@ spline-viewer {
   }
 
   .project__step__buttons__div {
-    justify-content: center;
+    justify-content: start;
   }
+
 
   form.contact__form__div {
     gap: 15px;
@@ -1489,5 +1490,13 @@ spline-viewer {
 
   .header__contact__button__project {
     padding: 10px 16px;
+  }
+
+  .project__section {
+    margin-bottom: -40px;
+  }
+
+  .project__section__name {
+    display: none;
   }
 }
