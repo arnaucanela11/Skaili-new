@@ -123,6 +123,8 @@ const processSteps = [
     title: "Get In Touch",
     description:
       "The first step in the process is to <strong>get in touch</strong>. For that, we offer both our contact form (to explain the idea you have in mind or ask any question) and our project planner (if you have a clearer idea of your project). <br />We let's responde you the faster we can, explaining all the details (<u>including the budget</u>).",
+    description__small:
+      "The first step in the process is to <strong>get in touch</strong>. <br />We let's responde you the faster we can, explaining all the details (<u>including the budget</u>).",
     image: ProcessAnimation1,
   },
   {
@@ -130,6 +132,8 @@ const processSteps = [
     title: "Start Working",
     description:
       "If you agree with the budget, estimated time, and all the other details, we will can start working on your project. Most times you will have <b>two persons (one designer and one developer)</b> working on your project. <br/>During the process stay in touch to ensure that we create the project you had in your mind.",
+    description__small:
+      "Once you agree the details we will start working on your project. Most times you will have <b>one developer and one designer</b> working on your project.",
     image: ProcessAnimation2,
   },
   {
@@ -137,6 +141,8 @@ const processSteps = [
     title: "Work Delivering",
     description:
       "Finally, it will be time to deliver the final product. If you like the product, <b>we will consider the project completed</b>. On the other hand, if you're not satisfied, we can make the necessary adjustments (<u>at no extra cost</u>), or <b>cancel the contract</b> if the delivered product is significantly different from the one initially requested (in this case, <u>no fees will be charged for the services provided</u>).",
+    description__small:
+      "If you like the product, <u>the project is complete</u>. If not, <b>we can adjust it for free</b> or <b>cancel the contract</b> if it significantly differs from the request, <b>with no fees charged</b>.",
     image: ProcessAnimation3,
   },
   {
@@ -144,6 +150,8 @@ const processSteps = [
     title: "Maintenance",
     description:
       "Even though we have declared the project completed, this <u>does not mean</u> that the contract between Skaili Agency (as a web service provider) and you has ended. Therefore, we can handle both <b>the maintenance of your website and the correction of any minor errors that may arise in the future</b>.",
+    description__small:
+      "The contract with Skaili Agency doesn’t has to end once the product is delivered. We can handle website maintenance and correct any minor errors that may arise in the future",
     image: ProcessAnimation4,
   },
 ];
@@ -152,7 +160,7 @@ const Step = ({ step, index }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
 
   const variants = {
-    hidden: { opacity: 0, x: 100},
+    hidden: { opacity: 0, x: 100 },
     visible: {
       opacity: 1,
       x: 0,
@@ -162,7 +170,6 @@ const Step = ({ step, index }) => {
 
   return (
     <div key={index} className="process__main__target__div">
-      <div className="step__marker" />
       <motion.div
         ref={ref}
         initial="hidden"
@@ -170,20 +177,39 @@ const Step = ({ step, index }) => {
         variants={variants}
         className="process__step__div"
       >
-        <div className={`process__step__div__before ${inView ? "animate" : ""}`} />
-        <div className={`process__step__div__after ${inView ? "animate" : ""}`} />
+        <div
+          className={`process__step__div__before ${inView ? "animate" : ""}`}
+        />
+        <div
+          className={`process__step__div__after ${inView ? "animate" : ""}`}
+        />
+        <div className="process__step__header__small">
+        <div className={`step__number__small ${be_vietnam_pro.className}`}>
+          {step.number}
+        </div>
         <div className="process__step__text__div">
           <h3 className="process__step__title">
             {step.title} <span className="text-[#3B71FE]">.</span>
           </h3>
-          <span className={`process__step__description ${poppins.className}`} dangerouslySetInnerHTML={{ __html: step.description }} />
+          <span
+            className={`process__step__description ${poppins.className}`}
+            dangerouslySetInnerHTML={{ __html: step.description }}
+          />
+          <span
+            className={`process__step__description__small ${poppins.className}`}
+            dangerouslySetInnerHTML={{ __html: step.description__small }}
+          />
         </div>
-        <Image src={step.image} alt="illustration" />
+        </div>
+        <Image
+          src={step.image}
+          alt="illustration"
+          className="step__illustration"
+        />
       </motion.div>
     </div>
   );
 };
-
 
 export default function Home() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -304,6 +330,12 @@ export default function Home() {
                         data
                       </span>{" "}
                       and explain your idea:
+                    </h2>
+                    <h2
+                      className={`contact__main__title__small ${poppins.className}`}
+                    >
+                      Provideo below your{" "}
+                      <span className="text-[#3B71FE]">contact data</span>{" "}
                     </h2>
                     <Formik
                       validationSchema={loginSchema}
@@ -962,7 +994,11 @@ export default function Home() {
             <span className={`${be_vietnam_pro.className} step__number`}>
               {currentStep}
             </span>
-            <div className="process__line__div" />
+            <div className="process__line__div">
+              {" "}
+              <div className="step__marker" /> <div className="step__marker" />{" "}
+              <div className="step__marker" /> <div className="step__marker" />
+            </div>
             <div className="process__steps__col__div">
               {processSteps.map((step, index) => (
                 <Step key={index} step={step} index={index} />
@@ -982,7 +1018,9 @@ export default function Home() {
                   <h2 className={`footer__main__title ${poppins.className}`}>
                     DISCOVER NEW LIMITS FOR YOUR BUSINESS
                   </h2>
-                  <h2 className={`footer__main__title__small ${poppins.className}`}>
+                  <h2
+                    className={`footer__main__title__small ${poppins.className}`}
+                  >
                     NEW LIMITS FOR YOUR BUSINESS
                   </h2>
                   <a className="footer__title__circle" href="#main__screen">
@@ -990,7 +1028,7 @@ export default function Home() {
                       className="footer__circle__svg"
                       width="30"
                       height="42"
-                      viewBox="0 0 30 42" 
+                      viewBox="0 0 30 42"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -1053,20 +1091,20 @@ export default function Home() {
                   </Link>
                 </div>
                 <div className="footer__email__span__small">
-                    <svg
-                      width="20"
-                      height="16"
-                      viewBox="0 0 20 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18 0H2C0.9 0 0.00999999 0.9 0.00999999 2L0 14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM18 4L10 9L2 4V2L10 7L18 2V4Z"
-                        fill="#0E0E2C"
-                      />
-                    </svg>
-                    <span>info.skaili@gmail.com</span>
-                  </div>
+                  <svg
+                    width="20"
+                    height="16"
+                    viewBox="0 0 20 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18 0H2C0.9 0 0.00999999 0.9 0.00999999 2L0 14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2C20 0.9 19.1 0 18 0ZM18 4L10 9L2 4V2L10 7L18 2V4Z"
+                      fill="#0E0E2C"
+                    />
+                  </svg>
+                  <span>info.skaili@gmail.com</span>
+                </div>
               </div>
               <div className="footer__middle__line" />
               <div className="footer__bottom__div">
