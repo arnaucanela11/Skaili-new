@@ -289,6 +289,12 @@ function page() {
                     </span>{" "}
                     and explain your idea:
                   </h2>
+                  <h2
+                      className={`contact__main__title__small ${poppins.className}`}
+                    >
+                      Provideo below your{" "}
+                      <span className="text-[#3B71FE]">contact data</span>{" "}
+                    </h2>
                   <Formik
                     validationSchema={loginSchema}
                     initialValues={initailaState}
@@ -656,7 +662,7 @@ function page() {
                       onClick={() => {
                         setToggleMenu((prev) => !prev);
                       }}
-                      href="#services__section"
+                      href="/#about__section"
                       className={`header__toggle__menu__item ${titillium.className}`}
                     >
                       About Us
@@ -665,7 +671,7 @@ function page() {
                       onClick={() => {
                         setToggleMenu((prev) => !prev);
                       }}
-                      href="#process__section"
+                      href="/#services__section"
                       className={`header__toggle__menu__item ${titillium.className}`}
                     >
                       Services
@@ -674,7 +680,7 @@ function page() {
                       onClick={() => {
                         setToggleMenu((prev) => !prev);
                       }}
-                      href="#questions__section"
+                      href="/#process__section"
                       className={`header__toggle__menu__item ${titillium.className}`}
                     >
                       Process

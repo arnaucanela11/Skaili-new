@@ -175,6 +175,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   gap: 10px;
   overflow: hidden; /* Evita que el pseudo-elemento se salga */
   z-index: 320;
+  transition: all 0.2s linear; /* Hace la transición suave */
 }
 
 .header__contact__button::before {
@@ -187,7 +188,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   border-radius: 30px;
   z-index: 319;
   background: #1a3c91; /* El color que se impregna */
-  transition: all 0.3s ease; /* Hace la transición suave */
+  transition: all 0.2s linear; /* Hace la transición suave */
 }
 
 .header__contact__button:hover {
@@ -496,6 +497,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 .about__point__pattern {
   margin-top: -200px;
   margin-left: 200px;
+  padding-bottom: 20px;
 }
 
 .carousel__container {
@@ -921,7 +923,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 }
 
 .step__marker {
-margin-top: 18.5%;
+  margin-top: 18.5%;
 }
 
 .process__steps__col__div {
@@ -1009,7 +1011,6 @@ margin-top: 18.5%;
   border: 1px solid #000;
   border-radius: 80px;
   z-index: 10;
-
 }
 
 .step__marker:first-child {
@@ -1523,23 +1524,45 @@ margin-top: 18.5%;
   font-size: 14px;
 }
 
+/* HERE THE FUCKING KEY */
+
+
+.swiper {
+  /* width: 112.5%; */
+  width: 100%;
+}
+
+/* .about__main__section {
+  margin: 0px;
+  margin-top: 120px;
+}
+
+.about__section__name {
+  margin-left: 80px;
+}
+
+.about__main__text__div {
+  margin-left: auto;
+  margin-right: -80px;
+} */
+
 @media screen and (max-width: 1600px) {
-.process__line__div {
-  left: 21%;
-  gap: 20.8%;
-}
+  .process__line__div {
+    left: 21%;
+    gap: 20.8%;
+  }
 
-.step__number {
-font-size: 140px;
-margin-top: 30px;
-}
-.process__step__div {
-  padding: 25px 40px;
-}
+  .step__number {
+    font-size: 140px;
+    margin-top: 30px;
+  }
+  .process__step__div {
+    padding: 25px 40px;
+  }
 
-.process__main__div {
-  gap: 200px;
-}
+  .process__main__div {
+    gap: 200px;
+  }
 }
 
 @media screen and (max-width: 1450px) {
@@ -1656,27 +1679,33 @@ margin-top: 30px;
   .step__number {
     font-size: 138px;
     margin-top: 52px;
-    }
+  }
 
-    .process__main__div {
-      gap: 200px;
-    }
+  .process__main__div {
+    gap: 200px;
+  }
 
-    .step__marker:first-child {
-      margin-top: 325px;
-    }
+  .step__marker:first-child {
+    margin-top: 325px;
+  }
 
-    .process__line__div {
-      gap: 20.5%;
-    }
+  .process__line__div {
+    gap: 20.5%;
+  }
 
-    .process__main__text  {
-      font-size: 42px;
-    }
+  .process__main__text {
+    font-size: 42px;
+  }
 
-    .process__main__div {
-      margin-left: 40px;
-    }
+  .process__main__div {
+    margin-left: 40px;
+  }
+
+  .about__point__pattern {
+    margin-left: 120px;
+    padding-top: 30px;
+    margin-bottom: -50px;
+  }
 }
 
 @media screen and (max-width: 1350px) {
@@ -2018,6 +2047,10 @@ margin-top: 30px;
   .process__section__name {
     margin-left: 60px;
   }
+
+  .about__point__pattern {
+    margin-left: 50px;
+  }
 }
 
 @media screen and (max-width: 1090px) {
@@ -2044,6 +2077,9 @@ margin-top: 30px;
 
   .about__point__pattern {
     margin-left: 50px;
+    max-width: 220px;
+    padding-top: 40px;
+    margin-bottom: -20px;
   }
 
   .about__main__text {
@@ -2051,6 +2087,9 @@ margin-top: 30px;
     max-width: 600px;
   }
 
+  .about__main__text__div {
+    gap: 40px;
+  }
   .about__main__description {
     font-size: 17px;
     max-width: 400px;
@@ -2283,6 +2322,59 @@ margin-top: 30px;
     align-items: start;
     justify-content: center;
   }
+
+  .about__main__text {
+    font-size: 25px;
+  }
+
+  .about__section__name {
+    font-size: 18px;
+  }
+
+  .carousel__container {
+    width: 100%;
+  }
+
+  .swiper.swiper_container {
+    width: 100%;
+  }
+
+  .carousel__image {
+    min-width: 450px;
+  }
+
+  .swiper-slide {
+    min-width: 400px;
+  }
+
+  .swiper-slide-next {
+    min-width: 400px;
+  }
+
+  div.swiper-wrapper {
+    min-width: 100%;
+    overflow: visible;
+  }
+
+  .swiper .swiper_container .swiper-coverflow .swiper-3d .swiper-initialized .swiper-horizontal .swiper-watch-progress {
+    min-width: 1400px;
+    width: 120%;
+    overflow: visible;
+  }
+
+  .container .carousel__container {
+width: 1300px;
+overflow: visible;
+  }
+
+  div.container .carousel__container {
+    width: 1300px;
+    overflow: visible;
+  }
+
+  div.swiper-slide .swiper-slide-visible .swiper-slide-next > img {
+    min-width: 450px;
+  }
 }
 
 @media screen and (max-width: 980px) {
@@ -2446,9 +2538,9 @@ margin-top: 30px;
     max-width: 80px;
   }
 
-.process__step__description {
-  display: none;
-}
+  .process__step__description {
+    display: none;
+  }
 
   .process__step__description__small {
     display: block;
@@ -2469,11 +2561,9 @@ margin-top: 30px;
     margin-bottom: -10px;
   }
 
-
   .step__number__small {
     margin-top: -20px;
   }
-
 }
 
 @media screen and (max-width: 870px) {
@@ -2498,7 +2588,7 @@ margin-top: 30px;
 
   .question__main__span {
     font-size: 16px;
-  } 
+  }
 
   .questions__main__div {
     width: 75%;
@@ -2637,7 +2727,6 @@ margin-top: 30px;
   .process__section {
     margin-top: 180px;
   }
-
 }
 
 @media screen and (max-width: 750px) {
@@ -2682,7 +2771,6 @@ margin-top: 30px;
     justify-content: start;
     align-items: start;
   }
-
 
   .process__step__description__small {
     text-align: start;
@@ -2813,8 +2901,6 @@ margin-top: 30px;
   .bottom__carousel__section {
     margin-top: 105px;
   }
-
-  
 }
 
 @media screen and (max-width: 670px) {
@@ -2924,7 +3010,7 @@ margin-top: 30px;
   }
 
   .process__step__description__small {
-      width: 330px;
+    width: 330px;
   }
 
   .step__number__small {
@@ -3071,7 +3157,6 @@ margin-top: 30px;
   .process__section {
     padding-top: 40px;
   }
-
 }
 
 @media screen and (max-width: 520px) {
@@ -3120,7 +3205,7 @@ margin-top: 30px;
     width: 32px;
     height: 32px;
   }
-  
+
   .questions__main__title {
     font-size: 26px;
   }
@@ -3130,7 +3215,7 @@ margin-top: 30px;
   }
 
   .questions__main__div {
-margin-left: 15px;
+    margin-left: 15px;
   }
 
   .questions__main__title {
@@ -3188,7 +3273,6 @@ margin-left: 15px;
   .bottom__carousel__section {
     margin-top: 90px;
   }
-  
 }
 
 @media screen and (max-width: 470px) {
@@ -3285,7 +3369,7 @@ margin-left: 15px;
   .question__1__text {
     font-size: 12px;
   }
-  
+
   .process__main__text {
     font-size: 24px;
   }
@@ -3302,7 +3386,6 @@ margin-left: 15px;
   .process__steps__col__div {
     gap: 40px;
   }
-
 }
 
 @media screen and (max-width: 430px) {
@@ -3494,11 +3577,9 @@ margin-left: 15px;
     margin-top: 85px;
   }
 
-
   .footer__section {
     margin-top: 130px;
   }
-
 }
 
 @media screen and (max-width: 390px) {
@@ -3536,7 +3617,7 @@ margin-left: 15px;
   .step__number__small {
     font-size: 35px;
   }
-  
+
   .process__step__description__small {
     max-width: 230px;
     font-size: 10px;

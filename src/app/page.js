@@ -717,7 +717,7 @@ export default function Home() {
                         onClick={() => {
                           setToggleMenu((prev) => !prev);
                         }}
-                        href="#services__section"
+                        href="#about__section"
                         className={`header__toggle__menu__item ${titillium.className}`}
                       >
                         About Us
@@ -726,7 +726,7 @@ export default function Home() {
                         onClick={() => {
                           setToggleMenu((prev) => !prev);
                         }}
-                        href="#process__section"
+                        href="#services__section"
                         className={`header__toggle__menu__item ${titillium.className}`}
                       >
                         Services
@@ -735,7 +735,7 @@ export default function Home() {
                         onClick={() => {
                           setToggleMenu((prev) => !prev);
                         }}
-                        href="#questions__section"
+                        href="#process__section"
                         className={`header__toggle__menu__item ${titillium.className}`}
                       >
                         Process
