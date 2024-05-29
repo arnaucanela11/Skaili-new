@@ -41,10 +41,12 @@ function Services() {
       {(translations) => (
         <section className="services__section" id="services__section">
           <div className="services__main__div">
-            <span className="services__section__name">OUR SERVICES</span>
+            <span className="services__section__name">
+              {translations.servicessectionname}
+            </span>
             <div className="services_main__text__div">
               <span className="services__main__text">
-                What we can offer to you?
+                {translations.servicesmaintext}
               </span>
             </div>
             <div className="services__targets__div__flex">
@@ -56,11 +58,9 @@ function Services() {
                   ></Image>
                   <div className="services__target__titles__div">
                     <span className="services__target__subtitle">
-                      Web Development
+                      {translations.targetsubtitle1}
                     </span>
-                    <h2 className="services__target__title">
-                      Web Development
-                      (code tools) <span className="text-[#3B71FE]">.</span>
+                    <h2 className="services__target__title" dangerouslySetInnerHTML={{__html: translations.targettitle1}}>
                     </h2>
                   </div>
                   <ul className="services__target__ul">
@@ -94,17 +94,16 @@ function Services() {
                       </li>
                     ))}
                   </ul>
-                  <span className="services__ideal__span">
-                    Ideal for <span className="text-[#1F3C88]">mid/high</span>{" "}
-                    complex websites
+                  <span className="services__ideal__span" dangerouslySetInnerHTML={{__html: translations.idealspan1}}>
+                    
                   </span>
                   <div className="services__averages__div">
                     <div className="services__average__price">
-                      Average price: <span className="font-semibold">350€</span>
+                    {translations.averageprice} <span className="font-semibold">350€</span>
                     </div>
                     <div className="services__average__time">
-                      Average time:{" "}
-                      <span className="font-semibold">11 days</span>
+                      {translations.averageduration}
+                      <span className="font-semibold">{translations.duration1}</span>
                     </div>
                   </div>
                 </div>
@@ -115,13 +114,10 @@ function Services() {
                   ></Image>
                   <div className="services__target__titles__div">
                     <span className="services__target__subtitle">
-                      Web Development
+                      {" "}
+                      {translations.targetsubtitle1}
                     </span>
-                    <h2 className="services__target__title">
-                      Web Development With 
-                      CSM (<span className="underline">
-                        no code
-                      </span> tools) <span className="text-[#3B71FE]">.</span>
+                    <h2 className="services__target__title" dangerouslySetInnerHTML={{__html: translations.targettitle2}}>
                     </h2>
                   </div>
                   <ul className="services__target__ul">
@@ -155,17 +151,16 @@ function Services() {
                       </li>
                     ))}
                   </ul>
-                  <span className="services__ideal__span">
-                    Ideal for <span className="text-[#1F3C88]">low</span>{" "}
-                    complex websites
+                  <span className="services__ideal__span" dangerouslySetInnerHTML={{__html: translations.idealspan2}}>
+                    
                   </span>
                   <div className="services__averages__div">
                     <div className="services__average__price">
-                      Average price: <span className="font-semibold">200€</span>
+                    {translations.averageprice} <span className="font-semibold">200€</span>
                     </div>
                     <div className="services__average__time">
-                      Average time:{" "}
-                      <span className="font-semibold">8 days</span>
+                    {translations.averageduration}
+                      <span className="font-semibold">{translations.duration2}</span>
                     </div>
                   </div>
                 </div>
@@ -176,17 +171,12 @@ function Services() {
                   src={HandServices}
                 ></Image>
                 <div className="services__target__titles__div">
-                  <span className="services__target__subtitle">Web Design</span>
+                  <span className="services__target__subtitle">{translations.targetsubtitle2}</span>
                   <h2 className="services__target__title">
-                    Website
-                    Design <span className="text-[#3B71FE]">.</span>
+                    {translations.targettitle3} <span className="text-[#3B71FE]">.</span>
                   </h2>
                 </div>
-                <span className="services__design__description">
-                  Web Development services normally include a web design
-                  service, but{" "}
-                  <b>you can contract only the website design service</b> as
-                  well.
+                <span className="services__design__description" dangerouslySetInnerHTML={{__html: translations.designdescription}}>
                 </span>
                 <ul className="services__target__ul">
                   {services3.map((text, index) => (
@@ -221,10 +211,10 @@ function Services() {
                 </ul>
                 <div className="services__averages__div mt-2">
                   <div className="services__average__price">
-                    Average price: <span className="font-semibold">100€</span>
+                    {translations.averageprice} <span className="font-semibold">100€</span>
                   </div>
                   <div className="services__average__time">
-                    Average time: <span className="font-semibold">4 days</span>
+                  {translations.averageduration} <span className="font-semibold">{translations.duration3}</span>
                   </div>
                 </div>
               </div>

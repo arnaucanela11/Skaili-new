@@ -633,16 +633,16 @@ export default function Home() {
                 <div className="header__elements__div">
                   {/* Otros elementos de la cabecera */}
                   <a href="#about__section" className="footer__links__span">
-                    About Us
+                    {translations.headerelement1}
                   </a>
                   <a href="#services__section" className="footer__links__span">
-                    Services
+                  {translations.headerelement2}
                   </a>
                   <a href="#process__section" className="footer__links__span">
-                    Process
+                  {translations.headerelement3}
                   </a>
                   <a href="#questions__section" className="footer__links__span">
-                    {translations.headerelement3}
+                    {translations.headerelement4}
                   </a>
                   <button
                     className="footer__links__span"
@@ -661,7 +661,7 @@ export default function Home() {
                       toggleMenu ? "active" : ""
                     }`}
                   >
-                    Project Planner
+                    {translations.headerplannerbutton}
                     <svg
                       className="header__contact__svg"
                       width="20"
@@ -852,7 +852,7 @@ export default function Home() {
             </section>
             <div className="main__screen__text__div">
               <span className={`main__screen__title ${titillium.className}`}>
-                WE CREATE
+                {translations.maintitle1}
                 <div className="main__screen__title__second__line__div">
                   <a
                     href="#services__section"
@@ -876,7 +876,7 @@ export default function Home() {
                   <span
                     className={`main__screen__title__second__line__text ${IBM.className}`}
                   >
-                    THE BEST
+                    {translations.maintitle2}
                   </span>
                 </div>
                 <Typewriter words={words} />
@@ -898,9 +898,8 @@ export default function Home() {
                     />
                   </svg>
 
-                  <span className="main__screen__important__policy">
-                    Si no está satisfecho con el resultado, puede cancelar{" "}
-                    <span className="underline"> sin costo</span>.
+                  <span className="main__screen__important__policy" dangerouslySetInnerHTML={{__html: translations.mainpolicy}}>
+
                   </span>
                   <svg
                     width="20"
@@ -923,7 +922,7 @@ export default function Home() {
                       setContactForm(true);
                     }}
                   >
-                    Contact now
+                    {translations.maincontactbutton}
                     <svg
                       className="main__screen__contact__svg"
                       width="29"
@@ -946,13 +945,13 @@ export default function Home() {
                     </svg>
                   </button>
                   <span className={`main__screen__or ${titillium.className}`}>
-                    OR
+                  {translations.mainorspan}
                   </span>
                   <Link
                     href={"/contact"}
                     className="main__screen__planer__button"
                   >
-                    <span>Plan a project</span>
+                    <span>{translations.mainplannerbutton}</span>
                     <svg
                       className="main__screen__planner__svg"
                       width="20"

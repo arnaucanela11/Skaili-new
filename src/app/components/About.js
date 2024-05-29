@@ -8,42 +8,44 @@ import Carousel3 from "../assets/Carousel3.png";
 import Carousel4 from "../assets/Carousel4.png";
 import Carousel5 from "../assets/Carousel5.png";
 import Carousel6 from "../assets/Carousel6.png";
+import AboutPointsSmall from "../assets/AboutPointsSmall.png";
+import AboutCirclesSmall from "../assets/AboutCirclesSmall.png";
 import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import 'swiper/css/autoplay';
+import "swiper/css/autoplay";
 
 import {
   EffectCoverflow,
   Pagination,
   Navigation,
   Autoplay,
-  FreeMode
+  FreeMode,
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Translator from "./Translator";
 
 function About() {
   return (
+    <Translator> 
+      {(translations) => (
     <section className="about__main__section" id="about__section">
       <span className={`about__section__name ${poppins.className}`}>
-        WHO WE ARE?
+        {translations.aboutsectionname}
       </span>
       <div className="about__main__text__div">
-        <h2 className={`about__main__text ${poppins.className}`}>
-          We are a{" "}
-          <span className="text-[#3B71FE]">
-            digitalitzation agency in <br />
-            Barcelona
-          </span>{" "}
-          focused on helping businesses to achieve their{" "}
-          <span className="underline">digital transformation</span>
+        <h2 className={`about__main__text ${poppins.className}`} dangerouslySetInnerHTML={{__html: translations.abouttext1}}>
+          
+        </h2>
+        <h2 className={`about__main__text__small ${poppins.className}`}>
+          We are a <span className="text-[#3B71FE]">digitalitzation agency in <br/>Barcelona</span> that help businesses to
+          <br />achieve their digitalization
         </h2>
         <span className={`about__main__description ${poppins.className}`}>
-          Our team of digital product creators and Tch Bring Skilled will take
-          your idea to the next level.
+          {translations.abouttext2}
         </span>
       </div>
       <Image
@@ -52,7 +54,7 @@ function About() {
         className="about__point__pattern"
       />
       <div className="container carousel__container">
-      {/* <Swiper
+        {/* <Swiper
       effect={"coverflow"}
       grabCursor={true}
       centeredSlides={true}
@@ -116,64 +118,95 @@ function About() {
         }}></div>
       </div>
     </Swiper> */}
-          <Swiper
-        effect="coverflow"
-        grabCursor={true}
-        centeredSlides={true}
-        loop={true}
-        slidesPerView={2}
-        spaceBetween={-20} // Ajustar para el efecto deseado
-        autoplay={{
-          delay: 0, // Sin retraso para un desplazamiento continuo
-          disableOnInteraction: false, // Continuar auto-play incluso cuando el usuario interactúa
-        }}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0, // Ajusta el efecto de "stretch" para evitar separación
-          depth: 100,
-          modifier: 2.5,
-          slideShadows: false, // Desactiva las sombras de las diapositivas
-        }}
-        speed={2000} // Ajusta la velocidad del desplazamiento automático
-        pagination={{
-          el: ".swiper-pagination",
-          clickable: true,
-        }}
-        navigation={{
-          nextEl: ".my-custom-next",
-          prevEl: ".my-custom-prev",
-          clickable: true,
-        }}
-        modules={[Pagination, Navigation, Autoplay, EffectCoverflow]}
-        className="swiper_container"
-      >
-        <SwiperSlide>
-          <Image src={Carousel1} alt="slide_image" className="carousel__image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={Carousel5} alt="slide_image" className="carousel__image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={Carousel4} alt="slide_image" className="carousel__image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={Carousel2} alt="slide_image" className="carousel__image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={Carousel3} alt="slide_image" className="carousel__image" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={Carousel6} alt="slide_image" className="carousel__image" />
-        </SwiperSlide>
-        <div className="slider-controler">
-          <div className="swiper-pagination" style={{
-            marginTop: '20px',
-            position: 'relative'
-          }}></div>
-        </div>
-      </Swiper>
+    <Image src={AboutPointsSmall} alt="small__devices__points" className="about__points__small"/>
+    <Image src={AboutCirclesSmall} alt="small__devices__points" className="about__circles__small"/>
+        <Swiper
+          effect="coverflow"
+          grabCursor={true}
+          centeredSlides={true}
+          loop={true}
+          slidesPerView={2}
+          spaceBetween={10} // Ajustar para el efecto deseado
+          autoplay={{
+            delay: 0, // Sin retraso para un desplazamiento continuo
+            disableOnInteraction: false, // Continuar auto-play incluso cuando el usuario interactúa
+          }}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0, // Ajusta el efecto de "stretch" para evitar separación
+            depth: 100,
+            modifier: 2.5,
+            slideShadows: false, // Desactiva las sombras de las diapositivas
+          }}
+          speed={2000} // Ajusta la velocidad del desplazamiento automático
+          pagination={{
+            el: ".swiper-pagination",
+            clickable: true,
+          }}
+          navigation={{
+            nextEl: ".my-custom-next",
+            prevEl: ".my-custom-prev",
+            clickable: true,
+          }}
+          modules={[Pagination, Navigation, Autoplay, EffectCoverflow]}
+          className="swiper_container"
+        >
+          <SwiperSlide>
+            <Image
+              src={Carousel1}
+              alt="slide_image"
+              className="carousel__image"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Image
+              src={Carousel5}
+              alt="slide_image"
+              className="carousel__image"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Image
+              src={Carousel4}
+              alt="slide_image"
+              className="carousel__image"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Image
+              src={Carousel2}
+              alt="slide_image"
+              className="carousel__image"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Image
+              src={Carousel3}
+              alt="slide_image"
+              className="carousel__image"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Image
+              src={Carousel6}
+              alt="slide_image"
+              className="carousel__image"
+            />
+          </SwiperSlide>
+          <div className="slider-controler">
+            <div
+              className="swiper-pagination"
+              style={{
+                marginTop: "20px",
+                position: "relative",
+              }}
+            ></div>
+          </div>
+        </Swiper>
       </div>
     </section>
+    )}
+    </Translator>
   );
 }
 
