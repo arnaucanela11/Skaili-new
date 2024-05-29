@@ -17,6 +17,11 @@ function Footer() {
                 <h2 className={`footer__main__title ${poppins.className}`}>
                   DISCOVER NEW LIMITS FOR YOUR BUSINESS
                 </h2>
+                <h2
+                    className={`footer__main__title__small ${poppins.className}`}
+                  >
+                    NEW LIMITS FOR YOUR BUSINESS
+                  </h2>
                 <a className="footer__title__circle" href="#main__screen">
                   <svg
                   className="footer__circle__svg"
@@ -38,6 +43,10 @@ function Footer() {
                 profesional web solutions around the world. ¡All ready to do
                 your business more scalable!
               </span>
+              <span className="footer__main__description__small">
+                  Skaili agency is a digitalitzation agency that offers
+                  profesional web solutions around the world.
+                </span>
               <div className="footer__buttons__div">
                 <Link href={"/contact"} className="footer__contact__button">
                   Ask for a quote
