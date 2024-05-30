@@ -16,6 +16,7 @@ import "./contact.css";
 import { poppins } from "../page";
 import Footer from "../components/Footer";
 import { titillium } from "../page";
+import useTranslation from "../hooks/useTranslation";
 
 const serviceOptions = [
   "Web Development with CSM (no code tools)",
@@ -25,6 +26,16 @@ const serviceOptions = [
   "Others (explain us in the message section)",
   "Content writting",
 ];
+
+const translatedServiceOptions = (translations) => [
+  translations.webDevelopmentNoCode,
+  translations.seo,
+  translations.webDevelopmentCode,
+  translations.webDesign,
+  translations.othersExplain,
+  translations.contentWriting,
+];
+
 
 const loginSchema = yup.object().shape({
   name: yup.string().required("required"),
@@ -39,41 +50,6 @@ const loginSchema = yup.object().shape({
     .oneOf([true], "You have to accepts the privacy policy."),
 });
 
-const plannerSchema = yup.object().shape({
-  name: yup.string().required("required"),
-  surname: yup.string(),
-  company: yup.string(),
-  email: yup
-    .string()
-    .email("the email format is not correct")
-    .required("required"),
-  timeline: yup.date().required("You have to define a launch date."),
-  inferiorlimit: yup.number().required("You have to define a budget."),
-  superiorlimit: yup.number().required("You have to define a budget."),
-  services: yup
-    .array()
-    .of(
-      yup.string().oneOf(serviceOptions, "Invalid service") // Solo valores específicos
-    )
-    .min(1, "At least one service must be selected") // Requiere al menos uno
-    .required("You have to define at least one service"), // El array debe ser obligatorio
-  message: yup.string().required("required"),
-  file: yup.mixed(),
-  // .test("fileType", "Only pdf or docx files are allowed", (value) => {
-  //   if (!value) return false; // Si no hay archivo, devuelve falso
-  //   const allowedTypes = [
-  //     "application/pdf",
-  //     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  //     "application/msword",
-  //   ];
-  //   return allowedTypes.includes(value.type); // Verifica el tipo de archivo
-  // })
-  // .test("fileSize", "File is too large", (value) => {
-  //   if (!value) return true; // Si no hay archivo, no verifica tamaño
-  //   const maxSize = 10 * 1024 * 1024; // Máximo 5 MB
-  //   return value.size <= maxSize; // Verifica el tamaño del archivo
-  // }),
-});
 
 const initailaStateFull = {
   name: "",
@@ -141,6 +117,44 @@ function page() {
   const [contactForm, setContactForm] = useState(false);
 
   const totalSteps = 4;
+
+  const translations = useTranslation();
+
+  const plannerSchema = yup.object().shape({
+    name: yup.string().required("required"),
+    surname: yup.string(),
+    company: yup.string(),
+    email: yup
+      .string()
+      .email("the email format is not correct")
+      .required("required"),
+    timeline: yup.date().required("You have to define a launch date."),
+    inferiorlimit: yup.number().required("You have to define a budget."),
+    superiorlimit: yup.number().required("You have to define a budget."),
+    services: yup
+      .array()
+      .of(
+        yup.string().oneOf(translatedServiceOptions(translations), "Invalid service")
+      )
+      .min(1, "At least one service must be selected") // Requiere al menos uno
+      .required("You have to define at least one service"), // El array debe ser obligatorio
+    message: yup.string().required("required"),
+    file: yup.mixed(),
+    // .test("fileType", "Only pdf or docx files are allowed", (value) => {
+    //   if (!value) return false; // Si no hay archivo, devuelve falso
+    //   const allowedTypes = [
+    //     "application/pdf",
+    //     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    //     "application/msword",
+    //   ];
+    //   return allowedTypes.includes(value.type); // Verifica el tipo de archivo
+    // })
+    // .test("fileSize", "File is too large", (value) => {
+    //   if (!value) return true; // Si no hay archivo, no verifica tamaño
+    //   const maxSize = 10 * 1024 * 1024; // Máximo 5 MB
+    //   return value.size <= maxSize; // Verifica el tamaño del archivo
+    // }),
+  });
 
   const handleSubmitContactFull = async (values, { resetForm }) => {
     if (!values.company) {
@@ -569,26 +583,32 @@ function page() {
                 />
               </a>
               <div className="header__elements__div header__elements__div__project">
-                <a className="footer__links__span" href="/#about__section">
-                  About us
-                </a>
-                <a className="footer__links__span" href="/#services__section">
-                  {translations.headerelement1}
-                </a>
-                <a href="/#process__section" className="footer__links__span">
-                  {translations.headerelement2}
-                </a>
-                <a className="footer__links__span" href="/#questions__section">
-                  {translations.headerelement3}
-                </a>
-                <button
-                  className="footer__links__span"
-                  onClick={() => {
-                    setContactForm(true);
-                  }}
-                >
-                  {translations.contactbutton}
-                </button>
+              <a href="#about__section" className="footer__links__span">
+                      {translations.headerelement1}
+                    </a>
+                    <a
+                      href="#services__section"
+                      className="footer__links__span"
+                    >
+                      {translations.headerelement2}
+                    </a>
+                    <a href="#process__section" className="footer__links__span">
+                      {translations.headerelement3}
+                    </a>
+                    <a
+                      href="#questions__section"
+                      className="footer__links__span"
+                    >
+                      {translations.headerelement4}
+                    </a>
+                    <button
+                      className="footer__links__span"
+                      onClick={() => {
+                        setContactForm(true);
+                      }}
+                    >
+                      {translations.contactbutton}
+                    </button>
               </div>
               <div className="small__devices__buttons__div">
                 <a href="/" className={`header__contact__button__project ${toggleMenu ? 'toggle-active' : ''}`}>
@@ -796,17 +816,16 @@ function page() {
             </div>
           </section>
           <section className="project__section">
-            <span className="project__section__name">PROJECT PLANNER</span>
+            <span className="project__section__name">{translations.projectsectionname}</span>
             <div className="project__main__text__div">
-              <h2 className={`project__main__text ${poppins.className}`}>
-                <span className="text-[#3B71FE]">Plan</span> Your project with
-                us
+              <h2 className={`project__main__text ${poppins.className}`} dangerouslySetInnerHTML={{__html: translations.projecttitle}}>
+
               </h2>
               <span
                 className={`project__main__description ${poppins.className}`}
               >
-                Our team of digital product creators and Tch Bring Skilled will
-                take your idea to the next level.
+                {translations.projectsubtitle}
+                
               </span>
             </div>
             <div className="project__main__div">
@@ -829,7 +848,7 @@ function page() {
                   {/* Indicador del paso actual */}
                   <div className="project__step__div">
                     <div className="step-indicator">
-                      Step {currentStep} of {totalSteps}
+                      {translations.step} {currentStep} {translations.of} {totalSteps}
                     </div>
 
                     {/* Barra de progreso */}
@@ -870,7 +889,8 @@ function page() {
                             <h3
                               className={`${poppins.className} project__title__step`}
                             >
-                              Let's start at the very beginning
+                              {translations.step1title}
+                              
                             </h3>
                             {/* Form fields for step 1 */}
                             <div className="name__fields__div">
@@ -926,14 +946,14 @@ function page() {
                                 name="surname"
                                 type="text"
                                 className="name__field text"
-                                placeholder={`Surname`}
+                                placeholder={`${translations.formplaceholder2}`}
                               />
                             </div>
                             <Field
                               name="company"
                               type="text"
                               className="name__field text"
-                              placeholder={`${translations.formplaceholder2}`}
+                              placeholder={`${translations.formplaceholder3}`}
                             />
                             <div className="tooltip-container">
                               {validationAttempted && (
@@ -976,7 +996,7 @@ function page() {
                                 name="email"
                                 type="text"
                                 className="name__field text"
-                                placeholder={`${translations.formplaceholder3}`}
+                                placeholder={`${translations.formplaceholder4}`}
                               />
                             </div>
                           </div>
@@ -986,14 +1006,16 @@ function page() {
                             <h3
                               className={`${poppins.className} project__title__step`}
                             >
-                              Let’s talk budget & timelines
+                            
+                              {translations.step2title}
                             </h3>
                             {/* Form fields for step 1 */}
                             <div className="project__timeline__div">
                               {/* <label  className="field__label">Name*</label> */}
                               <div className="flex flex-col justify-start gap-3 w-fit">
                                 <span className="project__timeline__span">
-                                  I want to launch my project on:
+                                  {translations.timelinespan}
+                                  
                                 </span>
                               </div>
                               {/* <label className="field__label">Company (optional)</label> */}
@@ -1044,7 +1066,8 @@ function page() {
                             </div>
                             <div className="project__timeline__div">
                               <span className="project__timeline__span">
-                                My budget is between:
+                              
+                                {translations.budgetspan1}
                               </span>
 
                               <div className="tooltip-container">
@@ -1089,14 +1112,15 @@ function page() {
                                     name="inferiorlimit"
                                     type="number"
                                     className="name__field" // Campo de entrada para el 70%
-                                    placeholder="Inferior limit"
+                                    placeholder={`${translations.formplaceholder5}`}
                                   />
                                   <span className="currency-symbol">€</span>{" "}
                                   {/* Simbolo de moneda */}
                                 </div>
                               </div>
                               <span className="project__timeline__span">
-                                and
+                              
+                                {translations.budgetspan2}
                               </span>
 
                               <div className="tooltip-container">
@@ -1141,7 +1165,7 @@ function page() {
                                     name="superiorlimit"
                                     type="number"
                                     className="name__field" // Campo de entrada para el 70%
-                                    placeholder="Superior limit"
+                                    placeholder={`${translations.formplaceholder6}`}
                                   />
                                   <span className="currency-symbol">€</span>{" "}
                                   {/* Simbolo de moneda */}
@@ -1155,7 +1179,7 @@ function page() {
                             <h3
                               className={`${poppins.className} project__title__step`}
                             >
-                              What services do you require?
+                              {translations.step3title}
                             </h3>
                             {/* Form fields for step 1 */}
                             <div className="project__services__div">
@@ -1166,7 +1190,7 @@ function page() {
                                   <div className="service-grid">
                                     {" "}
                                     {/* El grid para los checkboxes */}
-                                    {serviceOptions.map((service, index) => (
+                                    {translatedServiceOptions(translations).map((service, index) => (
                                       <div
                                         key={index}
                                         className="service-checkbox"
@@ -1245,7 +1269,8 @@ function page() {
                             <h3
                               className={`${poppins.className} project__title__step`}
                             >
-                              Give us the details!
+                              {translations.step4title}
+                              
                             </h3>
                             {/* Form fields for step 1 */}
                             <div className="project__details__div">
@@ -1290,7 +1315,7 @@ function page() {
                                   as="textarea"
                                   name="message"
                                   className="project__message__field"
-                                  placeholder={`Provide a summary of your project`}
+                                  placeholder={`${translations.formplaceholder7}`}
                                 />
                               </div>
                               {/* <div className="project__details__file__div">
@@ -1319,7 +1344,8 @@ function page() {
                               className="project__step__buttons__prev"
                               onClick={handlePrevious}
                             >
-                              Previous
+                              
+                              {translations.prev}
                             </button>
                           )}
                           {currentStep < totalSteps && (
@@ -1329,7 +1355,7 @@ function page() {
                                 handleNext(validateForm, setTouched)
                               }
                             >
-                              Next{" "}
+                              {translations.next}
                               <svg
                                 width="24"
                                 height="24"

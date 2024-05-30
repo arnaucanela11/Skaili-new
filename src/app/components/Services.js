@@ -5,6 +5,7 @@ import Translator from "./Translator";
 import Rocket from "../assets/RocketServices.png";
 import PCServices from "../assets/PCServices.png";
 import HandServices from "../assets/HandServices.png";
+import useTranslation from "../hooks/useTranslation";
 
 const services1 = [
   "Build by a profesional developer",
@@ -36,6 +37,34 @@ const services3 = [
 ];
 
 function Services() {
+  const translations = useTranslation();
+
+  const translatedServices1 = [
+    translations.buildByProfessionalDeveloper,
+    translations.buildWithModernWebTools,
+    translations.scalableAndResponsive,
+    translations.seoFriendly,
+    translations.adaptToComplementaryNeeds,
+    translations.domainAndHostingManagement,
+    translations.unlimitedPossibilities,
+  ];
+
+  const translatedServices2 = [
+    translations.buildByProfessionalDeveloper,
+    translations.buildWithCSM,
+    translations.scalableAndResponsive,
+    translations.seoFriendly,
+    translations.cheaperService,
+    translations.domainAndHostingManagement,
+  ];
+
+  const translatedServices3 = [
+    translations.madeByProfessionalDesigner,
+    translations.fullResponsive,
+    translations.followingPersonalNeeds,
+    translations.mainlyWithFigma,
+    translations.possibilityOf3DTools,
+  ];
   return (
     <Translator>
       {(translations) => (
@@ -64,7 +93,7 @@ function Services() {
                     </h2>
                   </div>
                   <ul className="services__target__ul">
-                    {services1.map((text, index) => (
+                    {translatedServices1.map((text, index) => (
                       <li className="services__target__li">
                         <svg
                           width="16"
@@ -121,7 +150,7 @@ function Services() {
                     </h2>
                   </div>
                   <ul className="services__target__ul">
-                    {services2.map((text, index) => (
+                    {translatedServices2.map((text, index) => (
                       <li className="services__target__li">
                         <svg
                           width="16"
@@ -179,7 +208,7 @@ function Services() {
                 <span className="services__design__description" dangerouslySetInnerHTML={{__html: translations.designdescription}}>
                 </span>
                 <ul className="services__target__ul">
-                  {services3.map((text, index) => (
+                  {translatedServices3.map((text, index) => (
                     <li className="services__target__li">
                       <svg
                         width="16"
