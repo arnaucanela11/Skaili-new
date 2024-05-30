@@ -45,7 +45,8 @@ function Questions() {
               <div className="questions__title__div">
                 <span className="questions__section__name">FAQs</span>
                 <h2 className="questions__main__title">
-                  FREQUENTLY ASKED QUESTIONS
+                  {translations.faqstitle}
+                
                 </h2>
               </div>
               <div className="questions__div">
@@ -433,11 +434,11 @@ function Questions() {
               </div>
               <div className="questions__ask__div">
                 <h3 className="questions__ask__title">
-                  ANY OTHER
-                  QUESTION? LET US KNOW
+                  {translations.faqsasktitle}
                 </h3>
                 <Link href={"/contact"} className="questions__ask__button">
-                  Ask a question
+                  {translations.faqsaskbutton}
+                
                   <svg
                   className="questions__ask__svg"
                     width="24"
