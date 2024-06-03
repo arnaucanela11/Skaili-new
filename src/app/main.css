@@ -98,6 +98,16 @@
 }
 
 .contact__cristal__div {
+  width: 50%; /* Ocupa la otra mitad de la pantalla */
+  height: 100vh; /* Ocupa toda la altura */
+  backdrop-filter: blur(10px); /* Efecto acristalado */
+  -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
+  background: rgba(255, 255, 255, 0.3); /* Fondo semi-transparente */
+  transition: opacity 0.5s ease-in-out; /* Para transición suave */
+}
+
+
+.contact__cristal__div__menu {
   width: 100%; /* Ocupa la otra mitad de la pantalla */
   height: 100vh; /* Ocupa toda la altura */
   backdrop-filter: blur(10px); /* Efecto acristalado */
@@ -108,7 +118,7 @@
 
 .contact__main__div__big {
   background: #fff;
-  width: 100vw;
+  width: 50%;
   height: 100vh;
 }
 
@@ -119,9 +129,10 @@
   display: flex;
   flex-direction: row;
   justify-content: end;
-  padding-right: 40px;
+  padding-right: 30px;
   margin-top: 30px;
 }
+
 
 .contact__main__div {
   width: 100%;
@@ -599,6 +610,11 @@
 
 .active {
   background: #ffffff;
+  color: #0b0b21;
+}
+
+.active > .header__contact__svg {
+  fill: #05143a;
 }
 
 .header__toggle__menu__big__div {
@@ -661,7 +677,7 @@
   }
 }
 
-@media screen and (max-width: 1180px) {
+@media screen and (max-width: 1250px) {
   .header__elements__div {
     display: none; /* Oculta la navegación en pantallas más pequeñas */
   }
@@ -677,6 +693,12 @@
     display: block; /* Muestra el botón en pantallas más pequeñas */
   }
 
+  .small__devices__buttons__div {
+    margin-right: -35px;
+  }
+}
+
+@media screen and (max-width: 1180px) {
   .privacy__rights {
     gap: 20px;
   }
@@ -704,7 +726,7 @@
 
 @media screen and (max-width: 1080px) {
   .contact__main__div__big {
-    width: 130vw;
+    width: 70%;
   }
 
   .footer__main__title {
@@ -728,6 +750,10 @@
   .footer__email__span {
     flex-direction: column;
   }
+
+  .small__devices__buttons__div {
+    margin-right: -25px;
+  }
 }
 
 @media screen and (max-width: 980px) {
@@ -736,7 +762,7 @@
   }
 
   .contact__main__div__big {
-    width: 135vw;
+    width: 80%;
   }
 
   .contact__bottom__title {
@@ -781,7 +807,7 @@
 
 @media screen and (max-width: 900px) {
   .contact__main__div__big {
-    width: 160vw;
+    width: 85%;
   }
 
   .tech__wrapper {
@@ -865,7 +891,7 @@
 
 @media screen and (max-width: 850px) {
   .contact__main__div__big {
-    width: 210vw;
+    width: 120vw;
   }
 
   .footer__bottom__div {
@@ -889,16 +915,17 @@
   .tech__wrapper {
     height: 120px;
   }
+
+  .small__devices__buttons__div {
+    margin-right: -15px;
+  } 
 }
 
 @media screen and (max-width: 760px) {
   .contact__main__div__big {
-    width: 100%;
+    width: 2800vw;
   }
 
-  .contact__cristal__div {
-    width: 0%;
-  }
 
   .contact__main__title {
     font-size: 32px;
@@ -964,6 +991,15 @@
   .contact__bottom__description {
     max-width: 100%;
     font-size: 12px;
+  }
+
+  .small__devices__buttons__div {
+    gap: 15px;
+    margin-right: -10px;
+  }
+
+  .contact__main__title {
+    font-size: 30px;
   }
 }
 
@@ -1038,15 +1074,11 @@
   }
 
   .contact__main__title {
-    font-size: 29px;
+    font-size: 28px;
   }
 
   .contact__main__div__1 {
     gap: 10px;
-  }
-
-  .contact__main__title {
-    font-size: 26px;
   }
 
   .name__field {
@@ -1065,6 +1097,11 @@
   .about-partners_logo_list_item__HqkHi {
     width: 200px;
   }
+
+}
+
+.planificador__small {
+  display: none;
 }
 
 @media screen and (max-width: 520px) {
@@ -1094,6 +1131,23 @@
 
   .contact__planner__button {
     font-size: 12px;
+    text-align: center;
+  }
+
+  .small__devices__buttons__div {
+    margin-right: -5px;
+  } 
+
+  .header__nav__toggle__button {
+    scale: 0.95;
+  }
+
+  .planificador {
+    display: none;
+  }
+
+  .planificador__small {
+    display: block;
   }
 }
 
@@ -1176,7 +1230,6 @@
     gap: 10px;
   }
 
-
   .footer__bottom__div {
     gap: 20px;
     width: 100%;
@@ -1226,6 +1279,10 @@
 
   .about-partners_logo_list_item__HqkHi > img {
     scale: 0.6;
+  }
+
+  .header__toggle__menu__div {
+    width: 100%;
   }
 }
 

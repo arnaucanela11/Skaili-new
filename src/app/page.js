@@ -170,16 +170,6 @@ const Step = ({ step, index }) => {
     },
   };
 
-  const variants1 = {
-    hidden: { opacity: 0, x: 100, z: -1, background: "#fff" },
-    visible: {
-      opacity: 1,
-      z: 1,
-      x: 0,
-      transition: { duration: 0.4, ease: "linear" },
-    },
-  };
-
   return (
     <div key={index} className="process__main__target__div">
       <motion.div
@@ -212,7 +202,7 @@ const Step = ({ step, index }) => {
             />
             <span
               className={`process__step__description__small ${poppins.className}`}
-              dangerouslySetInnerHTML={{ __html: step.description__small }}
+              dangerouslySetInnerHTML={{ __html: translations[step.description__small] }}
             />
           </div>
         </div>
@@ -350,20 +340,12 @@ export default function Home() {
                     <div className="contact__main__div">
                       <h2
                         className={`contact__main__title ${poppins.className}`}
-                      >
-                        Provideo below your{" "}
-                        <span className="text-[#3B71FE]">
-                          contact <br />
-                          data
-                        </span>{" "}
-                        and explain your idea:
-                      </h2>
+                        dangerouslySetInnerHTML={{__html: translations.contactformtitle}}
+                      />
                       <h2
                         className={`contact__main__title__small ${poppins.className}`}
-                      >
-                        Provideo below your{" "}
-                        <span className="text-[#3B71FE]">contact data</span>{" "}
-                      </h2>
+                        dangerouslySetInnerHTML={{__html: translations.contactformtitlesmall}}
+                      />
                       <Formik
                         validationSchema={loginSchema}
                         initialValues={initailaState}
@@ -433,7 +415,7 @@ export default function Home() {
                                 name="company"
                                 type="text"
                                 className="name__field text"
-                                placeholder={`Company name`}
+                                placeholder={`${translations.formplaceholder3}`}
                               />
                             </div>
                             {/* <label className="field__label">Company (optional)</label> */}
@@ -477,7 +459,7 @@ export default function Home() {
                                 name="email"
                                 type="text"
                                 className="name__field text"
-                                placeholder={`${translations.formplaceholder3}`}
+                                placeholder={`${translations.formplaceholder4}`}
                               />
                             </div>
 
@@ -520,7 +502,7 @@ export default function Home() {
                                 as="textarea"
                                 name="message"
                                 className="message__field"
-                                placeholder={`Provide a summary of your project`}
+                                placeholder={`${translations.formplaceholder7}`}
                               />
                             </div>
                             <div className="privacy__rights">
@@ -604,24 +586,26 @@ export default function Home() {
                         <h4
                           className={`${poppins.className} contact__bottom__title`}
                         >
-                          OR
+                          {translations.mainorspan}
                         </h4>
                         <span
                           className={`${poppins.className} contact__bottom__description`}
+                          dangerouslySetInnerHTML={{__html: translations.contactplannerdescription}}
                         >
-                          If you know most general espects of the project you
+                          {/* If you know most general espects of the project you
                           want, you can{" "}
                           <span className="font-semibold">
                             visit our project planner for more refined
                             step-by-step prrocess.
-                          </span>
+                          </span> */}
                         </span>
                       </div>
                       <a
                         href={"/projectplanner"}
                         className={`${poppins.className} contact__planner__button`}
                       >
-                        Project Planner
+                        <span className="planificador">{translations.planificator}</span>
+                        <span className="planificador__small">{translations.planificatorsmall}</span>
                       </a>
                     </div>
                   </div>
@@ -738,7 +722,7 @@ export default function Home() {
                   }
                 >
                   <div
-                    className="contact__cristal__div"
+                    className="contact__cristal__div__menu"
                     onClick={() => {
                       setContactForm(false);
                     }}
