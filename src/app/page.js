@@ -773,7 +773,7 @@ export default function Home() {
                           }}
                           className={`header__toggle__menu__item ${titillium.className}`}
                         >
-                          Contact
+                          {translations.contactbutton} 
                         </button>
                       </div>
                       <div className="m-auto w-[90%] h-[0.1px] bg-white" />
