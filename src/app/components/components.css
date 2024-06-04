@@ -3859,6 +3859,17 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   .carousel__image {
     min-width: 280px;
   }
+
+  .process__step__div__before {
+    top: -2px;
+    right: -2px;
+
+  }
+  
+  .process__step__div__after {
+    bottom: -2px;
+    left: -2px;
+  }
 }
 
 @media screen and (max-width: 430px) {
@@ -4111,6 +4122,10 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     font-size: 11px;
     padding: 9px 15px;
   }
+
+  .main__screen__or {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 390px) {
@@ -4201,9 +4216,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     font-size: 11px;
   }
 
-  .main__screen__or {
-    display: none;
-  }
 
   .main__screen__contact__button {
     padding: 4px 12px;
