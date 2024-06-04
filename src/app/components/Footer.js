@@ -46,7 +46,10 @@ function Footer() {
                   profesional web solutions around the world.
                 </span>
                 <div className="footer__buttons__div">
-                  <Link href={"/contact"} className="footer__contact__button">
+                  <button className="footer__contact__button"
+                                        onClick={() => {
+                                          setContactForm(true);
+                                        }}>
                     {translations.footerquote}
                     <svg
                       width="29"
@@ -67,7 +70,7 @@ function Footer() {
                         </clipPath>
                       </defs>
                     </svg>
-                  </Link>
+                  </button>
                   {/* <span className={`${titillium.className} footer__or__span`}>OR</span> */}
                   {/* <Link href={"/contact"} className="footer__planer__button">
                     {translations.footerplanner}
