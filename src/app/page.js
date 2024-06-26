@@ -969,7 +969,7 @@ export default function Home() {
                       {translations.mainorspan}
                     </span>
                     <Link
-                      href={"/projectplanner"}
+                    href={"/projectplanner"}
                       className="main__screen__planer__button"
                     >
                       <span>{translations.mainplannerbutton}</span>
