@@ -436,7 +436,8 @@ function Questions() {
                 <h3 className="questions__ask__title">
                   {translations.faqsasktitle}
                 </h3>
-                <Link href={"/contact"} className="questions__ask__button">
+
+                <button className="questions__ask__button">
                   {translations.faqsaskbutton}
                 
                   <svg
@@ -455,7 +456,7 @@ function Questions() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                </Link>
+                </button>
               </div>
             </div>
           </section>
