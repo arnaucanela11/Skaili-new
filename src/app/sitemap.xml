@@ -1,20 +1,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.skaili.com</loc>
-    <lastmod>2024-03-28T15:02:24.021Z</lastmod>
+    <lastmod>2024-06-26T15:02:24.021Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>https://www.skaili.com/projectplanner</loc>
-    <lastmod>2024-03-28T15:02:24.021Z</lastmod>
+    <lastmod>2024-06-26T15:02:24.021Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.skaili.com/dataprotection</loc>
-    <lastmod>2024-03-28T15:02:24.021Z</lastmod>
+    <lastmod>2024-06-26T15:02:24.021Z</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.2</priority>
   </url>
 </urlset>
