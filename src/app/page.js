@@ -1117,8 +1117,8 @@ export default function Home() {
                     <div className="ml-5 mb-5 mt-2 w-[90%]">
                       <span
                         className={`question__1__text ${poppins.className}`}
+                        dangerouslySetInnerHTML={{__html: translations.text1}}
                       >
-                        {translations.text1}
                       </span>
                     </div>
                   ) : (
@@ -1174,8 +1174,8 @@ export default function Home() {
                     <div className="ml-5 mb-5 mt-2 w-[90%]">
                       <span
                         className={`question__1__text ${poppins.className}`}
+                        dangerouslySetInnerHTML={{__html: translations.text2}}
                       >
-                        {translations.text2}
                       </span>
                     </div>
                   ) : (
@@ -1183,7 +1183,7 @@ export default function Home() {
                   )}
                   <div className="bg-[#ffffffa0] border-[#ffffffa0] h-[0.5px] w-[100%]" />
                 </div>
-                <div
+                {/* <div
                   className="question__div"
                   onClick={() =>
                     setQuestion((prev) => {
@@ -1239,7 +1239,7 @@ export default function Home() {
                     ""
                   )}
                   <div className="bg-[#ffffffa0] border-[#ffffffa0] h-[0.5px] w-[100%]" />
-                </div>
+                </div> */}
                 {/* <div
                 className="question__div"
                 onClick={() =>
@@ -1384,8 +1384,8 @@ export default function Home() {
                     <div className="ml-5 mb-5 mt-2 w-[90%]">
                       <span
                         className={`question__1__text ${poppins.className}`}
+                        dangerouslySetInnerHTML={{__html: translations.text6}}
                       >
-                        {translations.text6}
                       </span>
                     </div>
                   ) : (
@@ -1441,8 +1441,8 @@ export default function Home() {
                     <div className="ml-5 mb-5 mt-2 w-[90%]">
                       <span
                         className={`question__1__text ${poppins.className}`}
+                        dangerouslySetInnerHTML={{__html: translations.text7}}
                       >
-                        {translations.text7}
                       </span>
                     </div>
                   ) : (

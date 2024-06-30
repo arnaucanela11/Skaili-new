@@ -519,7 +519,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   background-position: center;
   background-size: cover; /* Mantiene el tamaño del fondo ajustado */
   background-repeat: no-repeat;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
 }
 
 .services__main__div {
@@ -629,12 +629,24 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   gap: 14px;
 }
 
+.services__target__ul__a {
+  width: 100%;
+  margin-left: 10px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 14px;
+}
+
 .services__target__li {
   display: flex;
   align-items: center;
   gap: 6px; /* Espacio entre SVG y texto */
   /* width: fit-content no debería ser necesario si quieres que el texto pueda saltar de línea */
 }
+
 
 .services__target__li svg {
   width: 16px; /* Tamaño fijo para el SVG */
@@ -1542,6 +1554,27 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   margin-right: -80px;
 } */
 
+.services__alert__span {
+  color: #ffffffc7;
+  font-size: 15px;
+}
+
+.services__alert__div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  padding-top: 60px;
+  max-width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.services__alert__svg {
+  min-width: 28px;
+}
+
 @media screen and (max-width: 1600px) {
   .process__line__div {
     left: 21%;
@@ -1558,6 +1591,11 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
   .process__main__div {
     gap: 200px;
+  }
+  .services__alert__div {
+    gap: 5px;
+    max-width: 75%;
+    width: 75%;
   }
 }
 
@@ -2068,6 +2106,12 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     font-size: 27px;
   }
 
+  .services__alert__div {
+    gap: 10px;
+    max-width: 80%;
+    width: 80%;
+    text-align: start;
+  }
 }
 
 @media screen and (max-width: 1090px) {
@@ -2286,6 +2330,12 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     height: 750px;
     max-width: 310px;
   }
+  .services__alert__div {
+    gap: 10px;
+    max-width: 84%;
+    width: 84%;
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 1060px) {
@@ -2452,6 +2502,14 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     text-align: right;
     color: #0e0e2c;
     max-width: 600px;
+  }
+
+  .services__alert__div {
+    display: none;
+  }
+
+  .services__section {
+    padding-bottom: 80px;
   }
 }
 
@@ -3228,9 +3286,10 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     width: 140px;
   }
 
-  .services__target__ul > .services__target__li:nth-child(6) {
+  .services__target__ul__a > .services__target__li:nth-child(5) {
     display: none;
   }
+
 
   .main__screen__title {
     font-size: 72px;

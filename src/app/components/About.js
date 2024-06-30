@@ -40,9 +40,7 @@ function About() {
         <h2 className={`about__main__text ${poppins.className}`} dangerouslySetInnerHTML={{__html: translations.abouttext1}}>
           
         </h2>
-        <h2 className={`about__main__text__small ${poppins.className}`}>
-          We are a <span className="text-[#3B71FE]">digitalitzation agency in <br/>Barcelona</span> that help businesses to
-          <br />achieve their digitalization
+        <h2 className={`about__main__text__small ${poppins.className}`} dangerouslySetInnerHTML={{__html: translations.abouttext1small}}>
         </h2>
         <span className={`about__main__description ${poppins.className}`}>
           {translations.abouttext2}

@@ -15,6 +15,7 @@
   "servicessectionname": "OUR SERVICES",
   "servicesmaintext": "What we can offer to you?",
   "abouttext1": "We are a <span style='color: #3B71FE'> digitalitzation agency in <br /> Barcelona </span> focused on helping businesses to achieve their <u className='underline'>digital transformation</u>",
+  "abouttext1small": "We are a <span style='color: #3B71FE'>digitalitzation agency in <br/>Barcelona</span> that help businesses to <br />achieve their digitalization",
   "abouttext2": "Our skilled team of digital product creators will bring your idea to the next level.",
   "servicestitle": "SERVICES",
   "targetsubtitle1": "Web development",
@@ -46,7 +47,7 @@
   "buildByProfessionalDeveloper": "Build by a profesional developer",
   "buildWithModernWebTools": "Build with moder web code tools (Next.js, Astro...)",
   "scalableAndResponsive": "Scalabel and responsive structure, and page speed optimization",
-  "domainAndHostingManagement": "Domain and hosting management and SSL certificate",
+  "domainAndHostingManagement": "<b><u>The price includes 1 year of domain and hosting, and the SSL certificate as well.</u></b>",
   "unlimitedPossibilities": "Almost unlimited possibilities for your website",
   "seoFriendly": "SEO friendly",
   "buildWithCSM": "Build with a CSM (like Wordpress)",
@@ -168,5 +169,6 @@
   "contactformtitlesmall": "Provideo below your <span style='color: #3B71FE'>contact data</span>",
   "contactplannerdescription": "If you know most general espects of the project you want, you can <b style='color: #020e2d'>visit our project planner for more refined step-by-step prrocess.</b>",
   "planificator": "Project planner",
-  "planificatorsmall": "Planner"
+  "planificatorsmall": "Planner",
+  "servicesalertspan": "Keep in mind that the prices and estimated times shown above are averages. Each specific project can have higher or lower prices and estimated times depending on the particular requirements."
 }
