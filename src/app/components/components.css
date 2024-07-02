@@ -1556,7 +1556,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
 .services__alert__span {
   color: #ffffffc7;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .services__alert__div {
@@ -1596,6 +1596,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     gap: 5px;
     max-width: 75%;
     width: 75%;
+    padding-top: 55px;
   }
 }
 
@@ -2336,6 +2337,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     width: 84%;
     font-size: 14px;
   }
+
 }
 
 @media screen and (max-width: 1060px) {
@@ -2391,6 +2393,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     height: fit-content;
     margin: auto;
     max-width: 50%;
+    display: none;
   }
 
   .questions__spline__animation__mid {
@@ -2505,11 +2508,11 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   }
 
   .services__alert__div {
-    display: none;
+    padding-top: 60px;
   }
 
   .services__section {
-    padding-bottom: 80px;
+    padding-bottom: 60px;
   }
 }
 
@@ -2682,6 +2685,16 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
   .main__screen__text__div {
     gap: 40px;
+  }
+
+  .services__alert__div {
+    padding-top: 40px;
+    width: 90%;
+    max-width: 90%;
+  }
+
+  .services__section {
+    padding-bottom: 40px;
   }
 }
 
@@ -3262,6 +3275,10 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   .swiper_container {
     margin-top: 20px;
   }
+
+  .services__alert__span {
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 650px) {
@@ -3779,6 +3796,18 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   .services__main__text {
     font-size: 24px;
   }
+
+  .services__alert__div {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding-top: 35px;
+  }
+
+  .services__alert__span {
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -4184,6 +4213,14 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
   .main__screen__or {
     display: none;
+  }
+
+  .services__alert__div {
+    display: none;
+  }
+
+  .services__section {
+    padding-bottom: 60px;
   }
 }
 

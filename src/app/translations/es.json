@@ -45,9 +45,9 @@
   "buildByProfessionalDeveloper": "Desarrollado por un profesional",
   "buildWithModernWebTools": "Desarrollado con herramientas modernas (Next.js, Astro...)",
   "domainAndHostingManagement": "<b><u>El precio incluye 1 año de dominio y alojamiento, así como certificado SSL</u></b>",
-  "scalableAndResponsive": "Estructura escalable, 'responsive' y velocidad de carga optimizada",
+  "scalableAndResponsive": "Estructura escalable, velocidad de carga y SEO optimizado",
   "unlimitedPossibilities": "Posibilidades casi ilimitadas para tu web",
-  "seoFriendly": "SEO optimizado",
+  "seoFriendly": "<u>Diseño profesional y 'responsive' incluido</u>",
   "buildWithCSM": "Desarrollado con un CSM (como Wordpress)",
   "cheaperService": "Servicio más económico (las herramientas sin código son menos complejas y más rápidas)",
   "adaptToComplementaryNeeds": "Nos podemos adaptar a necesidades complementarias (como bases de datos, back-end...)",
@@ -168,5 +168,5 @@
   "contactplannerdescription": "Si conoces más aspectos del proyecto que deseas, puedes <b style='color: #020e2d'>visitar nuestro planificador de proyectos para un proceso más detallado.</b>",
   "planificator": "Ver planificador",
   "planificatorsmall": "Planificador",
-  "servicesalertspan": "Ten en cuenta que el precio y tiempo estimado mostrados arriba son solo promedios. Cada proyecto específico puede tener un precio y un tiempo estimado más alto o más bajo dependiendo de los requisitos particulares."
+  "servicesalertspan": "Tenga en cuenta que el precio y el tiempo estimados son solo promedios. Cada proyecto puede variar según sus características específicas."
 }
