@@ -155,8 +155,8 @@ function Questions() {
                     <div className="ml-5 mb-5 mt-2 w-[90%]">
                       <span
                         className={`question__1__text ${poppins.className}`}
+                        dangerouslySetInnerHTML={{__html: text2}}
                       >
-                        {translations.text2}
                       </span>
                     </div>
                   ) : (
@@ -164,7 +164,7 @@ function Questions() {
                   )}
                   <div className="bg-[#ffffffa0] border-[#ffffffa0] h-[0.5px] w-[100%]" />
                 </div>
-                <div
+                {/* <div
                   className="question__div"
                   onClick={() =>
                     setQuestion((prev) => {
@@ -220,7 +220,7 @@ function Questions() {
                     ""
                   )}
                   <div className="bg-[#ffffffa0] border-[#ffffffa0] h-[0.5px] w-[100%]" />
-                </div>
+                </div> */}
                 {/* <div
                 className="question__div"
                 onClick={() =>
@@ -436,7 +436,8 @@ function Questions() {
                 <h3 className="questions__ask__title">
                   {translations.faqsasktitle}
                 </h3>
-                <Link href={"/contact"} className="questions__ask__button">
+
+                <button className="questions__ask__button">
                   {translations.faqsaskbutton}
                 
                   <svg
@@ -455,7 +456,7 @@ function Questions() {
                       stroke-linejoin="round"
                     />
                   </svg>
-                </Link>
+                </button>
               </div>
             </div>
           </section>
