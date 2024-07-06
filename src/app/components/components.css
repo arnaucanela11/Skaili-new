@@ -1,25 +1,23 @@
 .main__page__main__div {
   width: 100vw; /* Ancho completo de la ventana */
-  height: 100vh; /* Toda la altura de la ventana */
-  position: relative; /* Para establecer un contexto para el posicionamiento absoluto */
+  position: relative;
   z-index: 10;
 }
 
 .main__page__main__div__bg {
-  position: absolute; /* Permite posicionamiento absoluto dentro del padre */
-  top: 15px; /* Espacio desde la parte superior */
-  left: 15px; /* Espacio desde la izquierda */
-  right: 15px; /* Espacio desde la derecha */
-  bottom: 15px; /* Espacio desde la parte inferior */
+  position: relative; /* Permite posicionamiento absoluto dentro del padre */
   border-radius: 25px; /* Bordes redondeados */
   overflow: hidden; /* Evita desbordamientos */
   background-color: white; /* Color de fondo */
-  display: flex; /* Para alinear contenido */
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  overflow-y: auto;
   z-index: -1;
+  background: url(../assets/PosBG.jpg) no-repeat center center;
+  background-size: cover; /* O cover según tus necesidades */
+  min-height: fit-content;
+  margin: 15px; /* Añadir margen alrededor del div */
+  padding-bottom: 50px;
+  box-sizing: border-box; /* Incluir padding y borde en el tamaño total del elemento */
 }
+
 
 /* Configuración del contenido de spline para ocupar todo el espacio */
 spline-viewer {
@@ -28,16 +26,16 @@ spline-viewer {
   z-index: -1;
 }
 
+
 .header__section {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 99%;
   margin: auto;
-  margin-top: 15px;
-  padding-top: 20px;
+  padding-top: 30px;
   opacity: 1; /* Totalmente visible */
   transition: all 0.5s ease-in-out; /* Transición suave */
 }
@@ -220,16 +218,15 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 .main__screen__text__div {
   position: relative;
   border-radius: 10px; /* Bordes redondeados */
-  top: 55%; /* Alineación vertical (centra el div verticalmente) */
-  transform: translateY(-50%); /* Para centrar verticalmente */
   margin-left: 10px; /* Espacio para separar del borde izquierdo */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   gap: 30px;
-  padding-left: 2%;
+  padding-left: 3%;
   z-index: -1;
+  margin-top: 8.5%;
 }
 
 .main__screen__title {
@@ -240,6 +237,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   letter-spacing: 0px;
   color: #0e0e2c;
 }
+
 
 .main__screen__title__second__line__div {
   display: flex;
@@ -1857,6 +1855,19 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 }
 
 @media screen and (max-width: 1280px) {
+
+  .main__screen__title {
+    font-size: 130px;
+  }
+
+  .main__screen__title__second__line__text {
+    font-size: 135px;
+  }
+
+  .typewriter__span {
+    font-size: 130px;
+  }
+
   .about__point__pattern {
     margin-left: 140px;
     width: 240px;
@@ -2098,6 +2109,10 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     font-size: 125px;
   }
 
+  .main__page__main__div__bg {
+    padding-top: 40px;
+  }
+
   .typewriter__span {
     font-size: 125px;
   }
@@ -2304,6 +2319,11 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
   .main__screen__title {
     font-size: 110px;
+  }
+
+  .main__page__main__div__bg {
+    padding-top: 60px;
+    padding-bottom: 70px;
   }
 
   .typewriter__span {
@@ -2607,6 +2627,10 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     gap: 50px;
   }
 
+  .main__page__main__div__bg {
+    padding-top: 80px;
+  }
+
   .main__screen__title__second__line__text {
     font-size: 100px;
   }
@@ -2645,10 +2669,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
   .main__screen__text__div {
     top: 52%;
-  }
-
-  .main__page__main__div {
-    height: 100vh;
   }
 
   .services__target__li:first-child {
@@ -2905,6 +2925,10 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
   .main__screen__title {
     font-size: 95px;
+  }
+
+  .main__page__main__div__bg {
+    padding-top: 100px;
   }
 
   .typewriter__span {
@@ -3628,6 +3652,11 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     font-size: 60px;
   }
 
+  .main__page__main__div__bg {
+    padding-top: 120px;
+    padding-bottom: 100px;
+  }
+
   .typewriter__span {
     font-size: 60px;
   }
@@ -3831,9 +3860,13 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   }
 
   .main__screen__title {
-    margin-right: 5px;
+    margin-right: -10px;
     font-size: 55px;
     gap: 5px;
+  }
+
+  .main__page__main__div__bg {
+    padding-top: 140px;
   }
 
   .header__contact__button {
@@ -3966,13 +3999,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     max-width: 220px;
   }
 
-  .main__page__main__div__bg {
-    top: 10px;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-  }
-
   .header__section {
     margin-top: 10px;
   }
@@ -3998,8 +4024,13 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 
   .main__screen__title {
     font-size: 48px;
-    margin-left: 10px;
+    margin-left: 5px;
   }
+
+  .main__page__main__div__bg {
+    padding-top: 150px;
+  }
+
 
   .typewriter__span {
     font-size: 48px;
@@ -4135,6 +4166,9 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   .main__screen__title {
     font-size: 46px;
     gap: 6px;
+  }
+  .main__page__main__div__bg {
+    padding-top: 160px;
   }
 
   .typewriter__span {

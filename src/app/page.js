@@ -612,13 +612,6 @@ export default function Home() {
                   </div>
                 </div>
               </section>
-              <div className="main__page__main__div__bg">
-                <script
-                  type="module"
-                  src="https://unpkg.com/@splinetool/viewer@1.1.9/build/spline-viewer.js"
-                ></script>
-                <spline-viewer url="https://prod.spline.design/yxd7Ro5LO2T4ed11/scene.splinecode"></spline-viewer>
-              </div>
               <section
                 className={
                   isScrolled == 3
@@ -868,6 +861,12 @@ export default function Home() {
                   </div>
                 </div>
               </section>
+              <div className="main__page__main__div__bg">
+                {/* <script
+                  type="module"
+                  src="https://unpkg.com/@splinetool/viewer@1.1.9/build/spline-viewer.js"
+                ></script>
+                <spline-viewer url="https://prod.spline.design/yxd7Ro5LO2T4ed11/scene.splinecode"></spline-viewer> */}
               <div className="main__screen__text__div">
                 <span className={`main__screen__title ${titillium.className}`}>
                   {translations.maintitle1}
@@ -990,6 +989,7 @@ export default function Home() {
                     </Link>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
 
