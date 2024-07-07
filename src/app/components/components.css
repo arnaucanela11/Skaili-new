@@ -390,7 +390,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 }
 
 .main__screen__planer__button {
-  border: 1px #0e0e2c solid;
+  /* border: 1px #0e0e2c solid; */
   padding: 10px 15px;
   border-radius: 40px;
   font-weight: 500;
@@ -400,6 +400,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   align-items: center;
   gap: 10px;
   transition: all 0.3s ease;
+  background: #fff;
 }
 
 .main__screen__planer__button:hover {
@@ -3182,10 +3183,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
     width: 34px;
   }
 
-  .main__page__main__div {
-    height: 96vh;
-  }
-
   .main__screen__line {
     width: 90%;
     margin: auto;
@@ -3532,10 +3529,6 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   .main__screen__title__circle::before {
     width: 54px;
     height: 54px;
-  }
-
-  .main__page__main__div {
-    height: 92vh;
   }
 
   .main__screen__planer__button {

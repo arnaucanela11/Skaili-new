@@ -1001,6 +1001,7 @@
   .contact__main__title {
     font-size: 30px;
   }
+
 }
 
 .footer__main__title__small {
@@ -1201,13 +1202,19 @@
   }
 
   .tech__wrapper {
-    margin-top: 80px;
     height: 90px;
   }
 
   .about-partners_logo_list_item__HqkHi > img {
     scale: 0.65;
   }
+}
+
+
+@media screen and (max-width: 480px) {
+.tech__wrapper {
+margin-top: 90px;
+}
 }
 
 @media screen and (max-width: 450px) {
@@ -1286,7 +1293,9 @@
   .header__toggle__menu__div {
     width: 100%;
   }
+
 }
+
 
 @media screen and (max-width: 390px) {
   .small__devices__buttons__div {
@@ -1403,7 +1412,6 @@
   }
 
   .tech__wrapper {
-    margin-top: 70px;
     height: 90px;
   }
 
