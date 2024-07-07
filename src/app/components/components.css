@@ -1284,6 +1284,7 @@ transition: all 0.5s ease-in-out; /* Transición suave */
 }
 
 .footer__section {
+  position: relative;
   width: 98%;
   height: fit-content;
   margin: 15px auto;
@@ -4407,3 +4408,4 @@ transition: all 0.5s ease-in-out; /* Transición suave */
   display: none;
   }
 }
+
