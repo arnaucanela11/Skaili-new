@@ -600,6 +600,17 @@ export default function Home() {
                             step-by-step prrocess.
                           </span> */}
                         </span>
+                        <span
+                          className={`${poppins.className} contact__bottom__description__small`}
+                          dangerouslySetInnerHTML={{__html: translations.contactplannerdescriptionsmall}}
+                        >
+                          {/* If you know most general espects of the project you
+                          want, you can{" "}
+                          <span className="font-semibold">
+                            visit our project planner for more refined
+                            step-by-step prrocess.
+                          </span> */}
+                        </span>
                       </div>
                       <a
                         href={"/projectplanner"}

@@ -14,8 +14,9 @@ export const poppins = Poppins({
 
 export const metadata = {
   title: "Skaili Agency",
-  description: "Skaili is a digitalization agency focused on helping you achieve the digitalitzation of your business, in a time record with our specialized team.",
-  keywords: ["Digitalization agency", "Skaili", "Business Digitalization", "web creation agency", "web design agency", "web creation"]
+  description: "Skaili es una agencia de digitalización enfocada en ayudarte a lograr la digitalización de tu negocio en un tiempo récord con nuestro equipo especializado.",
+  keywords: ["Digitalization agency", "Skaili", "Business Digitalization", "web creation agency", "web design agency", "web creation", "agencia web", "agencia de desarrollo web", "agencia de diseño web"],
+  image: "./assets/MainImage.png"
 };
 
 export default function RootLayout({ children }) {

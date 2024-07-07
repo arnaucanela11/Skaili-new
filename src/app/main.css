@@ -1427,3 +1427,32 @@ margin-top: 90px;
     scale: 0.6;
   }
 }
+
+.contact__bottom__description__small {
+  display: none;
+}
+
+@media screen and (max-height: 725px) {
+  .contact__bottom__description__small {
+    display: block;
+    max-width: 420px;
+    font-size: 12px;
+  }
+
+  .contact__bottom__description {
+    display: none;
+  }
+  .contact__main__div__1 {
+    gap: 0px;
+  }
+}
+
+@media screen and (max-height: 690px) {
+  .contact__bottom__description__small {
+    font-size: 11px;
+  }
+
+  .contact__main__div__1 {
+    gap: 0px;
+  }
+}
