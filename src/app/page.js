@@ -530,7 +530,7 @@ export default function Home() {
                                 <span className="privacy__rights__span">
                                   {translations.formrights1}
                                   <Link
-                                    href={"/data_protection"}
+                                    href={"/dataprotection"}
                                     className="underline"
                                   >
                                     {translations.formrights2}
