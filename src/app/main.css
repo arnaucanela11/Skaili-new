@@ -923,7 +923,7 @@
 
 @media screen and (max-width: 760px) {
   .contact__main__div__big {
-    width: 2800vw;
+    width: 120000%;
   }
 
 
@@ -1270,7 +1270,9 @@
   }
 
   .contact__main__title__small {
-    font-size: 25px;
+    font-size: 28px;
+    width: 270px;
+    margin-top: -30px;
   }
 
   .tech__wrapper {
@@ -1367,8 +1369,9 @@
   }
 
   .contact__main__title__small {
-    font-size: 23px;
-    max-width: 300px;
+    font-size: 25px;
+    max-width: 250px;
+    margin-top: -40px;
   }
   .contact__main__div {
     gap: 30px;
