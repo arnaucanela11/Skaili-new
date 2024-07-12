@@ -296,20 +296,14 @@ function page() {
               </button>
               <div className="contact__main__div__1">
                 <div className="contact__main__div">
-                  <h2 className={`contact__main__title ${poppins.className}`}>
-                    Provideo below your{" "}
-                    <span className="text-[#3B71FE]">
-                      contact <br />
-                      data
-                    </span>{" "}
-                    and explain your idea:
-                  </h2>
-                  <h2
-                      className={`contact__main__title__small ${poppins.className}`}
-                    >
-                      Provideo below your{" "}
-                      <span className="text-[#3B71FE]">contact data</span>{" "}
-                    </h2>
+                <h2
+                        className={`contact__main__title ${poppins.className}`}
+                        dangerouslySetInnerHTML={{__html: translations.contactformtitle}}
+                      />
+                      <h2
+                        className={`contact__main__title__small ${poppins.className}`}
+                        dangerouslySetInnerHTML={{__html: translations.contactformtitlesmall}}
+                      />
                   <Formik
                     validationSchema={loginSchema}
                     initialValues={initailaState}
@@ -547,21 +541,33 @@ function page() {
                 {/* <div className="w-[90%] ml-[10px] m-auto h-[0.5px] bg-[#0b0b2186]"/> */}
                 <div className="contact__bottom__div">
                   <div className="contact__bottom__text__div">
-                    <h4
-                      className={`${poppins.className} contact__bottom__title`}
-                    >
-                      OR
-                    </h4>
-                    <span
-                      className={`${poppins.className} contact__bottom__description`}
-                    >
-                      If you know most general espects of the project you want,
-                      you can{" "}
-                      <span className="font-semibold">
-                        visit our project planner for more refined step-by-step
-                        prrocess.
-                      </span>
-                    </span>
+                  <h4
+                          className={`${poppins.className} contact__bottom__title`}
+                        >
+                          {translations.mainorspan}
+                        </h4>
+                        <span
+                          className={`${poppins.className} contact__bottom__description`}
+                          dangerouslySetInnerHTML={{__html: translations.contactplannerdescription}}
+                        >
+                          {/* If you know most general espects of the project you
+                          want, you can{" "}
+                          <span className="font-semibold">
+                            visit our project planner for more refined
+                            step-by-step prrocess.
+                          </span> */}
+                        </span>
+                        <span
+                          className={`${poppins.className} contact__bottom__description__small`}
+                          dangerouslySetInnerHTML={{__html: translations.contactplannerdescriptionsmall}}
+                        >
+                          {/* If you know most general espects of the project you
+                          want, you can{" "}
+                          <span className="font-semibold">
+                            visit our project planner for more refined
+                            step-by-step prrocess.
+                          </span> */}
+                        </span>
                   </div>
                   <a
                     href={"/projectplanner"}

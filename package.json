@@ -11,6 +11,7 @@
   "dependencies": {
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
+    "cookies-next": "^4.2.1",
     "formik": "^2.4.5",
     "framer-motion": "^11.0.22",
     "next": "14.1.0",

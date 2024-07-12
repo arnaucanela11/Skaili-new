@@ -66,6 +66,7 @@ import * as yup from "yup";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 import useTranslation from "./hooks/useTranslation";
+import CookieConsent from "./components/CookieConsent";
 
 
 const images = [
@@ -294,6 +295,7 @@ export default function Home() {
       <Translator>
         {(translations) => (
           <>
+              <CookieConsent />
             <div className="main__page__main__div" id="main__screen">
               <section
                 className={
