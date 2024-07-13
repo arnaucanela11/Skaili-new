@@ -295,7 +295,7 @@ export default function Home() {
       <Translator>
         {(translations) => (
           <>
-              <CookieConsent />
+              {/* <CookieConsent /> */}
             <div className="main__page__main__div" id="main__screen">
               <section
                 className={
